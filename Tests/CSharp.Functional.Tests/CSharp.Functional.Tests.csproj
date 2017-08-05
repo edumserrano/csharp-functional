@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.2.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.2.0\build\net20\xunit.runner.visualstudio.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{80DF1A3D-CEB6-4AEF-BFA5-5E0C4BF087F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CSharp.Functional.Tests</RootNamespace>
+    <AssemblyName>CSharp.Functional.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Shouldly, Version=2.8.3.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\Shouldly.2.8.3\lib\net451\Shouldly.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Net.Http.4.3.2\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.2.0.3545, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\xunit.assert.2.2.0\lib\netstandard1.1\xunit.assert.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.2.0.3545, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\xunit.extensibility.core.2.2.0\lib\netstandard1.1\xunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.2.0.3545, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\xunit.extensibility.execution.2.2.0\lib\net452\xunit.execution.desktop.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HttpResultMonad\Extensions\HttpResultSimple\OnError\WithAsyncLeftOperand\OnErrorToHttpResultErrorTests.cs" />
+    <Compile Include="HttpResultMonad\Extensions\HttpResultWithError\OnError\WithAsyncLeftOperand\OnErrorToHttpResultErrorTests.cs" />
+    <Compile Include="HttpResultMonad\Extensions\HttpResultWithValueAndError\Map\ToResultErrorTests.cs" />
+    <Compile Include="HttpResultMonad\Extensions\HttpResultWithValueAndError\OnSuccess\WithAsyncBothOperands\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="HttpResultMonad\Extensions\HttpResultWithError\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="HttpResultMonad\Extensions\HttpResultWithValueAndError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="HttpResultMonad\Extensions\HttpResultWithValue\Map\ToResultTests.cs" />
+    <Compile Include="HttpResultMonad\Extensions\HttpResultWithValue\OnError\WithAsyncLeftOperand\OnErrorToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="HttpResultMonad\HttpResultSimple\HttpResultSimpleTests.cs" />
+    <Compile Include="HttpResultMonad\HttpResultSimple\HttpResultSimpleEqualityTests.cs" />
+    <Compile Include="HttpResultMonad\HttpResultWithError\HttpResultWithErrorTests.cs" />
+    <Compile Include="HttpResultMonad\HttpResultWithError\HttpResultWithErrorEqualityTests.cs" />
+    <Compile Include="HttpResultMonad\HttpResultWithValueAndError\HttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="HttpResultMonad\HttpResultWithValueAndError\HttpResultWithValueAndErrorEqualityTests.cs" />
+    <Compile Include="HttpResultMonad\HttpResultWithValue\HttpResultWithValueTests.cs" />
+    <Compile Include="HttpResultMonad\HttpResultWithValue\HttpResultWithValueEqualityTests.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="MaybeMonad\Extensions\Map\ToResultWithValueAndErrorExtensionsTests.cs" />
+    <Compile Include="MaybeMonad\Extensions\Map\ToResultWithValueExtensionsTests.cs" />
+    <Compile Include="MaybeMonad\Extensions\Map\ToResultExtensionsTests.cs" />
+    <Compile Include="MaybeMonad\MaybeEqualityTests.cs" />
+    <Compile Include="MaybeMonad\MaybeTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithError\Ensure\EnsureToResultErrorTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithError\OnSuccess\OnSuccessToResultWithValueAndErrorTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultErrorTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_From_TValue_With_Func_From_TValue_To_TError_If_Fails.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_With_TError_If_Fails.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_From_TValue_With_TError_If_Fails.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\Map\ToResultErrorTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\OnError\OnErrorToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\OnError\OnErrorToResultWithValueAndErrorTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\OnError\OnErrorToResultErrorTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_KValue.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultErrorTests_OnSuccessFunc_From_TValue_To_HttpResultWithValueAndError.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\OnSuccess\OnSuccess_OnSuccessAction_From_TValue.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\OnSuccess\OnSuccessToResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_KValue.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValueAndError\OnSuccess\OnSuccessToResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_ResultWithValueAndError_Of_KValue_TError.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValue\Map\ToResultTests.cs" />
+    <Compile Include="ResultMonad\Extensions\ResultWithValue\OnSuccess\OnSuccessToResultWithValueTests.cs" />
+    <Compile Include="ResultMonad\ResultSimple\ResultSimpleEqualityTests.cs" />
+    <Compile Include="ResultMonad\ResultSimple\ResultSimpleTests.cs" />
+    <Compile Include="ResultMonad\ResultWithError\ResultWithErrorTests.cs" />
+    <Compile Include="ResultMonad\ResultWithError\ResultWithErrorEqualityTests.cs" />
+    <Compile Include="ResultMonad\ResultWithValueAndError\ResultWithValueAndErrorEqualityTests.cs" />
+    <Compile Include="ResultMonad\ResultWithValueAndError\ResultWithValueAndErrorMonadLawsTests.cs" />
+    <Compile Include="ResultMonad\ResultWithValueAndError\ResultWithValueAndErrorTests.cs" />
+    <Compile Include="ResultMonad\ResultWithValue\ResultWithValueEqualityTests.cs" />
+    <Compile Include="ResultMonad\ResultWithValue\ResultWithValueMonadLawsTests.cs" />
+    <Compile Include="ResultMonad\ResultWithValue\ResultWithValueTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\CSharpFunctional\CSharp.Functional\CSharp.Functional.csproj">
+      <Project>{fb963275-dd50-437f-a355-14f501b4bb5f}</Project>
+      <Name>CSharp.Functional</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.2.0\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.2.0\build\net20\xunit.runner.visualstudio.props'))" />
+  </Target>
+</Project>
