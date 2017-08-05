@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using CSharp.Functional.HttpResultMonad;
-using CSharp.Functional.HttpResultMonad.Extensions.HttpResultWithError.OnError;
+using HttpResultMonad;
+using HttpResultMonad.Extensions.HttpResultWithError.OnError;
 using Shouldly;
 using Xunit;
 

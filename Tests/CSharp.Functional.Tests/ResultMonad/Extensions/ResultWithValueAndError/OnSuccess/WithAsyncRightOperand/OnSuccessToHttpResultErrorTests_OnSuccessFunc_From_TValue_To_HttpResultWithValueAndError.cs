@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using CSharp.Functional.HttpResultMonad;
-using CSharp.Functional.ResultMonad;
-using CSharp.Functional.ResultMonad.Extensions.ResultWithValueAndError.OnSuccess;
+using HttpResultMonad;
+using ResultMonad;
+using ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndError.OnSuccess;
 using Shouldly;
 using Xunit;
 

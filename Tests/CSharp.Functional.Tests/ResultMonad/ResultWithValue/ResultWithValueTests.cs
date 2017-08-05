@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CSharp.Functional.ResultMonad;
+using ResultMonad;
 using Shouldly;
 using Xunit;
 

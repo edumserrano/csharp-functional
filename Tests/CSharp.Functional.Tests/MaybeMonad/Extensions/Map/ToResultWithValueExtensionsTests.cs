@@ -1,5 +1,5 @@
-﻿using CSharp.Functional.MaybeMonad;
-using CSharp.Functional.MaybeMonad.Extensions.Map;
+﻿using MaybeMonad;
+using MaybeMonad.Extensions.ResultMonad.Map;
 using Shouldly;
 using Xunit;
 

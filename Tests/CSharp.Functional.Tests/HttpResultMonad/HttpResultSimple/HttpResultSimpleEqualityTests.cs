@@ -1,4 +1,4 @@
-﻿using CSharp.Functional.HttpResultMonad;
+﻿using HttpResultMonad;
 using Shouldly;
 using Xunit;
 

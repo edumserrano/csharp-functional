@@ -1,6 +1,6 @@
 ﻿using System;
-using CSharp.Functional.ResultMonad;
-using CSharp.Functional.ResultMonad.Extensions.ResultWithError.OnSuccess;
+using ResultMonad;
+using ResultMonad.Extensions.ResultWithError.OnSuccess;
 using Shouldly;
 using Xunit;
 

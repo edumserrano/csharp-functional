@@ -1,4 +1,4 @@
-﻿using CSharp.Functional.MaybeMonad;
+﻿using MaybeMonad;
 using Shouldly;
 using Xunit;
 

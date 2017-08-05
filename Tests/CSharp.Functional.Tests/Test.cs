@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using CSharp.Functional.HttpResultMonad.State;
-using CSharp.Functional.MaybeMonad;
+using HttpResultMonad.State;
+using MaybeMonad;
 
 namespace CSharp.Functional.Tests
 {

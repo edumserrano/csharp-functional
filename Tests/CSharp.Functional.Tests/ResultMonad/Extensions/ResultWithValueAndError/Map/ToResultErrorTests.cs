@@ -1,5 +1,5 @@
-﻿using CSharp.Functional.ResultMonad;
-using CSharp.Functional.ResultMonad.Extensions.ResultWithValueAndError.Map;
+﻿using ResultMonad;
+using ResultMonad.Extensions.ResultWithValueAndError.Map;
 using Shouldly;
 using Xunit;
 

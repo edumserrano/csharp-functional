@@ -1,5 +1,5 @@
-﻿using CSharp.Functional.HttpResultMonad;
-using CSharp.Functional.HttpResultMonad.Extensions.HttpResultWithValueAndError.Map;
+﻿using HttpResultMonad;
+using HttpResultMonad.Extensions.HttpResultWithValueAndError.Map;
 using Shouldly;
 using Xunit;
 

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using CSharp.Functional.HttpResultMonad;
-using CSharp.Functional.HttpResultMonad.State;
-using CSharp.Functional.MaybeMonad;
+using HttpResultMonad;
+using HttpResultMonad.State;
+using MaybeMonad;
 using Shouldly;
 using Xunit;
 

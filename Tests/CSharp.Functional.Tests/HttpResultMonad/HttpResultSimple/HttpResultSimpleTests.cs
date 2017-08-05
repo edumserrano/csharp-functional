@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using CSharp.Functional.HttpResultMonad;
-using CSharp.Functional.HttpResultMonad.State;
-using CSharp.Functional.MaybeMonad;
+using HttpResultMonad;
+using HttpResultMonad.State;
+using MaybeMonad;
 using Shouldly;
 using Xunit;
 
@@ -61,7 +61,7 @@ namespace CSharp.Functional.Tests.HttpResultMonad.HttpResultSimple
                 HttpResult.Ok(),
                 HttpResult.Ok()
             };
-
+            
             var combinedResult = HttpResult.Combine(resultsLists.ToArray());
             combinedResult.IsSuccess.ShouldBeTrue();
         }
