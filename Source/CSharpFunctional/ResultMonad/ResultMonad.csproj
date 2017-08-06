@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MaybeMonad\MaybeMonad.csproj" />
+    <PackageReference Include="MaybeMonad" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

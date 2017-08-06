@@ -35,6 +35,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultMonad.Extensions.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultMonad.Extensions.HttpResultMonad.Tests", "..\..\Tests\ResultMonad.Extensions.HttpResultMonad.Tests\ResultMonad.Extensions.HttpResultMonad.Tests.csproj", "{4818ADE9-9128-4771-82EB-AA95AC92F88F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{54729880-87F5-460B-B94B-34ACE429D09E}"
+	ProjectSection(SolutionItems) = preProject
+		nuget.config = nuget.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
