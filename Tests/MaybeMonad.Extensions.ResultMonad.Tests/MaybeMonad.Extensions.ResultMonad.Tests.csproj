@@ -74,6 +74,10 @@
       <Project>{82ba5208-2b07-4337-b03e-8e2ea3c2dda9}</Project>
       <Name>MaybeMonad.Extensions.ResultMonad</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Source\CSharpFunctional\MaybeMonad\MaybeMonad.csproj">
+      <Project>{34230919-64b2-4fa3-92c9-a5259fd8a063}</Project>
+      <Name>MaybeMonad</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Source\CSharpFunctional\ResultMonad\ResultMonad.csproj">
       <Project>{476031d4-6dab-46f7-8bcc-b729c98db2a1}</Project>
       <Name>ResultMonad</Name>
