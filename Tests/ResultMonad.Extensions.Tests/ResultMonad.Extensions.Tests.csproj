@@ -79,6 +79,10 @@
     <Analyzer Include="..\..\Source\CSharpFunctional\packages\xunit.analyzers.0.6.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Source\CSharpFunctional\MaybeMonad\MaybeMonad.csproj">
+      <Project>{34230919-64b2-4fa3-92c9-a5259fd8a063}</Project>
+      <Name>MaybeMonad</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Source\CSharpFunctional\ResultMonad.Extensions\ResultMonad.Extensions.csproj">
       <Project>{ce401d4f-e27f-4393-b6c0-8385e5dc1660}</Project>
       <Name>ResultMonad.Extensions</Name>

@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaybeMonad" Version="1.0.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HttpResultMonad\HttpResultMonad.csproj" />
+    <ProjectReference Include="..\MaybeMonad\MaybeMonad.csproj" />
   </ItemGroup>
 
 </Project>

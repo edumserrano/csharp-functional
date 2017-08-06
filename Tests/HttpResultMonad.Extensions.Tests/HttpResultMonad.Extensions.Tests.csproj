@@ -97,6 +97,10 @@
       <Project>{7154c272-2d4a-4ee0-bc12-ce0c4cdf1ec0}</Project>
       <Name>HttpResultMonad</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Source\CSharpFunctional\MaybeMonad\MaybeMonad.csproj">
+      <Project>{34230919-64b2-4fa3-92c9-a5259fd8a063}</Project>
+      <Name>MaybeMonad</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
