@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MaybeMonad\MaybeMonad.csproj" />
+    <ProjectReference Include="..\MaybeMonad\MaybeMonad.csproj"  />
     <ProjectReference Include="..\ResultMonad\ResultMonad.csproj" />
   </ItemGroup>
-
+  
 </Project>

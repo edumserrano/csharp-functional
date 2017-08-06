@@ -2,26 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <PackageId>MaybeMonad</PackageId>
-    <PackageVersion>1.0.0.0</PackageVersion>
-    <Title>Maybe Monad</Title>
-    <Authors>Eduardo Serrano</Authors>
-    <Owners>Eduardo Serrano</Owners>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseUrl>https://github.com/edumserrano/csharp-functional/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/edumserrano/csharp-functional</PackageProjectUrl>
-    <Description>Maybe/Optional monad implementation for C#</Description>
-    <PackageTags>maybe optional functional monad csharp c#</PackageTags>
-    <NoPackageAnalysis>true</NoPackageAnalysis>
-
-    <!--<RepositoryUrl>https://github.com/edumserrano/roslyn-analyzers</RepositoryUrl>-->
-    <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
-    <!--<PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>-->
-    <!--<Copyright>Copyright</Copyright>-->
   </PropertyGroup>
 
 </Project>

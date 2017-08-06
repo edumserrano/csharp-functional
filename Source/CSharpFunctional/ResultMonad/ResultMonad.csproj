@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaybeMonad" Version="1.0.0" />
+    <ProjectReference Include="..\MaybeMonad\MaybeMonad.csproj" />
   </ItemGroup>
 
 </Project>
