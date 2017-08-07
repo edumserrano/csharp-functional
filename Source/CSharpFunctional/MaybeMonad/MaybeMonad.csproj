@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <PackageId>MaybeMonad</PackageId>
-    <PackageVersion>1.0.0.1</PackageVersion>
+    <PackageVersion>1.0.1-alpha</PackageVersion>
     <Title>Maybe Monad</Title>
     <Authors>Eduardo Serrano</Authors>
     <Owners>Eduardo Serrano</Owners>
