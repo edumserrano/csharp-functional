@@ -2,7 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>ResultMonad</PackageId>
+    <PackageVersion>1.0.0.1</PackageVersion>
+    <Title>Result Monad</Title>
+    <Authors>Eduardo Serrano</Authors>
+    <Owners>Eduardo Serrano</Owners>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/edumserrano/csharp-functional/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/edumserrano/csharp-functional</PackageProjectUrl>
+    <Description>Result monad for C#. In its core this monad enhances a type by adding a success/failure status.</Description>
+    <PackageTags>result functional monad csharp c#</PackageTags>
+
+    <!--<RepositoryUrl>https://github.com/edumserrano/roslyn-analyzers</RepositoryUrl>-->
+    <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
+    <!--<PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>-->
+    <!--<Copyright>Copyright</Copyright>-->
   </PropertyGroup>
 
   <ItemGroup>
