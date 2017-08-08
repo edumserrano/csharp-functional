@@ -9,8 +9,7 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndError.Ensure
         [Fact]
         public void Ensure_executes_predicate_if_result_is_ok()
         {
-            var error1 = "error1";
-            var error2 = "error2";
+            var error = "error";
             var value = 1;
             var predicateExecuted = false;
 
@@ -27,7 +26,7 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndError.Ensure
 
             string ErrorFunc(int i)
             {
-                return error2;
+                return error;
             }
         }
 
@@ -36,7 +35,6 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndError.Ensure
         {
             var error1 = "error1";
             var error2 = "error2";
-            var value = 1;
             var predicateExecuted = false;
 
             var result = Result.Fail<int, string>(error1)

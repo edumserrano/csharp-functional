@@ -30,7 +30,6 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndError.Ensure
         {
             var error1 = "error1";
             var error2 = "error2";
-            var value = 1;
             var predicateExecuted = false;
 
             var result = Result.Fail<int, string>(error1)
