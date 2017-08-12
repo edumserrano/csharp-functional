@@ -8,6 +8,7 @@ namespace ResultMonad
     /*
     The purpose of this struct is just for syntax usage of the ResultWithError struct.
     It allow the following syntax: ResultWithError.Ok<int> instead of ResultWithError<int>.Ok
+    It thus allows keeping the same syntax between extension and non-extension methods.
     */
     public struct ResultWithError
     {

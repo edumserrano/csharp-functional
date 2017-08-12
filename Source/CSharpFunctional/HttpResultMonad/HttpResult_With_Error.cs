@@ -8,6 +8,7 @@ namespace HttpResultMonad
     /*
     The purpose of this struct is just for syntax usage of the HttpResultWithError struct.
     It allow the following syntax: HttpResultWithError.Ok<int> instead of HttpResultWithError<int>.Ok
+    It thus allows keeping the same syntax between extension and non-extension methods.
     */
     public struct HttpResultWithError
     {

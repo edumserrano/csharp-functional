@@ -7,6 +7,7 @@ namespace MaybeMonad
     /*
     The purpose of this struct is just for syntax usage of the Maybe struct.
     It allow the following syntax: Maybe.From<int> instead of Maybe<int>.From
+    It thus allows keeping the same syntax between extension and non-extension methods.
     */
     public struct Maybe
     {
