@@ -89,8 +89,8 @@ namespace ResultMonad
         public override string ToString()
         {
             return IsSuccess
-                ? ResultErrorMessages.SuccessResult
-                : ResultErrorMessages.FailureResult;
+                ? ResultWithErrorMessages.SuccessResult
+                : ResultWithErrorMessages.FailureResult;
         }
 
         [DebuggerStepThrough]
@@ -165,21 +165,21 @@ namespace ResultMonad
 
 
         [DebuggerStepThrough]
-        public static ResultError<TError> Combine<TError>(params ResultError<TError>[] resultsError)
+        public static ResultWithError<TError> Combine<TError>(params ResultWithError<TError>[] resultsWithError)
         {
-            var anyFailure = resultsError.Any(x => x.IsFailure);
+            var anyFailure = resultsWithError.Any(x => x.IsFailure);
             return !anyFailure
-                ? ResultError.Ok<TError>()
-                : resultsError.First(x => x.IsFailure);
+                ? ResultWithError.Ok<TError>()
+                : resultsWithError.First(x => x.IsFailure);
         }
 
         [DebuggerStepThrough]
-        public static ResultError<TError> Combine<TValue, TError>(params Result<TValue, TError>[] results)
+        public static ResultWithError<TError> Combine<TValue, TError>(params Result<TValue, TError>[] results)
         {
             var anyFailure = results.Any(x => x.IsFailure);
             return !anyFailure
-                ? ResultError.Ok<TError>()
-                : results.First(x => x.IsFailure).ToResultError();
+                ? ResultWithError.Ok<TError>()
+                : results.First(x => x.IsFailure).ToResultWithError();
         }
     }
 }

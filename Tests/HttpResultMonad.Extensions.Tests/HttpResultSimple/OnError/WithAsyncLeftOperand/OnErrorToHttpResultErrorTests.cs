@@ -6,14 +6,14 @@ using Xunit;
 
 namespace HttpResultMonad.Extensions.Tests.HttpResultSimple.OnError.WithAsyncLeftOperand
 {
-    public class OnErrorToHttpResultErrorTests
+    public class OnErrorToHttpResultWithErrorTests
     {
         [Fact]
         public async Task OnError_executes_function_if_result_is_fail()
         {
             var functionExecuted = false;
             var result = await Task.FromResult(HttpResult.Fail())
-                .OnErrorToHttpResultError(() => OnErrorFunc());
+                .OnErrorToHttpResultWithError(() => OnErrorFunc());
 
             functionExecuted.ShouldBeTrue();
 
@@ -29,7 +29,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultSimple.OnError.WithAsyncLef
         {
             var functionExecuted = false;
             var result = await Task.FromResult(HttpResult.Ok())
-                .OnErrorToHttpResultError(() => OnErrorFunc());
+                .OnErrorToHttpResultWithError(() => OnErrorFunc());
 
             functionExecuted.ShouldBeFalse();
 
@@ -45,7 +45,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultSimple.OnError.WithAsyncLef
         {
             var newError = "abc";
             var result = await Task.FromResult(HttpResult.Fail())
-                .OnErrorToHttpResultError(() => newError);
+                .OnErrorToHttpResultWithError(() => newError);
 
             result.Error.ShouldBe(newError);
         }
@@ -55,7 +55,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultSimple.OnError.WithAsyncLef
         {
             var httpState = Test.CreateHttpStateA();
             var result = await Task.FromResult(HttpResult.Fail(httpState))
-                .OnErrorToHttpResultError(() => "error");
+                .OnErrorToHttpResultWithError(() => "error");
 
             result.HttpState.ShouldBe(httpState);
         }
@@ -66,7 +66,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultSimple.OnError.WithAsyncLef
         {
             var httpState = Test.CreateHttpStateA();
             var result = await Task.FromResult(HttpResult.Ok(Maybe.From(httpState)))
-                .OnErrorToHttpResultError(() => "error");
+                .OnErrorToHttpResultWithError(() => "error");
 
             result.HttpState.ShouldBe(httpState);
         }

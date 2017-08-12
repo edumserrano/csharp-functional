@@ -5,14 +5,14 @@ using Xunit;
 
 namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnError.WithAsyncLeftOperand
 {
-    public class OnErrorToHttpResultErrorTests
+    public class OnErrorToHttpResultWithErrorTests
     {
         [Fact]
         public async Task OnError_executes_function_if_result_is_fail()
         {
             var functionExecuted = false;
-            var result = await Task.FromResult(HttpResultError.Fail("error"))
-                .OnErrorToHttpResultError(error => OnErrorFunc(error));
+            var result = await Task.FromResult(HttpResultMonad.HttpResultWithError.Fail("error"))
+                .OnErrorToHttpResultWithError(error => OnErrorFunc(error));
 
             functionExecuted.ShouldBeTrue();
 
@@ -27,8 +27,8 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnError.WithAsync
         public async Task OnError_does_not_execute_function_if_result_is_ok()
         {
             var functionExecuted = false;
-            var result = await Task.FromResult(HttpResultError.Ok<string>())
-                .OnErrorToHttpResultError(error => OnErrorFunc(error));
+            var result = await Task.FromResult(HttpResultMonad.HttpResultWithError.Ok<string>())
+                .OnErrorToHttpResultWithError(error => OnErrorFunc(error));
 
             functionExecuted.ShouldBeFalse();
 
@@ -43,8 +43,8 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnError.WithAsync
         public async Task OnError_new_result_contains_error_from_function_if_result_is_fail()
         {
             var newError = -1;
-            var result = await Task.FromResult(HttpResultError.Fail("error"))
-                .OnErrorToHttpResultError(error => newError);
+            var result = await Task.FromResult(HttpResultMonad.HttpResultWithError.Fail("error"))
+                .OnErrorToHttpResultWithError(error => newError);
 
             result.Error.ShouldBe(newError);
         }
@@ -53,8 +53,8 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnError.WithAsync
         public async Task OnError_propagates_http_state_if_result_is_fail()
         {
             var httpState = Test.CreateHttpStateA();
-            var result = await Task.FromResult(HttpResultError.Fail("error", httpState))
-                .OnErrorToHttpResultError(error => -1);
+            var result = await Task.FromResult(HttpResultMonad.HttpResultWithError.Fail("error", httpState))
+                .OnErrorToHttpResultWithError(error => -1);
 
             result.HttpState.ShouldBe(httpState);
         }
@@ -63,8 +63,8 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnError.WithAsync
         public async Task OnError_propagates_http_state_if_result_is_ok()
         {
             var httpState = Test.CreateHttpStateA();
-            var result = await Task.FromResult(HttpResultError.Ok<string>(httpState))
-                .OnErrorToHttpResultError(error => -1);
+            var result = await Task.FromResult(HttpResultMonad.HttpResultWithError.Ok<string>(httpState))
+                .OnErrorToHttpResultWithError(error => -1);
 
             result.HttpState.ShouldBe(httpState);
         }

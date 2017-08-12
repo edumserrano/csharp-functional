@@ -4,14 +4,14 @@ using Xunit;
 
 namespace ResultMonad.Extensions.Tests.ResultWithValueAndError.OnError
 {
-    public class OnErrorToResultErrorTests
+    public class OnErrorToResultWithErrorTests
     {
         [Fact]
         public void OnError_executes_function_if_result_is_fail()
         {
             var functionExecuted = false;
             var result = Result.Fail<int, string>("error")
-                .OnErrorToResultError(i => OnErrorFunc(i));
+                .OnErrorToResultWithError(i => OnErrorFunc(i));
 
             functionExecuted.ShouldBeTrue();
 
@@ -27,7 +27,7 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndError.OnError
         {
             var functionExecuted = false;
             var result = Result.Ok<int, string>(1)
-                .OnErrorToResultError(i => OnErrorFunc(i));
+                .OnErrorToResultWithError(i => OnErrorFunc(i));
 
             functionExecuted.ShouldBeFalse();
 
@@ -45,7 +45,7 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndError.OnError
             var propagatedValue = "";
             var error = "error";
             var result = Result.Fail<int, string>(error)
-                .OnErrorToResultError(i => OnErrorFunc(i));
+                .OnErrorToResultWithError(i => OnErrorFunc(i));
 
             propagatedValue.ShouldBe(error);
 
@@ -61,7 +61,7 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndError.OnError
         {
             var newError = "abc";
             var result = Result.Fail<int, string>("error")
-                .OnErrorToResultError(i => newError);
+                .OnErrorToResultWithError(i => newError);
 
             result.Error.ShouldBe(newError);
         }

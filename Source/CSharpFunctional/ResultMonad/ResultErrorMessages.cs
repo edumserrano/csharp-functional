@@ -2,7 +2,7 @@
 
 namespace ResultMonad
 {
-    internal static class ResultErrorMessages
+    internal static class ResultWithErrorMessages
     {
         public static string SuccessResult => "The operation was successfull.";
         public static string FailureResult => "The operation failed.";
@@ -12,6 +12,6 @@ namespace ResultMonad
         public static string SuccessResultMustHaveValue => "Success result must have a value.";
         public static string FailureResultMustHaveError => "Error result must have an error.";
         public static string GetFailureResultToStringMessage(Type type) => $"Result<{type}> is a failure. {NoValueForFailure}";
-        public static string GetSuccessResultErrorToStringMessage(Type type) => $"ResultError<{type}> is a success. {NoErrorForSuccess}";
+        public static string GetSuccessResultWithErrorToStringMessage(Type type) => $"ResultWithError<{type}> is a success. {NoErrorForSuccess}";
     }
 }

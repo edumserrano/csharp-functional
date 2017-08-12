@@ -7,18 +7,18 @@ namespace HttpResultMonad.Extensions.HttpResultWithError.OnError
     public static class OnErrorExtensionsWithAsyncLeftOperand
     {
         [DebuggerStepThrough]
-        public static async Task<HttpResultError<KError>> OnErrorToHttpResultError<TError, KError>(
-             this Task<HttpResultError<TError>> httpResultTask,
+        public static async Task<HttpResultWithError<KError>> OnErrorToHttpResultWithError<TError, KError>(
+             this Task<HttpResultWithError<TError>> httpResultTask,
              Func<TError, KError> errorFunc)
         {
             var httpResult = await httpResultTask.ConfigureAwait(false);
             if (httpResult.IsSuccess)
             {
-                return HttpResultError.Ok<KError>(httpResult.HttpState);
+                return HttpResultMonad.HttpResultWithError.Ok<KError>(httpResult.HttpState);
             }
 
             var error = errorFunc(httpResult.Error);
-            return HttpResultError.Fail(error, httpResult.HttpState);
+            return HttpResultMonad.HttpResultWithError.Fail(error, httpResult.HttpState);
         }
     }
 }

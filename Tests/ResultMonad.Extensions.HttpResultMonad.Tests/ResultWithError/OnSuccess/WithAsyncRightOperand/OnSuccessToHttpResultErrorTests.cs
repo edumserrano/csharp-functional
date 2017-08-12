@@ -7,23 +7,23 @@ using Xunit;
 
 namespace ResultMonad.Extensions.HttpResultMonad.Tests.ResultWithError.OnSuccess.WithAsyncRightOperand
 {
-    public class OnSuccessToHttpResultErrorTests
+    public class OnSuccessToHttpResultWithErrorTests
     {
         [Fact]
         public void OnSuccess_executes_function_if_result_is_ok()
         {
             var functionExecuted = false;
-            var result = ResultError.Ok<string>()
-                .OnSuccessToHttpResultError(OnSuccessFunc());
+            var result = ResultMonad.ResultWithError.Ok<string>()
+                .OnSuccessToHttpResultWithError(OnSuccessFunc());
 
             functionExecuted.ShouldBeTrue();
 
-            Func<Task<HttpResultError<string>>> OnSuccessFunc()
+            Func<Task<HttpResultWithError<string>>> OnSuccessFunc()
             {
                 return () =>
                 {
                     functionExecuted = true;
-                    var httpResult = HttpResultError.Ok<string>();
+                    var httpResult = HttpResultWithError.Ok<string>();
                     return Task.FromResult(httpResult);
                 };
             }
@@ -33,17 +33,17 @@ namespace ResultMonad.Extensions.HttpResultMonad.Tests.ResultWithError.OnSuccess
         public void OnSuccess_does_not_execute_function_if_result_is_fail()
         {
             var functionExecuted = false;
-            var result = ResultError.Fail("error")
-                .OnSuccessToHttpResultError(OnSuccessFunc());
+            var result = ResultMonad.ResultWithError.Fail("error")
+                .OnSuccessToHttpResultWithError(OnSuccessFunc());
 
             functionExecuted.ShouldBeFalse();
 
-            Func<Task<HttpResultError<string>>> OnSuccessFunc()
+            Func<Task<HttpResultWithError<string>>> OnSuccessFunc()
             {
                 return () =>
                 {
                     functionExecuted = true;
-                    var httpResult = HttpResultError.Ok<string>();
+                    var httpResult = HttpResultWithError.Ok<string>();
                     return Task.FromResult(httpResult);
                 };
             }
@@ -53,16 +53,16 @@ namespace ResultMonad.Extensions.HttpResultMonad.Tests.ResultWithError.OnSuccess
         public async Task OnSuccess_propagates_error_if_result_is_fail()
         {
             var error = "error";
-            var result = await ResultError.Fail(error)
-                .OnSuccessToHttpResultError(OnSuccessFunc());
+            var result = await ResultMonad.ResultWithError.Fail(error)
+                .OnSuccessToHttpResultWithError(OnSuccessFunc());
 
             result.Error.ShouldBe(error);
 
-            Func<Task<HttpResultError<string>>> OnSuccessFunc()
+            Func<Task<HttpResultWithError<string>>> OnSuccessFunc()
             {
                 return () =>
                 {
-                    var httpResult = HttpResultError.Ok<string>();
+                    var httpResult = HttpResultWithError.Ok<string>();
                     return Task.FromResult(httpResult);
                 };
             }
@@ -71,16 +71,16 @@ namespace ResultMonad.Extensions.HttpResultMonad.Tests.ResultWithError.OnSuccess
         [Fact]
         public async Task OnSuccess_new_result_does_not_contain_http_state_because_previous_ok_result_does_not_have_them()
         {
-            var result = await ResultError.Ok<string>()
-                .OnSuccessToHttpResultError(OnSuccessFunc());
+            var result = await ResultMonad.ResultWithError.Ok<string>()
+                .OnSuccessToHttpResultWithError(OnSuccessFunc());
 
             result.HttpState.HasNoValue.ShouldBeTrue();
 
-            Func<Task<HttpResultError<string>>> OnSuccessFunc()
+            Func<Task<HttpResultWithError<string>>> OnSuccessFunc()
             {
                 return () =>
                 {
-                    var httpResult = HttpResultError.Ok<string>();
+                    var httpResult = HttpResultWithError.Ok<string>();
                     return Task.FromResult(httpResult);
                 };
             }
@@ -89,16 +89,16 @@ namespace ResultMonad.Extensions.HttpResultMonad.Tests.ResultWithError.OnSuccess
         [Fact]
         public async Task OnSuccess_new_result_does_not_contain_http_state_because_previous_fail_result_does_not_have_them()
         {
-            var result = await ResultError.Fail("error")
-                .OnSuccessToHttpResultError(OnSuccessFunc());
+            var result = await ResultMonad.ResultWithError.Fail("error")
+                .OnSuccessToHttpResultWithError(OnSuccessFunc());
 
             result.HttpState.HasNoValue.ShouldBeTrue();
 
-            Func<Task<HttpResultError<string>>> OnSuccessFunc()
+            Func<Task<HttpResultWithError<string>>> OnSuccessFunc()
             {
                 return () =>
                 {
-                    var httpResult = HttpResultError.Ok<string>();
+                    var httpResult = HttpResultWithError.Ok<string>();
                     return Task.FromResult(httpResult);
                 };
             }

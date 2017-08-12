@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.Extensions.ResultWithValue.Map
     public class ToResultTests
     {
         [Fact]
-        public void To_propagates_ok_result_to_resultError()
+        public void To_propagates_ok_result_to_ResultWithError()
         {
             var result = Result.Ok(1);
             var httpResult = result.ToResult();
@@ -15,7 +15,7 @@ namespace ResultMonad.Tests.Extensions.ResultWithValue.Map
         }
 
         [Fact]
-        public void To_propagates_fail_result_to_resultError()
+        public void To_propagates_fail_result_to_ResultWithError()
         {
             var result = Result.Fail<int>();
             var httpResult = result.ToResult();

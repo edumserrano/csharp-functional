@@ -6,37 +6,37 @@ using MaybeMonad;
 namespace HttpResultMonad
 {
     /*
-    The purpose of this struct is just for syntax usage of the HttpResultError struct.
-    It allow the following syntax: HttpResultError.Ok<int> instead of HttpResultError<int>.Ok
+    The purpose of this struct is just for syntax usage of the HttpResultWithError struct.
+    It allow the following syntax: HttpResultWithError.Ok<int> instead of HttpResultWithError<int>.Ok
     */
-    public struct HttpResultError
+    public struct HttpResultWithError
     {
         [DebuggerStepThrough]
-        public static HttpResultError<T> Ok<T>()
+        public static HttpResultWithError<T> Ok<T>()
         {
             return Ok<T>(Maybe<HttpState>.Nothing);
         }
 
         [DebuggerStepThrough]
-        public static HttpResultError<T> Ok<T>(Maybe<HttpState> httpState)
+        public static HttpResultWithError<T> Ok<T>(Maybe<HttpState> httpState)
         {
-            return new HttpResultError<T>(HttpResultStatus.Ok, Maybe<T>.Nothing, httpState);
+            return new HttpResultWithError<T>(HttpResultStatus.Ok, Maybe<T>.Nothing, httpState);
         }
 
         [DebuggerStepThrough]
-        public static HttpResultError<T> Fail<T>(T error)
+        public static HttpResultWithError<T> Fail<T>(T error)
         {
             return Fail(error, Maybe<HttpState>.Nothing);
         }
 
         [DebuggerStepThrough]
-        public static HttpResultError<T> Fail<T>(T error, Maybe<HttpState> httpState)
+        public static HttpResultWithError<T> Fail<T>(T error, Maybe<HttpState> httpState)
         {
-            return new HttpResultError<T>(HttpResultStatus.Fail, error, httpState);
+            return new HttpResultWithError<T>(HttpResultStatus.Fail, error, httpState);
         }
 
         [DebuggerStepThrough]
-        public static HttpResultError<TError> From<TError>(Func<bool> predicate, TError error)
+        public static HttpResultWithError<TError> From<TError>(Func<bool> predicate, TError error)
         {
             return predicate()
                 ? Ok<TError>()
@@ -44,7 +44,7 @@ namespace HttpResultMonad
         }
     }
 
-    public struct HttpResultError<T> : IEquatable<HttpResultError<T>>
+    public struct HttpResultWithError<T> : IEquatable<HttpResultWithError<T>>
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly Maybe<T> _error;
@@ -56,11 +56,11 @@ namespace HttpResultMonad
         private readonly Maybe<HttpState> _httpState;
 
         [DebuggerStepThrough]
-        internal HttpResultError(HttpResultStatus httpResultStatus, Maybe<T> error, Maybe<HttpState> httpState)
+        internal HttpResultWithError(HttpResultStatus httpResultStatus, Maybe<T> error, Maybe<HttpState> httpState)
         {
             if (httpResultStatus == HttpResultStatus.Fail && error.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(error), HttpResultErrorMessages.FailureResultMustHaveError);
+                throw new ArgumentNullException(nameof(error), HttpResultWithErrorMessages.FailureResultMustHaveError);
             }
 
             _httpResultStatus = httpResultStatus;
@@ -93,7 +93,7 @@ namespace HttpResultMonad
             {
                 if (IsSuccess)
                 {
-                    throw new InvalidOperationException(HttpResultErrorMessages.NoErrorForSuccess);
+                    throw new InvalidOperationException(HttpResultWithErrorMessages.NoErrorForSuccess);
                 }
 
                 return _error.Value;
@@ -112,13 +112,13 @@ namespace HttpResultMonad
         #region [IEquatable]
 
         [DebuggerStepThrough]
-        public static bool operator ==(HttpResultError<T> first, HttpResultError<T> second)
+        public static bool operator ==(HttpResultWithError<T> first, HttpResultWithError<T> second)
         {
             return first.Equals(second);
         }
 
         [DebuggerStepThrough]
-        public static bool operator !=(HttpResultError<T> first, HttpResultError<T> second)
+        public static bool operator !=(HttpResultWithError<T> first, HttpResultWithError<T> second)
         {
             return !(first == second);
         }
@@ -126,7 +126,7 @@ namespace HttpResultMonad
         [DebuggerStepThrough]
         public override bool Equals(object obj)
         {
-            if (obj is HttpResultError<T> other)
+            if (obj is HttpResultWithError<T> other)
             {
                 return Equals(other);
             }
@@ -135,7 +135,7 @@ namespace HttpResultMonad
         }
 
         [DebuggerStepThrough]
-        public bool Equals(HttpResultError<T> other)
+        public bool Equals(HttpResultWithError<T> other)
         {
             if (!HttpState.Equals(other.HttpState))
             {
@@ -174,7 +174,7 @@ namespace HttpResultMonad
         public override string ToString()
         {
             return IsSuccess
-                ? HttpResultErrorMessages.GetSuccessResultErrorToStringMessage(typeof(T))
+                ? HttpResultWithErrorMessages.GetSuccessResultWithErrorToStringMessage(typeof(T))
                 : Error.ToString();
         }
     }

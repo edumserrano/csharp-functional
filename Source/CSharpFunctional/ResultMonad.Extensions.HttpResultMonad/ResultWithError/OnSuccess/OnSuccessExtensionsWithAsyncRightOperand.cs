@@ -9,21 +9,21 @@ namespace ResultMonad.Extensions.HttpResultMonad.ResultWithError.OnSuccess
     {
         [DebuggerStepThrough]
         public static Task<HttpResult<TValue, TError>> OnSuccessToHttpResultWithValueAndError<TValue, TError>(
-            this ResultError<TError> resultError,
+            this ResultWithError<TError> resultWithError,
             Func<Task<HttpResult<TValue, TError>>> func)
         {
-            return resultError.IsFailure
-                ? Task.FromResult(HttpResult.Fail<TValue, TError>(resultError.Error))
+            return resultWithError.IsFailure
+                ? Task.FromResult(HttpResult.Fail<TValue, TError>(resultWithError.Error))
                 : func();
         }
 
         [DebuggerStepThrough]
-        public static Task<HttpResultError<TError>> OnSuccessToHttpResultError<TError>(
-            this ResultError<TError> resultError,
-            Func<Task<HttpResultError<TError>>> func)
+        public static Task<HttpResultWithError<TError>> OnSuccessToHttpResultWithError<TError>(
+            this ResultWithError<TError> resultWithError,
+            Func<Task<HttpResultWithError<TError>>> func)
         {
-            return resultError.IsFailure
-                ? Task.FromResult(HttpResultError.Fail(resultError.Error))
+            return resultWithError.IsFailure
+                ? Task.FromResult(HttpResultWithError.Fail(resultWithError.Error))
                 : func();
         }
     }

@@ -11,7 +11,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnSuccess
         public void OnSuccess_executes_function_if_result_is_ok()
         {
             var functionExecuted = false;
-            var result = HttpResultError.Ok<string>()
+            var result = HttpResultMonad.HttpResultWithError.Ok<string>()
                 .OnSuccessToHttpResultWithValueAndError(OnSuccessFunc());
 
             functionExecuted.ShouldBeTrue();
@@ -30,7 +30,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnSuccess
         public void OnSuccess_does_not_execute_function_if_result_is_fail()
         {
             var functionExecuted = false;
-            var result = HttpResultError.Fail("error")
+            var result = HttpResultMonad.HttpResultWithError.Fail("error")
                 .OnSuccessToHttpResultWithValueAndError(OnSuccessFunc());
 
             functionExecuted.ShouldBeFalse();
@@ -49,7 +49,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnSuccess
         public void OnSuccess_new_result_contains_value_from_function_if_result_is_ok()
         {
             var newValue = 1;
-            var result = HttpResultError.Ok<string>()
+            var result = HttpResultMonad.HttpResultWithError.Ok<string>()
                 .OnSuccessToHttpResultWithValueAndError(() => newValue);
 
             result.Value.ShouldBe(newValue);
@@ -59,7 +59,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnSuccess
         public void OnSuccess_propagates_error_if_result_is_fail()
         {
             var error = "error";
-            var result = HttpResultError.Fail(error)
+            var result = HttpResultMonad.HttpResultWithError.Fail(error)
                 .OnSuccessToHttpResultWithValueAndError(() => 1);
 
             result.Error.ShouldBe(error);
@@ -69,7 +69,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnSuccess
         public void OnSuccess_propagates_http_state_if_result_is_fail()
         {
             var httpState = Test.CreateHttpStateA();
-            var result = HttpResultError.Fail("error", httpState)
+            var result = HttpResultMonad.HttpResultWithError.Fail("error", httpState)
                 .OnSuccessToHttpResultWithValueAndError(() => "error");
 
             result.HttpState.ShouldBe(httpState);
@@ -79,7 +79,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultWithError.OnSuccess
         public void OnSuccess_propagates_http_state_if_result_is_ok()
         {
             var httpState = Test.CreateHttpStateA();
-            var result = HttpResultError.Ok<string>(httpState)
+            var result = HttpResultMonad.HttpResultWithError.Ok<string>(httpState)
                 .OnSuccessToHttpResultWithValueAndError(() => "error");
 
             result.HttpState.ShouldBe(httpState);

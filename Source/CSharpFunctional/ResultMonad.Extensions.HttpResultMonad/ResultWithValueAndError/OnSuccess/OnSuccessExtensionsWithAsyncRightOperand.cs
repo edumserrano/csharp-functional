@@ -8,12 +8,12 @@ namespace ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndError.OnSucce
     public static class OnSuccessExtensionsWithAsyncRightOperand
     {
         [DebuggerStepThrough]
-        public static Task<HttpResultError<TError>> OnSuccessToHttpResultError<TValue, TError>(
+        public static Task<HttpResultWithError<TError>> OnSuccessToHttpResultWithError<TValue, TError>(
             this Result<TValue, TError> result,
-            Func<TValue, Task<HttpResultError<TError>>> func)
+            Func<TValue, Task<HttpResultWithError<TError>>> func)
         {
             return result.IsFailure
-                ? Task.FromResult(HttpResultError.Fail(result.Error))
+                ? Task.FromResult(HttpResultWithError.Fail(result.Error))
                 : func(result.Value);
         }
 

@@ -20,17 +20,17 @@ namespace ResultMonad.Extensions.ResultWithValueAndError.OnError
         }
 
         [DebuggerStepThrough]
-        public static ResultError<KError> OnErrorToResultError<TValue, TError, KError>(
+        public static ResultWithError<KError> OnErrorToResultWithError<TValue, TError, KError>(
             this Result<TValue, TError> result,
             Func<TError, KError> func)
         {
             if (result.IsSuccess)
             {
-                return ResultError.Ok<KError>();
+                return ResultMonad.ResultWithError.Ok<KError>();
             }
 
             var error = func(result.Error);
-            return ResultError.Fail(error);
+            return ResultMonad.ResultWithError.Fail(error);
         }
     }
 }

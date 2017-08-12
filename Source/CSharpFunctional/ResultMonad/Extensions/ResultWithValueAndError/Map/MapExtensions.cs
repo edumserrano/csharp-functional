@@ -5,11 +5,11 @@ namespace ResultMonad.Extensions.ResultWithValueAndError.Map
     public static class MapExtensions
     {
         [DebuggerStepThrough]
-        public static ResultError<TError> ToResultError<TValue, TError>(this Result<TValue, TError> result)
+        public static ResultWithError<TError> ToResultWithError<TValue, TError>(this Result<TValue, TError> result)
         {
             return result.IsSuccess
-                ? ResultError.Ok<TError>()
-                : ResultError.Fail(result.Error);
+                ? ResultWithError.Ok<TError>()
+                : ResultWithError.Fail(result.Error);
         }
     }
 }

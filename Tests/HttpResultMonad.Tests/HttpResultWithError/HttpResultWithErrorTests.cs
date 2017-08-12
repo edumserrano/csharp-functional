@@ -12,28 +12,28 @@ namespace HttpResultMonad.Tests.HttpResultWithError
         [Fact]
         public void Ok_result_IsSuccess_is_true()
         {
-            var result = HttpResultError.Ok<string>();
+            var result = HttpResultMonad.HttpResultWithError.Ok<string>();
             result.IsSuccess.ShouldBeTrue();
         }
 
         [Fact]
         public void Ok_result_IsFailure_is_false()
         {
-            var result = HttpResultError.Ok<string>();
+            var result = HttpResultMonad.HttpResultWithError.Ok<string>();
             result.IsFailure.ShouldBeFalse();
         }
 
         [Fact]
         public void Fail_result_IsSuccess_is_false()
         {
-            var result = HttpResultError.Fail("abc");
+            var result = HttpResultMonad.HttpResultWithError.Fail("abc");
             result.IsSuccess.ShouldBeFalse();
         }
 
         [Fact]
         public void Fail_result_IsFailure_equals_true()
         {
-            var result = HttpResultError.Fail("abc");
+            var result = HttpResultMonad.HttpResultWithError.Fail("abc");
             result.IsFailure.ShouldBeTrue();
         }
 
@@ -41,7 +41,7 @@ namespace HttpResultMonad.Tests.HttpResultWithError
         public void Acessing_the_error_of_fail_result_returns_error()
         {
             var error = "abc";
-            var result = HttpResultError.Fail(error);
+            var result = HttpResultMonad.HttpResultWithError.Fail(error);
             var isEqual = result.Error.Equals(error);
             isEqual.ShouldBeTrue();
         }
@@ -49,7 +49,7 @@ namespace HttpResultMonad.Tests.HttpResultWithError
         [Fact]
         public void Acessing_the_error_of_ok_result_throws_exception()
         {
-            var result = HttpResultError.Ok<string>();
+            var result = HttpResultMonad.HttpResultWithError.Ok<string>();
             var exception = Should.Throw<InvalidOperationException>(() =>
             {
                 var value = result.Error;
@@ -59,7 +59,7 @@ namespace HttpResultMonad.Tests.HttpResultWithError
         [Fact]
         public void OK_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
         {
-            var httpResult = HttpResultError.Ok<string>();
+            var httpResult = HttpResultMonad.HttpResultWithError.Ok<string>();
             httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
         }
 
@@ -67,7 +67,7 @@ namespace HttpResultMonad.Tests.HttpResultWithError
         [Fact]
         public void Fail_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
         {
-            var httpResult = HttpResultError.Fail("abc");
+            var httpResult = HttpResultMonad.HttpResultWithError.Fail("abc");
             httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
         }
 
@@ -75,7 +75,7 @@ namespace HttpResultMonad.Tests.HttpResultWithError
         public void From_if_predicate_is_true_returns_ok_result()
         {
             var error = "error";
-            var result = HttpResultError.From(() => true, error);
+            var result = HttpResultMonad.HttpResultWithError.From(() => true, error);
             result.IsSuccess.ShouldBeTrue();
         }
 
@@ -83,7 +83,7 @@ namespace HttpResultMonad.Tests.HttpResultWithError
         public void From_if_predicate_is_false_returns_fail_result_with_error()
         {
             var error = "error";
-            var result = HttpResultError.From(() => false, error);
+            var result = HttpResultMonad.HttpResultWithError.From(() => false, error);
             result.IsFailure.ShouldBeTrue();
             result.Error.ShouldBe(error);
         }
@@ -91,11 +91,11 @@ namespace HttpResultMonad.Tests.HttpResultWithError
         [Fact]
         public void Combine_if_all_results_are_ok_returns_ok_result()
         {
-            var resultsLists = new List<HttpResultError<string>>
+            var resultsLists = new List<HttpResultWithError<string>>
             {
-                HttpResultError.Ok<string>(),
-                HttpResultError.Ok<string>(),
-                HttpResultError.Ok<string>()
+                HttpResultMonad.HttpResultWithError.Ok<string>(),
+                HttpResultMonad.HttpResultWithError.Ok<string>(),
+                HttpResultMonad.HttpResultWithError.Ok<string>()
             };
 
             var combinedResult = HttpResult.Combine(resultsLists.ToArray());
@@ -108,13 +108,13 @@ namespace HttpResultMonad.Tests.HttpResultWithError
             var firstHttpState = Test.CreateHttpStateA();
             var secondHttpState = Test.CreateHttpStateB();
 
-            var firstFailure = HttpResultError.Fail("error", firstHttpState);
-            var resultsLists = new List<HttpResultError<string>>
+            var firstFailure = HttpResultMonad.HttpResultWithError.Fail("error", firstHttpState);
+            var resultsLists = new List<HttpResultWithError<string>>
             {
-                HttpResultError.Ok<string>(),
+                HttpResultMonad.HttpResultWithError.Ok<string>(),
                 firstFailure,
-                HttpResultError.Ok<string>(),
-                HttpResultError.Fail("second error",secondHttpState)
+                HttpResultMonad.HttpResultWithError.Ok<string>(),
+                HttpResultMonad.HttpResultWithError.Fail("second error",secondHttpState)
             };
 
             var combinedResult = HttpResult.Combine(resultsLists.ToArray());

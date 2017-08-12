@@ -6,19 +6,19 @@ namespace ResultMonad.Extensions.ResultWithError.Ensure
     public static class EnsureExtensions
     {
         [DebuggerStepThrough]
-        public static ResultError<TError> EnsureToResultError<TError>(
-            this ResultError<TError> resultError,
+        public static ResultWithError<TError> EnsureToResultWithError<TError>(
+            this ResultWithError<TError> resultWithError,
             Func<bool> predicate,
             TError error)
         {
-            if (resultError.IsFailure)
+            if (resultWithError.IsFailure)
             {
-                return ResultError.Fail(resultError.Error);
+                return ResultMonad.ResultWithError.Fail(resultWithError.Error);
             }
 
             return predicate()
-                ? ResultError.Ok<TError>()
-                : ResultError.Fail(error);
+                ? ResultMonad.ResultWithError.Ok<TError>()
+                : ResultMonad.ResultWithError.Fail(error);
         }
     }
 }

@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ResultMonad.Extensions.Tests.ResultWithError.Ensure
 {
-    public class EnsureToResultErrorTests
+    public class EnsureToResultWithErrorTests
     {
         [Fact]
         public void Ensure_executes_predicate_if_result_is_ok()
@@ -12,8 +12,8 @@ namespace ResultMonad.Extensions.Tests.ResultWithError.Ensure
             var error = "error1";
             var predicateExecuted = false;
 
-            var result = ResultError.Ok<string>()
-                .EnsureToResultError(Predicate, error);
+            var result = ResultMonad.ResultWithError.Ok<string>()
+                .EnsureToResultWithError(Predicate, error);
 
             predicateExecuted.ShouldBeTrue();
 
@@ -30,8 +30,8 @@ namespace ResultMonad.Extensions.Tests.ResultWithError.Ensure
             var error = "error1";
             var predicateExecuted = false;
 
-            var result = ResultError.Fail(error)
-                .EnsureToResultError(Predicate, error);
+            var result = ResultMonad.ResultWithError.Fail(error)
+                .EnsureToResultWithError(Predicate, error);
 
             predicateExecuted.ShouldBeFalse();
 
@@ -49,8 +49,8 @@ namespace ResultMonad.Extensions.Tests.ResultWithError.Ensure
             var error = "error";
             var predicateResult = true;
 
-            var result = ResultError.Ok<string>()
-                .EnsureToResultError(() => predicateResult, error);
+            var result = ResultMonad.ResultWithError.Ok<string>()
+                .EnsureToResultWithError(() => predicateResult, error);
 
             result.IsSuccess.ShouldBeTrue();
         }
@@ -61,8 +61,8 @@ namespace ResultMonad.Extensions.Tests.ResultWithError.Ensure
             var error = "error";
             var predicateResult = false;
 
-            var result = ResultError.Ok<string>()
-                .EnsureToResultError(() => predicateResult, error);
+            var result = ResultMonad.ResultWithError.Ok<string>()
+                .EnsureToResultWithError(() => predicateResult, error);
 
             result.Error.ShouldBe(error);
         }

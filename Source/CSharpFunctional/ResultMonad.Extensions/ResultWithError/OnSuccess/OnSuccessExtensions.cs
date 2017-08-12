@@ -7,12 +7,12 @@ namespace ResultMonad.Extensions.ResultWithError.OnSuccess
     {
         [DebuggerStepThrough]
         public static Result<TValue, TError> OnSuccessToResultWithValueAndError<TValue, TError>(
-            this ResultError<TError> resultError,
+            this ResultWithError<TError> resultWithError,
             Func<TValue> func)
         {
-            if (resultError.IsFailure)
+            if (resultWithError.IsFailure)
             {
-                return Result.Fail<TValue, TError>(resultError.Error);
+                return Result.Fail<TValue, TError>(resultWithError.Error);
             }
 
             var newValue = func();

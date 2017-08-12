@@ -21,7 +21,7 @@ namespace HttpResultMonad
         {
             if (status == HttpResultStatus.Ok && value.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(value), HttpResultErrorMessages.SuccessResultMustHaveValue);
+                throw new ArgumentNullException(nameof(value), HttpResultWithErrorMessages.SuccessResultMustHaveValue);
             }
 
             _httpResultStatus = status;
@@ -54,7 +54,7 @@ namespace HttpResultMonad
             {
                 if (IsFailure)
                 {
-                    throw new InvalidOperationException(HttpResultErrorMessages.NoValueForFailure);
+                    throw new InvalidOperationException(HttpResultWithErrorMessages.NoValueForFailure);
                 }
 
                 return _value.Value;
@@ -134,7 +134,7 @@ namespace HttpResultMonad
         public override string ToString()
         {
             return IsFailure
-                ? HttpResultErrorMessages.GetFailureResultToStringMessage(typeof(T))
+                ? HttpResultWithErrorMessages.GetFailureResultToStringMessage(typeof(T))
                 : Value.ToString();
         }
     }

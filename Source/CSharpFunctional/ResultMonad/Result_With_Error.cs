@@ -6,25 +6,25 @@ namespace ResultMonad
 {
 
     /*
-    The purpose of this struct is just for syntax usage of the ResultError struct.
-    It allow the following syntax: ResultError.Ok<int> instead of ResultError<int>.Ok
+    The purpose of this struct is just for syntax usage of the ResultWithError struct.
+    It allow the following syntax: ResultWithError.Ok<int> instead of ResultWithError<int>.Ok
     */
-    public struct ResultError
+    public struct ResultWithError
     {
         [DebuggerStepThrough]
-        public static ResultError<T> Ok<T>()
+        public static ResultWithError<T> Ok<T>()
         {
-            return new ResultError<T>(ResultStatus.Ok, Maybe<T>.Nothing);
+            return new ResultWithError<T>(ResultStatus.Ok, Maybe<T>.Nothing);
         }
 
         [DebuggerStepThrough]
-        public static ResultError<T> Fail<T>(T error)
+        public static ResultWithError<T> Fail<T>(T error)
         {
-            return new ResultError<T>(ResultStatus.Fail, error);
+            return new ResultWithError<T>(ResultStatus.Fail, error);
         }
 
         [DebuggerStepThrough]
-        public static ResultError<TError> From<TError>(Func<bool> predicate, TError error)
+        public static ResultWithError<TError> From<TError>(Func<bool> predicate, TError error)
         {
             return predicate()
                 ? Ok<TError>()
@@ -32,7 +32,7 @@ namespace ResultMonad
         }
     }
 
-    public struct ResultError<T> : IEquatable<ResultError<T>>
+    public struct ResultWithError<T> : IEquatable<ResultWithError<T>>
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly Maybe<T> _error;
@@ -41,11 +41,11 @@ namespace ResultMonad
         private readonly ResultStatus _resultStatus;
 
         [DebuggerStepThrough]
-        internal ResultError(ResultStatus status, Maybe<T> error)
+        internal ResultWithError(ResultStatus status, Maybe<T> error)
         {
             if (status == ResultStatus.Fail && error.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(error), ResultErrorMessages.FailureResultMustHaveError);
+                throw new ArgumentNullException(nameof(error), ResultWithErrorMessages.FailureResultMustHaveError);
             }
 
             _resultStatus = status;
@@ -77,7 +77,7 @@ namespace ResultMonad
             {
                 if (IsSuccess)
                 {
-                    throw new InvalidOperationException(ResultErrorMessages.NoErrorForSuccess);
+                    throw new InvalidOperationException(ResultWithErrorMessages.NoErrorForSuccess);
                 }
 
                 return _error.Value;
@@ -87,30 +87,30 @@ namespace ResultMonad
         #region [IEquatable]
 
         [DebuggerStepThrough]
-        public static bool operator ==(ResultError<T> resultError, T error)
+        public static bool operator ==(ResultWithError<T> resultWithError, T error)
         {
-            if (resultError.IsSuccess)
+            if (resultWithError.IsSuccess)
             {
                 return false;
             }
 
-            return resultError.Error.Equals(error);
+            return resultWithError.Error.Equals(error);
         }
 
         [DebuggerStepThrough]
-        public static bool operator !=(ResultError<T> resultError, T error)
+        public static bool operator !=(ResultWithError<T> resultWithError, T error)
         {
-            return !(resultError == error);
+            return !(resultWithError == error);
         }
 
         [DebuggerStepThrough]
-        public static bool operator ==(ResultError<T> first, ResultError<T> second)
+        public static bool operator ==(ResultWithError<T> first, ResultWithError<T> second)
         {
             return first.Equals(second);
         }
 
         [DebuggerStepThrough]
-        public static bool operator !=(ResultError<T> first, ResultError<T> second)
+        public static bool operator !=(ResultWithError<T> first, ResultWithError<T> second)
         {
             return !(first == second);
         }
@@ -118,13 +118,13 @@ namespace ResultMonad
         [DebuggerStepThrough]
         public override bool Equals(object obj)
         {
-            ResultError<T> other;
+            ResultWithError<T> other;
 
             if (obj is T error)
             {
-                other = new ResultError<T>(ResultStatus.Fail, error);
+                other = new ResultWithError<T>(ResultStatus.Fail, error);
             }
-            else if (obj is ResultError<T> result)
+            else if (obj is ResultWithError<T> result)
             {
                 other = result;
             }
@@ -137,7 +137,7 @@ namespace ResultMonad
         }
 
         [DebuggerStepThrough]
-        public bool Equals(ResultError<T> other)
+        public bool Equals(ResultWithError<T> other)
         {
             if (IsSuccess && other.IsSuccess)
             {
@@ -167,7 +167,7 @@ namespace ResultMonad
         public override string ToString()
         {
             return IsSuccess
-                ? ResultErrorMessages.GetSuccessResultErrorToStringMessage(typeof(T))
+                ? ResultWithErrorMessages.GetSuccessResultWithErrorToStringMessage(typeof(T))
                 : Error.ToString();
         }
     }

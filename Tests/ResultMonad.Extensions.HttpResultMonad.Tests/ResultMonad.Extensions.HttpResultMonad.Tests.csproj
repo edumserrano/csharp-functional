@@ -79,10 +79,13 @@
     <Compile Include="ResultWithError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
     <Compile Include="ResultWithValueAndError\OnError\OnErrorToHttpResultWithValueAndErrorTests.cs" />
     <Compile Include="ResultWithValueAndError\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_KValue.cs" />
-    <Compile Include="ResultWithValueAndError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultErrorTests_OnSuccessFunc_From_TValue_To_HttpResultWithValueAndError.cs" />
+    <Compile Include="ResultWithValueAndError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultErrorTests_OnSuccessFunc_from_TValue_to_HttpResultError_of_TError.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="xunit.runner.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\Source\CSharpFunctional\packages\xunit.analyzers.0.6.0\analyzers\dotnet\cs\xunit.analyzers.dll" />

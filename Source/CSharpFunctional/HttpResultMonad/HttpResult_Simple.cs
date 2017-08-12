@@ -216,21 +216,21 @@ namespace HttpResultMonad
 
 
         [DebuggerStepThrough]
-        public static HttpResultError<TError> Combine<TError>(params HttpResultError<TError>[] resultsError)
+        public static HttpResultWithError<TError> Combine<TError>(params HttpResultWithError<TError>[] resultsWithError)
         {
-            var anyFailure = resultsError.Any(x => x.IsFailure);
+            var anyFailure = resultsWithError.Any(x => x.IsFailure);
             return !anyFailure
-                ? HttpResultError.Ok<TError>()
-                : resultsError.First(x => x.IsFailure);
+                ? HttpResultWithError.Ok<TError>()
+                : resultsWithError.First(x => x.IsFailure);
         }
 
         [DebuggerStepThrough]
-        public static HttpResultError<TError> Combine<TValue, TError>(params HttpResult<TValue, TError>[] results)
+        public static HttpResultWithError<TError> Combine<TValue, TError>(params HttpResult<TValue, TError>[] results)
         {
             var anyFailure = results.Any(x => x.IsFailure);
             return !anyFailure
-                ? HttpResultError.Ok<TError>()
-                : results.First(x => x.IsFailure).ToHttpResultError();
+                ? HttpResultWithError.Ok<TError>()
+                : results.First(x => x.IsFailure).ToHttpResultWithError();
         }
     }
 }
