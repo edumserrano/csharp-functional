@@ -59,7 +59,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad
         [Fact]
         public void Creating_ok_ResultWithValue_with_null_value_throws_exception()
         {
-            var exception = Should.Throw<ArgumentException>(() => Result.Ok<string>(null));
+            var exception = Should.Throw<ArgumentNullException>(() => Result.Ok<string>(null));
             exception.Message.ShouldStartWith(ResultMessages.SuccessResultMustHaveValue);
         }
 

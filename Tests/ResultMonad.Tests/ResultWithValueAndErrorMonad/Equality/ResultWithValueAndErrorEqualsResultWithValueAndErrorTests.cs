@@ -7,50 +7,53 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
     public class ResultWithValueAndErrorEqualsResultWithValueAndErrorTests
     {
         [Fact]
-        public void Equals_between_two_ok_ResultWithValueAndError_is_true_if_they_have_the_same_value()
+        public void Equals_between_two_ok_ResultWithValueAndError_is_true_if_both_values_are_equal()
         {
             var value = "abc";
-            var result = Result.Ok<string, string>(value);
+            var result1 = Result.Ok<string, string>(value);
             var result2 = Result.Ok<string, string>(value);
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeTrue();
         }
 
         [Fact]
-        public void Equals_between_two_ok_ResultWithValueAndError_is_false_if_they_do_not_have_the_same_value()
+        public void Equals_between_two_ok_ResultWithValueAndError_is_false_if_both_values_are_not_equal()
         {
-            var result = Result.Ok<string, string>("abc");
+            var result1 = Result.Ok<string, string>("abc");
             var result2 = Result.Ok<string, string>("zzz");
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeFalse();
         }
 
+
         [Fact]
-        public void Equals_between_two_fail_ResultWithValueAndError_is_true_if_they_have_the_same_error()
+        public void Equals_between_two_fail_ResultWithValueAndError_is_true_if_both_errors_are_equal()
         {
             var error = "abc";
-            var result = Result.Fail<string, string>(error);
+            var result1 = Result.Fail<string, string>(error);
             var result2 = Result.Fail<string, string>(error);
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeTrue();
         }
 
         [Fact]
-        public void Equals_between_two_fail_ResultWithValueAndError_is_false_if_they_do_not_have_the_same_error()
+        public void Equals_between_two_fail_ResultWithValueAndError_is_false_if_both_errors_are_not_equal()
         {
-            var result = Result.Fail<string, string>("abc");
+            var result1 = Result.Fail<string, string>("abc");
             var result2 = Result.Fail<string, string>("zzz");
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeFalse();
         }
 
         [Fact]
         public void Equals_between_ok_ResultWithValueAndError_and_fail_ResultWithValueAndError_is_false()
         {
-            var result = Result.Ok<string, string>("abc");
+            var result1 = Result.Ok<string, string>("abc");
             var result2 = Result.Fail<string, string>("abc");
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
+            var isEqual2 = result2.Equals(result1);
             isEqual.ShouldBeFalse();
+            isEqual2.ShouldBeFalse();
         }
     }
 }

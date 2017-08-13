@@ -76,6 +76,21 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad
             exception.Message.ShouldBe(ResultMessages.NoErrorForSuccess);
         }
 
+
+        [Fact]
+        public void Creating_ok_ResultWithValueAndError_with_null_value_throws_exception()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => Result.Ok<string, string>(null));
+            exception.Message.ShouldStartWith(ResultMessages.SuccessResultMustHaveValue);
+        }
+
+        [Fact]
+        public void Creating_fail_ResultWithValueAndError_with_null_error_throws_exception()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => Result.Fail<string, string>(null));
+            exception.Message.ShouldStartWith(ResultMessages.FailureResultMustHaveError);
+        }
+
         [Fact]
         public void From_if_predicate_is_true_returns_ok_ResultWithValueAndError_with_value()
         {
@@ -125,6 +140,22 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad
             var combinedResult = Result.Combine(resultsLists.ToArray());
             combinedResult.IsFailure.ShouldBeTrue();
             combinedResult.Error.ShouldBe(firstFailure.Error);
+        }
+
+        [Fact]
+        public void ToString_returns_ToString_of_value_when_ResultWithValueAndError_is_ok()
+        {
+            var value = 1;
+            var result = Result.Ok<int, string>(value);
+            result.ToString().ShouldBe(value.ToString());
+        }
+
+        [Fact]
+        public void ToString_returns_ToString_of_error_when_ResultWithValueAndError_is_fail()
+        {
+            var error = 1;
+            var result = Result.Fail<string, int>(error);
+            result.ToString().ShouldBe(error.ToString());
         }
     }
 }

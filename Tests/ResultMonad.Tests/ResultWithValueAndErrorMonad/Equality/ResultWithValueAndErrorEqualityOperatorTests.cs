@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
     public class ResultWithValueAndErrorEqualityOperatorTests
     {
         [Fact]
-        public void Equality_operator_between_two_ok_ResultWithValueAndError_with_same_value_is_true()
+        public void Equality_operator_between_two_ok_ResultWithValueAndError_is_true_if_both_values_are_equal()
         {
             var value = "abc";
             var result1 = Result.Ok<string, string>(value);
@@ -17,7 +17,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_two_ok_ResultWithValueAndError_with_different_value_is_false()
+        public void Equality_operator_between_two_ok_ResultWithValueAndError_is_false_if_both_values_are_not_equals()
         {
             var result1 = Result.Ok<string, string>("abc");
             var result2 = Result.Ok<string, string>("zzz");
@@ -26,7 +26,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
         }
         
         [Fact]
-        public void Equality_operator_between_two_fail_ResultWithValueAndError_with_same_error_is_true()
+        public void Equality_operator_between_two_fail_ResultWithValueAndError_is_true_of_both_errors_are_equal()
         {
             var error = "abc";
             var result1 = Result.Fail<string, string>(error);
@@ -36,7 +36,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_two_fail_ResultWithValueAndError_with_different_error_is_false()
+        public void Equality_operator_between_two_fail_ResultWithValueAndError_with_is_false_if_both_errors_are_not_equal()
         {
             var result1 = Result.Fail<string, string>("abc");
             var result2 = Result.Fail<string, string>("zzz");
@@ -54,7 +54,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_two_ok_ResultWithValueAndError_with_same_value_is_false()
+        public void Inequality_operator_between_two_ok_ResultWithValueAndError_is_false_if_both_values_are_equal()
         {
             var value = "abc";
             var result1 = Result.Ok<string, string>(value);
@@ -64,7 +64,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_two_ok_ResultWithValueAndError_with_different_value_is_true()
+        public void Inequality_operator_between_two_ok_ResultWithValueAndError_is_true_if_both_values_are_not_equal()
         {
             var result1 = Result.Ok<string, string>("abc");
             var result2 = Result.Ok<string, string>("zzz");
@@ -73,7 +73,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_two_fail_ResultWithValueAndError_with_same_error_is_false()
+        public void Inequality_operator_between_two_fail_ResultWithValueAndError_is_false_if_both_errors_are_equal()
         {
             var error = "abc";
             var result1 = Result.Fail<string, string>(error);
@@ -83,7 +83,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_two_fail_ResultWithValueAndError_with_different_error_is_true()
+        public void Inequality_operator_between_two_fail_ResultWithValueAndError_is_true_if_both_errors_are_not_equal()
         {
             var result1 = Result.Fail<string, string>("abc");
             var result2 = Result.Fail<string, string>("zzz");

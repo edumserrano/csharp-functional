@@ -48,7 +48,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
         [Fact]
         public void Creating_fail_ResultWithError_with_null_as_error_throws_exception()
         {
-            var exception = Should.Throw<ArgumentException>(() => ResultWithError.Fail<string>(null));
+            var exception = Should.Throw<ArgumentNullException>(() => ResultWithError.Fail<string>(null));
             exception.Message.ShouldStartWith(ResultMessages.FailureResultMustHaveError);
         }
 
