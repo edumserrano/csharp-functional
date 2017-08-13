@@ -3,6 +3,7 @@ using Xunit;
 
 namespace ResultMonad.Tests.ResultWithValue
 {
+    [Trait("Monad", "Result")]
     public class ResultWithValueEqualityTests
     {
         [Fact]

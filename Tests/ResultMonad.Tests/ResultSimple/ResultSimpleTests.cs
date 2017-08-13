@@ -4,6 +4,7 @@ using Xunit;
 
 namespace ResultMonad.Tests.ResultSimple
 {
+    [Trait("Monad", "Result")]
     public class ResultSimpleTests
     {
         [Fact]

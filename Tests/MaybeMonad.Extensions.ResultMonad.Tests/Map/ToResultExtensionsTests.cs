@@ -8,18 +8,18 @@ namespace MaybeMonad.Extensions.ResultMonad.Tests.Map
     public class ToResultExtensionsTests
     {
         [Fact]
-        public void To_creates_ok_SimpleResult_if_Maybe_has_value()
+        public void ToResult_creates_ok_SimpleResult_if_Maybe_has_value()
         {
             var result = Maybe.From(1)
-                    .ToResult();
+                .ToResult();
             result.IsSuccess.ShouldBeTrue();
         }
 
         [Fact]
-        public void To_creates_fail_SimpleResult_if_Maybe_is_empty()
+        public void ToResult_creates_fail_SimpleResult_if_Maybe_is_empty()
         {
             var result = Maybe<int>.Nothing
-                    .ToResult();
+                .ToResult();
             result.IsSuccess.ShouldBeFalse();
         }
     }

@@ -4,10 +4,11 @@ using Xunit;
 
 namespace ResultMonad.Tests.Extensions.ResultWithValueAndError.Map
 {
+    [Trait("Monad", "Result")]
     public class ToResultWithErrorTests
     {
         [Fact]
-        public void To_propagates_ok_result_to_ResultWithError()
+        public void To_creates_ok_ResultWithError_if_ResultWithValueAndError_is_ok()
         {
             var resultWithValueAndError = Result.Ok<int, string>(1);
             var resultWithError = resultWithValueAndError.ToResultWithError();
@@ -15,7 +16,7 @@ namespace ResultMonad.Tests.Extensions.ResultWithValueAndError.Map
         }
 
         [Fact]
-        public void To_propagates_fail_result_to_ResultWithError()
+        public void To_create_fail_ResultWithError_if_ResultWithValueAndError_is_fail()
         {
             var resultWithValueAndError = Result.Fail<int, string>("error");
             var resultWithError = resultWithValueAndError.ToResultWithError();
@@ -23,7 +24,7 @@ namespace ResultMonad.Tests.Extensions.ResultWithValueAndError.Map
         }
 
         [Fact]
-        public void To_propagates_error_from_result_to_ResultWithError()
+        public void To_propagates_error_to_ResultWithError_if_ResultWithValueAndError_is_fail()
         {
             var resultWithValueAndError = Result.Fail<int, string>("error");
             var resultWithError = resultWithValueAndError.ToResultWithError();

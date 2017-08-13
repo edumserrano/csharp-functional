@@ -5,6 +5,7 @@ using Xunit;
 
 namespace ResultMonad.Tests.ResultWithValue
 {
+    [Trait("Monad", "Result")]
     public class ResultWithValueMonadLawsTests
     {
         private readonly Func<int, Result<int>> _plusOneFunc = i => Result.Ok(i + 1);
