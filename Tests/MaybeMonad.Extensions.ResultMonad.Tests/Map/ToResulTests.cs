@@ -5,7 +5,7 @@ using Xunit;
 namespace MaybeMonad.Extensions.ResultMonad.Tests.Map
 {
     [Trait("Extensions", "Maybe")]
-    public class ToResultExtensionsTests
+    public class ToResulTests
     {
         [Fact]
         public void ToResult_creates_ok_ResultSimple_if_Maybe_has_value()

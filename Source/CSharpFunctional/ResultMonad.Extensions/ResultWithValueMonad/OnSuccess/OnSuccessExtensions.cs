@@ -8,11 +8,11 @@ namespace ResultMonad.Extensions.ResultWithValueMonad.OnSuccess
         [DebuggerStepThrough]
         public static Result<KValue> OnSuccessToResultWithValue<TValue, KValue>(
            this Result<TValue> result,
-           Func<TValue, Result<KValue>> valueFunc)
+           Func<TValue, Result<KValue>> onSuccessFunc)
         {
             return result.IsFailure
                 ? Result.Fail<KValue>()
-                : valueFunc(result.Value);
+                : onSuccessFunc(result.Value);
         }
     }
 }

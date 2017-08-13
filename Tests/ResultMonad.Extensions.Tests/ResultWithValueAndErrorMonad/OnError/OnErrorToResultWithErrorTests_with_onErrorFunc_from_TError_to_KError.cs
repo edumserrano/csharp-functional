@@ -5,14 +5,14 @@ using Xunit;
 namespace ResultMonad.Extensions.Tests.ResultWithValueAndErrorMonad.OnError
 {
     [Trait("Extensions", "ResultWithValueError")]
-    public class OnErrorToResultWithValueAndErrorTests
+    public class OnErrorToResultWithErrorTests_with_onErrorFunc_from_TError_to_KError
     {
         [Fact]
         public void OnError_executes_function_if_result_is_fail()
         {
             var functionExecuted = false;
             var result = Result.Fail<int, string>("error")
-                .OnErrorToResultWithValueAndError(i => OnErrorFunc(i));
+                .OnErrorToResultWithError(i => OnErrorFunc(i));
 
             functionExecuted.ShouldBeTrue();
 
@@ -28,7 +28,7 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndErrorMonad.OnError
         {
             var functionExecuted = false;
             var result = Result.Ok<int, string>(1)
-                .OnErrorToResultWithValueAndError(i => OnErrorFunc(i));
+                .OnErrorToResultWithError(i => OnErrorFunc(i));
 
             functionExecuted.ShouldBeFalse();
 
@@ -46,7 +46,7 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndErrorMonad.OnError
             var propagatedValue = "";
             var error = "error";
             var result = Result.Fail<int, string>(error)
-                .OnErrorToResultWithValueAndError(i => OnErrorFunc(i));
+                .OnErrorToResultWithError(i => OnErrorFunc(i));
 
             propagatedValue.ShouldBe(error);
 
@@ -62,19 +62,9 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndErrorMonad.OnError
         {
             var newError = "abc";
             var result = Result.Fail<int, string>("error")
-                .OnErrorToResultWithValueAndError(i => newError);
+                .OnErrorToResultWithError(i => newError);
 
             result.Error.ShouldBe(newError);
-        }
-
-        [Fact]
-        public void OnError_propagates_value_if_result_is_ok()
-        {
-            var value = 1;
-            var result = Result.Ok<int, string>(value)
-                .OnErrorToResultWithValueAndError(i => "error");
-
-            result.Value.ShouldBe(value);
         }
     }
 }

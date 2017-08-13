@@ -8,14 +8,14 @@ namespace ResultMonad.Extensions.ResultWithErrorMonad.OnSuccess
         [DebuggerStepThrough]
         public static Result<TValue, TError> OnSuccessToResultWithValueAndError<TValue, TError>(
             this ResultWithError<TError> resultWithError,
-            Func<TValue> func)
+            Func<TValue> onSuccessFunc)
         {
             if (resultWithError.IsFailure)
             {
                 return Result.Fail<TValue, TError>(resultWithError.Error);
             }
 
-            var newValue = func();
+            var newValue = onSuccessFunc();
             return Result.Ok<TValue, TError>(newValue);
         }
     }

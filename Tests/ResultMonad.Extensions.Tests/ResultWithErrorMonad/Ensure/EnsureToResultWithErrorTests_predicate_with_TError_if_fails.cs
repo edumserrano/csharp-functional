@@ -5,7 +5,7 @@ using Xunit;
 namespace ResultMonad.Extensions.Tests.ResultWithErrorMonad.Ensure
 {
     [Trait("Extensions","ResultWithError")]
-    public class EnsureToResultWithErrorTests
+    public class EnsureToResultWithErrorTests_predicate_with_TError_if_fails
     {
         [Fact]
         public void Ensure_executes_predicate_if_result_is_ok()

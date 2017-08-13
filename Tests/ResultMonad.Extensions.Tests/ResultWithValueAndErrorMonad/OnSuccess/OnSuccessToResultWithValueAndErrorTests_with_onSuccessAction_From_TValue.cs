@@ -5,66 +5,66 @@ using Xunit;
 namespace ResultMonad.Extensions.Tests.ResultWithValueAndErrorMonad.OnSuccess
 {
     [Trait("Extensions", "ResultWithValueError")]
-    public class OnSuccessToResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_KValue
+    public class OnSuccessToResultWithValueAndErrorTests_with_onSuccessAction_From_TValue
     {
         [Fact]
-        public void OnSuccess_executes_function_if_result_is_ok()
+        public void OnSuccess_executes_action_if_result_is_ok()
         {
             var functionExecuted = false;
             var result = Result.Ok<int, string>(1)
-                .OnSuccessToResultWithValueAndError(i => OnSuccessFunc(i));
+                .OnSuccess(i => OnSuccesssAction(i));
 
             functionExecuted.ShouldBeTrue();
 
-            string OnSuccessFunc(int value)
+            void OnSuccesssAction(int value)
             {
                 functionExecuted = true;
-                return "value";
             }
         }
 
         [Fact]
-        public void OnSuccess_does_not_execute_function_if_result_is_fail()
+        public void OnSuccess_does_not_execute_action_if_result_is_fail()
         {
             var functionExecuted = false;
             var result = Result.Fail<int, string>("error")
-                .OnSuccessToResultWithValueAndError(i => OnSuccessFunc(i));
+                .OnSuccess(i => OnSuccesssAction(i));
 
             functionExecuted.ShouldBeFalse();
 
-            string OnSuccessFunc(int value)
+            void OnSuccesssAction(int value)
             {
                 functionExecuted = true;
-                return "value";
             }
         }
 
 
         [Fact]
-        public void OnSuccess_propagates_value_into_function_if_result_is_ok()
+        public void OnSuccess_propagates_value_into_action_if_result_is_ok()
         {
             var propagatedValue = 0;
             var value = 1;
             var result = Result.Ok<int, string>(value)
-                .OnSuccessToResultWithValueAndError(i => OnSuccessFunc(i));
+                .OnSuccess(i => OnSuccesssAction(i));
 
             propagatedValue.ShouldBe(value);
 
-            string OnSuccessFunc(int val)
+            void OnSuccesssAction(int val)
             {
                 propagatedValue = val;
-                return "value";
             }
         }
 
         [Fact]
-        public void OnSuccess_new_result_contains_value_from_function_if_result_is_ok()
+        public void OnSuccess_new_result_contains_value_from_original_result_if_result_is_ok()
         {
-            var newValue = "abc";
-            var result = Result.Ok<int, string>(1)
-                .OnSuccessToResultWithValueAndError(i => newValue);
+            var value = 1;
+            var result = Result.Ok<int, string>(value)
+                .OnSuccess(i =>
+                {
+                    //do something action
+                });
 
-            result.Value.ShouldBe(newValue);
+            result.Value.ShouldBe(value);
         }
 
         [Fact]
@@ -72,7 +72,10 @@ namespace ResultMonad.Extensions.Tests.ResultWithValueAndErrorMonad.OnSuccess
         {
             var error = "error";
             var result = Result.Fail<int, string>(error)
-                .OnSuccessToResultWithValueAndError(i => 2);
+                .OnSuccess(i =>
+                {
+
+                });
 
             result.Error.ShouldBe(error);
         }

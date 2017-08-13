@@ -5,7 +5,7 @@ using Xunit;
 namespace MaybeMonad.Extensions.ResultMonad.Tests.Map
 {
     [Trait("Extensions", "Maybe")]
-    public class ToResultWithValueAndErrorExtensionsTests
+    public class ToResultWithValueAndErrorTests_with_errorFunc_to_TError
     {
         [Fact]
         public void ToResultWithValueAndError_creates_ok_ResultWithValueAndError_if_Maybe_has_value()

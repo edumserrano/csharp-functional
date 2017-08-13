@@ -58,9 +58,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Map\ToResultExtensionsTests.cs" />
-    <Compile Include="Map\ToResultWithValueAndErrorExtensionsTests.cs" />
-    <Compile Include="Map\ToResultWithValueExtensionsTests.cs" />
+    <Compile Include="Map\ToResulTests.cs" />
+    <Compile Include="Map\ToResultWithValueAndErrorTests_with_errorFunc_to_TError.cs" />
+    <Compile Include="Map\ToResultWithValueTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

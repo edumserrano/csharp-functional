@@ -6,7 +6,7 @@ using Xunit;
 namespace ResultMonad.Extensions.Tests.ResultWithErrorMonad.OnSuccess
 {
     [Trait("Extensions", "ResultWithError")]
-    public class OnSuccessToResultWithValueAndErrorTests
+    public class OnSuccessToResultWithValueAndErrorTests_with_onSuccessFunc_to_TValue
     {
         [Fact]
         public void OnSuccess_executes_function_if_result_is_ok()

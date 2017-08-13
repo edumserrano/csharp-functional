@@ -8,38 +8,38 @@ namespace ResultMonad.Extensions.ResultWithValueAndErrorMonad.OnSuccess
         [DebuggerStepThrough]
         public static Result<KValue, TError> OnSuccessToResultWithValueAndError<TValue, TError, KValue>(
             this Result<TValue, TError> result,
-            Func<TValue, Result<KValue, TError>> func)
+            Func<TValue, Result<KValue, TError>> onSuccessFunc)
         {
             if (result.IsFailure)
             {
                 return Result.Fail<KValue, TError>(result.Error);
             }
 
-            return func(result.Value);
+            return onSuccessFunc(result.Value);
         }
 
         [DebuggerStepThrough]
         public static Result<KValue, TError> OnSuccessToResultWithValueAndError<TValue, TError, KValue>(
             this Result<TValue, TError> result,
-            Func<TValue, KValue> func)
+            Func<TValue, KValue> onSuccessFunc)
         {
             if (result.IsFailure)
             {
                 return Result.Fail<KValue, TError>(result.Error);
             }
 
-            var newValue = func(result.Value);
+            var newValue = onSuccessFunc(result.Value);
             return Result.Ok<KValue, TError>(newValue);
         }
 
         [DebuggerStepThrough]
         public static Result<TValue, TError> OnSuccess<TValue, TError>(
             this Result<TValue, TError> result,
-            Action<TValue> action)
+            Action<TValue> onSuccessAction)
         {
             if (result.IsSuccess)
             {
-                action(result.Value);
+                onSuccessAction(result.Value);
             }
 ;
             return result;

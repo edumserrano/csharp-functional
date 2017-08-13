@@ -5,7 +5,7 @@ using Xunit;
 namespace ResultMonad.Extensions.Tests.ResultWithValueMonad.OnSuccess
 {
     [Trait("Extensions", "ResultWithValue")]
-    public class OnSuccessToResultWithValueTests
+    public class OnSuccessToResultWithValueTests_with_onSuccessFunc_from_TValue_to_Result_of_KValue
     {
         [Fact]
         public void OnSuccess_executes_function_if_result_is_ok()
