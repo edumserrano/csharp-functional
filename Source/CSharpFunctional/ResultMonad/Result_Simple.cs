@@ -89,8 +89,8 @@ namespace ResultMonad
         public override string ToString()
         {
             return IsSuccess
-                ? ResultWithErrorMessages.SuccessResult
-                : ResultWithErrorMessages.FailureResult;
+                ? ResultMessages.SuccessResult
+                : ResultMessages.FailureResult;
         }
 
         [DebuggerStepThrough]

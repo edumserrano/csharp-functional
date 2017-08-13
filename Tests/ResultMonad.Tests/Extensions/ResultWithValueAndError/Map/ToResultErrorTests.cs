@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ResultMonad.Tests.Extensions.ResultWithValueAndError.Map
 {
-    [Trait("Monad", "Result")]
+    [Trait("Monad", "ResultSimple")]
     public class ToResultWithErrorTests
     {
         [Fact]

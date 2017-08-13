@@ -61,7 +61,10 @@
     <Compile Include="Extensions\ResultWithValueAndError\Map\ToResultErrorTests.cs" />
     <Compile Include="Extensions\ResultWithValue\Map\ToResultTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultSimple\ResultSimpleEqualityTests.cs" />
+    <Compile Include="ResultSimple\Equality\ResultSimpleGetHashCodeTests.cs" />
+    <Compile Include="ResultSimple\Equality\ResultSimpleEqualityOperatorTests.cs" />
+    <Compile Include="ResultSimple\Equality\ResultSimpleEqualsResultSimpleTests.cs" />
+    <Compile Include="ResultSimple\Equality\ResultSimpleEqualsObjectTests.cs" />
     <Compile Include="ResultSimple\ResultSimpleTests.cs" />
     <Compile Include="ResultWithError\ResultWithErrorEqualityTests.cs" />
     <Compile Include="ResultWithError\ResultWithErrorTests.cs" />

@@ -2,7 +2,7 @@
 
 namespace ResultMonad
 {
-    internal static class ResultWithErrorMessages
+    internal static class ResultMessages
     {
         public static string SuccessResult => "The operation was successfull.";
         public static string FailureResult => "The operation failed.";

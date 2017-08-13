@@ -77,7 +77,7 @@ namespace MaybeMonad.Tests
         public void ToString_returns_empty_maybe_message_when_maybe_is_empty()
         {
             var maybe = Maybe<string>.Nothing;
-            maybe.ToString().ShouldBe(MaybeErrorMessages.EmptyMaybe(typeof(string)));
+            maybe.ToString().ShouldBe(MaybeMessages.EmptyMaybe(typeof(string)));
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace MaybeMonad
 {
-    internal static class MaybeErrorMessages
+    internal static class MaybeMessages
     {
         public static string EmptyMaybe(Type type) => $"Maybe<{type}> value is empty.";
     }

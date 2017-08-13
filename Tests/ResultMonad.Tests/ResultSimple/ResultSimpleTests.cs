@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ResultMonad.Tests.ResultSimple
 {
-    [Trait("Monad", "Result")]
+    [Trait("Monad", "ResultSimple")]
     public class ResultSimpleTests
     {
         [Fact]
@@ -61,6 +61,20 @@ namespace ResultMonad.Tests.ResultSimple
 
             var combinedResult = Result.Combine(resultsLists.ToArray());
             combinedResult.IsFailure.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void ToString_returns_result_success_message_when_result_is_ok()
+        {
+            var result = Result.Ok();
+            result.ToString().ShouldBe(ResultMessages.SuccessResult);
+        }
+
+        [Fact]
+        public void ToString_returns_result_fail_message_when_result_is_fail()
+        {
+            var result = Result.Fail();
+            result.ToString().ShouldBe(ResultMessages.FailureResult);
         }
     }
 }

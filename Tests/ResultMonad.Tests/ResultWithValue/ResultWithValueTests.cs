@@ -5,7 +5,7 @@ using Xunit;
 
 namespace ResultMonad.Tests.ResultWithValue
 {
-    [Trait("Monad", "Result")]
+    [Trait("Monad", "ResultSimple")]
     public class ResultWithValueTests
     {
         [Fact]

@@ -46,7 +46,7 @@ namespace ResultMonad
         {
             if (status == ResultStatus.Fail && error.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(error), ResultWithErrorMessages.FailureResultMustHaveError);
+                throw new ArgumentNullException(nameof(error), ResultMessages.FailureResultMustHaveError);
             }
 
             _resultStatus = status;
@@ -78,7 +78,7 @@ namespace ResultMonad
             {
                 if (IsSuccess)
                 {
-                    throw new InvalidOperationException(ResultWithErrorMessages.NoErrorForSuccess);
+                    throw new InvalidOperationException(ResultMessages.NoErrorForSuccess);
                 }
 
                 return _error.Value;
@@ -168,7 +168,7 @@ namespace ResultMonad
         public override string ToString()
         {
             return IsSuccess
-                ? ResultWithErrorMessages.GetSuccessResultWithErrorToStringMessage(typeof(T))
+                ? ResultMessages.GetSuccessResultWithErrorToStringMessage(typeof(T))
                 : Error.ToString();
         }
     }

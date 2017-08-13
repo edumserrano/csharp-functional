@@ -20,12 +20,12 @@ namespace ResultMonad
         {
             if (status == ResultStatus.Fail && error.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(error), ResultWithErrorMessages.FailureResultMustHaveError);
+                throw new ArgumentNullException(nameof(error), ResultMessages.FailureResultMustHaveError);
             }
 
             if (status == ResultStatus.Ok && value.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(value), ResultWithErrorMessages.SuccessResultMustHaveValue);
+                throw new ArgumentNullException(nameof(value), ResultMessages.SuccessResultMustHaveValue);
             }
 
             _value = value;
@@ -58,7 +58,7 @@ namespace ResultMonad
             {
                 if (IsFailure)
                 {
-                    throw new InvalidOperationException(ResultWithErrorMessages.NoValueForFailure);
+                    throw new InvalidOperationException(ResultMessages.NoValueForFailure);
                 }
 
                 return _value.Value;
@@ -72,7 +72,7 @@ namespace ResultMonad
             {
                 if (IsSuccess)
                 {
-                    throw new InvalidOperationException(ResultWithErrorMessages.NoErrorForSuccess);
+                    throw new InvalidOperationException(ResultMessages.NoErrorForSuccess);
                 }
 
                 return _error.Value;

@@ -45,7 +45,7 @@ namespace MaybeMonad
             {
                 if (HasNoValue)
                 {
-                    throw new InvalidOperationException(MaybeErrorMessages.EmptyMaybe(typeof(T)));
+                    throw new InvalidOperationException(MaybeMessages.EmptyMaybe(typeof(T)));
                 }
 
                 return _value;
@@ -157,7 +157,7 @@ namespace MaybeMonad
         public override string ToString()
         {
             return HasNoValue
-                ? MaybeErrorMessages.EmptyMaybe(typeof(T))
+                ? MaybeMessages.EmptyMaybe(typeof(T))
                 : Value.ToString();
         }
     }
