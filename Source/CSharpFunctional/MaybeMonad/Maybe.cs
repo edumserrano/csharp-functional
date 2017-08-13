@@ -73,8 +73,8 @@ namespace MaybeMonad
         [DebuggerStepThrough]
         public static implicit operator Maybe<T>(T value)
         {
-            return value == null
-                ? new Maybe<T>(MaybeStatus.Empty, default(T))
+            return value == null 
+                ? Nothing 
                 : new Maybe<T>(MaybeStatus.HasValue, value);
         }
 
@@ -141,7 +141,7 @@ namespace MaybeMonad
                 return _value.Equals(other._value);
             }
 
-            return false;
+            return false; 
         }
 
         [DebuggerStepThrough]

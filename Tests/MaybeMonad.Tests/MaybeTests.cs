@@ -5,6 +5,7 @@ using Xunit;
 
 namespace MaybeMonad.Tests
 {
+    [Trait("Monad", "Maybe")]
     [ExcludeFromCodeCoverage]
     public class MaybeTests
     {
@@ -56,6 +57,29 @@ namespace MaybeMonad.Tests
             var value = "abc";
             Maybe<string> maybe = value;
             maybe.Value.ShouldBe(value);
+        }
+
+        [Fact]
+        public void Implicit_operator_creates_empty_maybe_if_value_is_null()
+        {
+            string value = null;
+            Maybe<string> maybe = value;
+            maybe.ShouldBe(Maybe<string>.Nothing);
+        }
+
+        [Fact]
+        public void ToString_returns_ToString_of_value_when_maybe_is_not_empty()
+        {
+            var value = 1;
+            var maybe = Maybe.From(value);
+            maybe.ToString().ShouldBe(value.ToString());
+        }
+
+        [Fact]
+        public void ToString_returns_empty_maybe_message_when_maybe_is_empty()
+        {
+            var maybe = Maybe<string>.Nothing;
+            maybe.ToString().ShouldBe(MaybeErrorMessages.EmptyMaybe(typeof(string)));
         }
     }
 }

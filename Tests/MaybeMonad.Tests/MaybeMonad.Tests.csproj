@@ -62,7 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MaybeEqualityTests.cs" />
+    <Compile Include="Equality\MaybeEqualityOperatorTests.cs" />
+    <Compile Include="Equality\MaybeEqualsObjectTests.cs" />
+    <Compile Include="Equality\MaybeEqualsMaybeTests.cs" />
+    <Compile Include="Equality\MaybeGetHashCodeTests.cs" />
     <Compile Include="MaybeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
