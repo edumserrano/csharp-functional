@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Shouldly;
 using Xunit;
 
 namespace MaybeMonad.Tests
 {
     [Trait("Monad", "Maybe")]
-    [ExcludeFromCodeCoverage]
     public class MaybeTests
     {
         [Fact]

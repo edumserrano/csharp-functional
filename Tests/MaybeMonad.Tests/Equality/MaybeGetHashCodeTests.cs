@@ -1,11 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Shouldly;
+﻿using Shouldly;
 using Xunit;
 
 namespace MaybeMonad.Tests.Equality
 {
     [Trait("Monad", "Maybe")]
-    [ExcludeFromCodeCoverage]
     public class MaybeGetHashCodeTests
     {
         [Fact]
