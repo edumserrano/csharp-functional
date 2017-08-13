@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using HttpResultMonad;
-using ResultMonad.Extensions.HttpResultMonad.ResultWithError.OnSuccess;
+using ResultMonad.Extensions.HttpResultMonad.ResultWithErrorMonad.OnSuccess;
 using Shouldly;
 using Xunit;
 

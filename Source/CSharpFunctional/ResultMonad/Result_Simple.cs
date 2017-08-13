@@ -2,8 +2,8 @@
 using System.Diagnostics;
 using System.Linq;
 using MaybeMonad;
-using ResultMonad.Extensions.ResultWithValue.Map;
-using ResultMonad.Extensions.ResultWithValueAndError.Map;
+using ResultMonad.Extensions.ResultWithValueAndErrorMonad.Map;
+using ResultMonad.Extensions.ResultWithValueMonad.Map;
 
 namespace ResultMonad
 {

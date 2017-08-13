@@ -1,4 +1,4 @@
-﻿using ResultMonad.Extensions.ResultWithValue.Map;
+﻿using ResultMonad.Extensions.ResultWithValueMonad.Map;
 using Shouldly;
 using Xunit;
 

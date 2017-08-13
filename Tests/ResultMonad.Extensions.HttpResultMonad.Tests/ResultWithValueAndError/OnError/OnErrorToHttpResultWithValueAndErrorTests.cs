@@ -1,4 +1,4 @@
-﻿using ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndError.OnError;
+﻿using ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndErrorMonad.OnError;
 using Shouldly;
 using Xunit;
 

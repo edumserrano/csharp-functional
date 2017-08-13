@@ -60,19 +60,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultWithError\Ensure\EnsureToResultErrorTests.cs" />
-    <Compile Include="ResultWithError\OnSuccess\OnSuccessToResultWithValueAndErrorTests.cs" />
-    <Compile Include="ResultWithValueAndError\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_From_TValue_With_Func_From_TValue_To_TError_If_Fails.cs" />
-    <Compile Include="ResultWithValueAndError\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_From_TValue_With_TError_If_Fails.cs" />
-    <Compile Include="ResultWithValueAndError\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_With_TError_If_Fails.cs" />
-    <Compile Include="ResultWithValueAndError\OnError\OnErrorToResultErrorTests.cs" />
-    <Compile Include="ResultWithValueAndError\OnError\OnErrorToResultWithValueAndErrorTests.cs" />
-    <Compile Include="ResultWithValueAndError\OnSuccess\OnSuccessToResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_KValue.cs" />
-    <Compile Include="ResultWithValueAndError\OnSuccess\OnSuccessToResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_ResultWithValueAndError_Of_KValue_TError.cs" />
-    <Compile Include="ResultWithValueAndError\OnSuccess\OnSuccess_OnSuccessAction_From_TValue.cs" />
-    <Compile Include="ResultWithValue\OnSuccess\OnSuccessToResultWithValueTests.cs" />
+    <Compile Include="ResultWithErrorMonad\Ensure\EnsureToResultErrorTests.cs" />
+    <Compile Include="ResultWithErrorMonad\OnSuccess\OnSuccessToResultWithValueAndErrorTests.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_From_TValue_With_Func_From_TValue_To_TError_If_Fails.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_From_TValue_With_TError_If_Fails.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\Ensure\EnsureToResultWithValueAndErrorTests_Predicate_With_TError_If_Fails.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnError\OnErrorToResultErrorTests.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnError\OnErrorToResultWithValueAndErrorTests.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnSuccess\OnSuccessToResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_KValue.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnSuccess\OnSuccessToResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_ResultWithValueAndError_Of_KValue_TError.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnSuccess\OnSuccess_OnSuccessAction_From_TValue.cs" />
+    <Compile Include="ResultWithValueMonad\OnSuccess\OnSuccessToResultWithValueTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CodeCoverage.runsettings" />
     <None Include="packages.config" />
     <None Include="xunit.runner.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

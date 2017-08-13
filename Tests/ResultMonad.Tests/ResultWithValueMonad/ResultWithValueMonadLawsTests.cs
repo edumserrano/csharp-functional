@@ -1,5 +1,5 @@
 ﻿using System;
-using ResultMonad.Extensions.ResultWithValue.OnSuccess;
+using ResultMonad.Extensions.ResultWithValueMonad.OnSuccess;
 using Shouldly;
 using Xunit;
 

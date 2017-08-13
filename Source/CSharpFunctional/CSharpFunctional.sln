@@ -40,6 +40,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{54729880
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaybeMonad", "MaybeMonad\MaybeMonad.csproj", "{34230919-64B2-4FA3-92C9-A5259FD8A063}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeCoverage", "CodeCoverage", "{98893718-231B-45A9-B02B-13D66748798B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Tests\CodeCoverageAllTestProjects.runsettings = ..\..\Tests\CodeCoverageAllTestProjects.runsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,5 +126,6 @@ Global
 		{B28FD823-987F-4C11-8670-4CC9E879B786} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{4818ADE9-9128-4771-82EB-AA95AC92F88F} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{34230919-64B2-4FA3-92C9-A5259FD8A063} = {E9E343C6-9EE9-4EA4-81EC-6BFC09AE9402}
+		{98893718-231B-45A9-B02B-13D66748798B} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 	EndGlobalSection
 EndGlobal

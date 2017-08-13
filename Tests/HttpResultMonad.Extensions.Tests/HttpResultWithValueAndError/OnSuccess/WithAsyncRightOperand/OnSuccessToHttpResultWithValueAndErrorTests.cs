@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using HttpResultMonad.Extensions.HttpResultWithValueAndError.OnSuccess;
+using HttpResultMonad.Extensions.HttpResultWithValueAndErrorMonad.OnSuccess;
 using Shouldly;
 using Xunit;
 
