@@ -4,6 +4,7 @@ using Xunit;
 
 namespace ResultMonad.Extensions.Tests.ResultWithValueAndErrorMonad.Ensure
 {
+    [Trait("Extensions", "ResultWithValueError")]
     public class EnsureToResultWithValueAndErrorTests_Predicate_From_TValue_With_Func_From_TValue_To_TError_If_Fails
     {
         [Fact]

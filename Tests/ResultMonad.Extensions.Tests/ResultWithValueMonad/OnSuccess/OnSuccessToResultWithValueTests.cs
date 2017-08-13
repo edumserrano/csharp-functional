@@ -4,6 +4,7 @@ using Xunit;
 
 namespace ResultMonad.Extensions.Tests.ResultWithValueMonad.OnSuccess
 {
+    [Trait("Extensions", "ResultWithValue")]
     public class OnSuccessToResultWithValueTests
     {
         [Fact]

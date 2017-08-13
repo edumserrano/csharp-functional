@@ -4,6 +4,7 @@ using Xunit;
 
 namespace ResultMonad.Extensions.Tests.ResultWithValueAndErrorMonad.OnError
 {
+    [Trait("Extensions", "ResultWithValueError")]
     public class OnErrorToResultWithErrorTests
     {
         [Fact]
