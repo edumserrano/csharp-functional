@@ -128,6 +128,8 @@ namespace ResultMonad
                 var hashCode = _error.GetHashCode();
                 hashCode = (hashCode * 397) ^ _value.GetHashCode();
                 hashCode = (hashCode * 397) ^ (int)_resultStatus;
+                hashCode = (hashCode * 397) ^ typeof(TValue).GetHashCode();
+                hashCode = (hashCode * 397) ^ typeof(TError).GetHashCode();
                 return hashCode;
             }
         }

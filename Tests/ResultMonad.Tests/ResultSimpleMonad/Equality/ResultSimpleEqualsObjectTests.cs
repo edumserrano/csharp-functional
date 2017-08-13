@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
     public class ResultSimpleEqualsObjectTests
     {
         [Fact]
-        public void Equals_betwwen_ok_result_and_object_is_true_if_object_is_ok_result()
+        public void Equals_betwwen_ok_ResultSimple_and_object_is_true_if_object_is_ok_ResultSimple()
         {
             var result1 = Result.Ok();
             object result2 = Result.Ok();
@@ -16,7 +16,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_fail_result_and_object_is_true_if_object_is_fail_result()
+        public void Equals_between_fail_ResultSimple_and_object_is_true_if_object_is_fail_ResultSimple()
         {
             var result1 = Result.Fail();
             object result2 = Result.Fail();
@@ -25,7 +25,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_ok_result_and_object_is_false_if_object_is_not_ok_result()
+        public void Equals_between_ok_ResultSimple_and_object_is_false_if_object_is_not_ok_ResultSimple()
         {
             var result1 = Result.Ok();
             object result2 = "abc";
@@ -34,7 +34,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_fail_result_and_object_is_false_if_object_is_not_fail_result()
+        public void Equals_between_fail_ResultSimple_and_object_is_false_if_object_is_not_fail_ResultSimple()
         {
             var result1 = Result.Fail();
             object result2 = "abc";

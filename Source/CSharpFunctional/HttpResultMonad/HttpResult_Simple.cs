@@ -101,7 +101,9 @@ namespace HttpResultMonad
         {
             unchecked
             {
-                return ((int)_httpResultStatus * 397) ^ _httpState.GetHashCode();
+                var hashCode = (int)_httpResultStatus;
+                hashCode = (hashCode * 397) ^ _httpState.GetHashCode();
+                return hashCode;
             }
         }
 

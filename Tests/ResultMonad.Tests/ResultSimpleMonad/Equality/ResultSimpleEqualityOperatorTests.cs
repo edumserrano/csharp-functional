@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
     public class ResultSimpleEqualityOperatorTests
     {
         [Fact]
-        public void Equality_operator_between_two_ok_results_is_true()
+        public void Equality_operator_between_two_ok_ResultSimple_is_true()
         {
             var result1 = Result.Ok();
             var result2 = Result.Ok();
@@ -16,7 +16,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_two_fail_results_is_true()
+        public void Equality_operator_between_two_fail_ResultSimple_is_true()
         {
             var result1 = Result.Fail();
             var result2 = Result.Fail();
@@ -25,7 +25,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_ok_result_and_fail_result_is_false()
+        public void Equality_operator_between_ok_ResultSimple_and_fail_ResultSimple_is_false()
         {
             var okResult = Result.Ok();
             var failResult = Result.Fail();
@@ -34,7 +34,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_two_ok_results_is_false()
+        public void Inequality_operator_between_two_ok_ResultSimple_is_false()
         {
             var result1 = Result.Ok();
             var result2 = Result.Ok();
@@ -43,7 +43,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_two_fail_results_is_false()
+        public void Inequality_operator_between_two_fail_ResultSimple_is_false()
         {
             var result1 = Result.Fail();
             var result2 = Result.Fail();
@@ -52,7 +52,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_ok_result_and_fail_result_is_true()
+        public void Inequality_operator_between_ok_ResultSimple_and_fail_ResultSimple_is_true()
         {
             var okResult = Result.Ok();
             var failResult = Result.Fail();

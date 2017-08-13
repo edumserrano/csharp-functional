@@ -152,6 +152,8 @@ namespace HttpResultMonad
                 hashCode = (hashCode * 397) ^ _value.GetHashCode();
                 hashCode = (hashCode * 397) ^ (int)_httpResultStatus;
                 hashCode = (hashCode * 397) ^ _httpState.GetHashCode();
+                hashCode = (hashCode * 397) ^ typeof(TValue).GetHashCode();
+                hashCode = (hashCode * 397) ^ typeof(TError).GetHashCode();
                 return hashCode;
             }
         }

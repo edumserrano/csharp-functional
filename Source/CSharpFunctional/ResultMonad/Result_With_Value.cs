@@ -130,7 +130,10 @@ namespace ResultMonad
         {
             unchecked
             {
-                return (_value.GetHashCode() * 397) ^ (int)_resultStatus;
+                var hashCode = _value.GetHashCode();
+                hashCode = (hashCode * 397) ^ (int)_resultStatus;
+                hashCode = (hashCode * 397) ^ typeof(T).GetHashCode();
+                return hashCode;
             }
         }
 

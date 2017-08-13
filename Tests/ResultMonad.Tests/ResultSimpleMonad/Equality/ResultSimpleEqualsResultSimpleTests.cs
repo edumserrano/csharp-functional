@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
     public class ResultSimpleEqualsResultSimpleTests
     {
         [Fact]
-        public void Equals_between_two_ok_results_is_true()
+        public void Equals_between_two_ok_ResultSimple_is_true()
         {
             var result1 = Result.Ok();
             var result2 = Result.Ok();
@@ -16,7 +16,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_two_fail_reults_is_true()
+        public void Equals_between_two_fail_ResultSimple_is_true()
         {
             var result1 = Result.Fail();
             var result2 = Result.Fail();
@@ -25,7 +25,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_ok_result_and_fail_result_is_false()
+        public void Equals_between_ok_ResultSimple_and_fail_ResultSimple_is_false()
         {
             var result1 = Result.Ok();
             var result2 = Result.Fail();

@@ -9,35 +9,35 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
     public class ResultWithErrorTests
     {
         [Fact]
-        public void Ok_result_IsSuccess_is_true()
+        public void Ok_ResultWithError_IsSuccess_is_true()
         {
             var result = ResultWithError.Ok<string>();
             result.IsSuccess.ShouldBeTrue();
         }
 
         [Fact]
-        public void Ok_result_IsFailure_is_false()
+        public void Ok_ResultWithError_IsFailure_is_false()
         {
             var result = ResultWithError.Ok<string>();
             result.IsFailure.ShouldBeFalse();
         }
 
         [Fact]
-        public void Fail_result_IsSuccess_is_false()
+        public void Fail_ResultWithError_IsSuccess_is_false()
         {
             var result = ResultWithError.Fail("abc");
             result.IsSuccess.ShouldBeFalse();
         }
 
         [Fact]
-        public void Fail_result_IsFailure_equals_true()
+        public void Fail_ResultWithError_IsFailure_is_true()
         {
             var result = ResultWithError.Fail("abc");
             result.IsFailure.ShouldBeTrue();
         }
 
         [Fact]
-        public void Acessing_the_error_of_fail_result_returns_error()
+        public void Acessing_the_error_of_fail_ResultWithError_returns_error()
         {
             var error = "abc";
             var result = ResultWithError.Fail(error);
@@ -46,14 +46,14 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
         }
 
         [Fact]
-        public void Creating_fail_result_with_null_as_error_throws_exception()
+        public void Creating_fail_ResultWithError_with_null_as_error_throws_exception()
         {
             var exception = Should.Throw<ArgumentException>(() => ResultWithError.Fail<string>(null));
             exception.Message.ShouldStartWith(ResultMessages.FailureResultMustHaveError);
         }
 
         [Fact]
-        public void Acessing_the_error_of_ok_result_throws_exception()
+        public void Acessing_the_error_of_ok_ResultWithError_throws_exception()
         {
             var result = ResultWithError.Ok<string>();
             var exception = Should.Throw<InvalidOperationException>(() =>
@@ -64,7 +64,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
         }
 
         [Fact]
-        public void From_if_predicate_is_true_returns_ok_result()
+        public void From_if_predicate_is_true_returns_ok_ResultWithError()
         {
             var error = "error";
             var result = ResultWithError.From(() => true, error);
@@ -72,7 +72,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
         }
 
         [Fact]
-        public void From_if_predicate_is_false_returns_fail_result_with_error()
+        public void From_if_predicate_is_false_returns_fail_ResultWithError_with_error()
         {
             var error = "error";
             var result = ResultWithError.From(() => false, error);
@@ -81,7 +81,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
         }
 
         [Fact]
-        public void Combine_if_all_results_are_ok_returns_ok_result()
+        public void Combine_if_all_ResultWithErrors_are_ok_returns_ok_ResultWithError()
         {
             var resultsLists = new List<ResultWithError<string>>
             {
@@ -95,7 +95,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
         }
 
         [Fact]
-        public void Combine_returns_first_fail_result_if_at_least_one_result_is_a_fail()
+        public void Combine_returns_first_fail_ResultWithError_if_at_least_one_ResultWithError_is_a_fail()
         {
             var firstFailure = ResultWithError.Fail("error");
             var resultsLists = new List<ResultWithError<string>>
@@ -112,14 +112,14 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
         }
 
         [Fact]
-        public void ToString_returns_ResultWithError_success_message_when_result_is_ok()
+        public void ToString_returns_ResultWithError_success_message_when_ResultWithError_is_ok()
         {
             var result = ResultWithError.Ok<string>();
             result.ToString().ShouldBe(ResultMessages.GetSuccessResultWithErrorToStringMessage(typeof(string)));
         }
 
         [Fact]
-        public void ToString_returns_ToString_of_error_when_result_is_fail()
+        public void ToString_returns_ToString_of_error_when_ResultWithError_is_fail()
         {
             var error = 1;
             var result = ResultWithError.Fail(error);

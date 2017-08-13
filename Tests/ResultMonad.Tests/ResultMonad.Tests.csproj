@@ -71,10 +71,15 @@
     <Compile Include="ResultWithErrorMonad\Equality\ResultWithErrorEqualsObjectTests.cs" />
     <Compile Include="ResultWithErrorMonad\Equality\ResultWithErrorEqualsResultWithErrorTests.cs" />
     <Compile Include="ResultWithErrorMonad\ResultWithErrorTests.cs" />
-    <Compile Include="ResultWithValueAndErrorMonad\ResultWithValueAndErrorEqualityTests.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\Equality\ResultWithValueAndErrorEqualsObjectTests.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\Equality\ResultWithValueAndErrorEqualsResultWithValueAndErrorTests.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\Equality\ResultWithValueAndErrorEqualityOperatorTests.cs" />
     <Compile Include="ResultWithValueAndErrorMonad\ResultWithValueAndErrorMonadLawsTests.cs" />
     <Compile Include="ResultWithValueAndErrorMonad\ResultWithValueAndErrorTests.cs" />
-    <Compile Include="ResultWithValueMonad\ResultWithValueEqualityTests.cs" />
+    <Compile Include="ResultWithValueMonad\Equality\ResultWithValueGetHashCodeTests.cs" />
+    <Compile Include="ResultWithValueMonad\Equality\ResultWithValueEqualsObjectTests.cs" />
+    <Compile Include="ResultWithValueMonad\Equality\ResultWithValueEqualsResultWithValueTests.cs" />
+    <Compile Include="ResultWithValueMonad\Equality\ResultWithValueEqualityOperatorTests.cs" />
     <Compile Include="ResultWithValueMonad\ResultWithValueMonadLawsTests.cs" />
     <Compile Include="ResultWithValueMonad\ResultWithValueTests.cs" />
   </ItemGroup>

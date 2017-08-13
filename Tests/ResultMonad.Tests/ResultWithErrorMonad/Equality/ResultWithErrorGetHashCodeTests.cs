@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad.Equality
     public class ResultWithErrorGetHashCodeTests
     {
         [Fact]
-        public void GetHasCode_between_two_ok_results_of_same_type_is_equal()
+        public void GetHasCode_between_two_ok_ResultWithError_of_same_type_is_equal()
         {
             var result1 = ResultWithError.Ok<string>();
             var result2 = ResultWithError.Ok<string>();
@@ -15,7 +15,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void GetHasCode_between_two_ok_results_of_different_types_is_not_equal()
+        public void GetHasCode_between_two_ok_ResultWithError_of_different_types_is_not_equal()
         {
             var result1 = ResultWithError.Ok<int>();
             var result2 = ResultWithError.Ok<string>();
@@ -23,7 +23,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void GetHasCode_between_two_fail_results_is_equal_if_both_errors_are_equal()
+        public void GetHasCode_between_two_fail_ResultWithError_is_equal_if_both_errors_are_equal()
         {
             var error = "abc";
             var result1 = ResultWithError.Fail(error);
@@ -32,7 +32,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void GetHasCode_between_two_fail_results_is_not_equal_if_both_errors_are_not_equal()
+        public void GetHasCode_between_two_fail_ResultWithError_is_not_equal_if_both_errors_are_not_equal()
         {
             var result1 = ResultWithError.Fail("abc");
             var result2 = ResultWithError.Fail("zzz");
@@ -40,7 +40,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void GetHasCode_between_ok_result_and_fail_result_is_not_equal()
+        public void GetHasCode_between_ok_ResultWithError_and_fail_result_is_not_equal()
         {
             var result1 = ResultWithError.Ok<string>();
             var result2 = ResultWithError.Fail("abc");

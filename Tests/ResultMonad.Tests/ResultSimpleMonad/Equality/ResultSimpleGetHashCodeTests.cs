@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
     public class ResultSimpleGetHashCodeTests
     {
         [Fact]
-        public void GetHasCode_between_two_ok_results_is_equal()
+        public void GetHasCode_between_two_ok_ResultSimple_is_equal()
         {
             var result1 = Result.Ok();
             var result2 = Result.Ok();
@@ -15,7 +15,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
 
         [Fact]
-        public void GetHasCode_between_two_fail_results_is_equal()
+        public void GetHasCode_between_two_fail_ResultSimple_is_equal()
         {
             var result1 = Result.Fail();
             var result2 = Result.Fail();
@@ -23,7 +23,7 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
         }
         
         [Fact]
-        public void GetHasCode_between_ok_result_and_fail_result_is_not_equal()
+        public void GetHasCode_between_ok_ResultSimple_and_fail_ResultSimple_is_not_equal()
         {
             var result1 = Result.Ok();
             var result2 = Result.Fail();
