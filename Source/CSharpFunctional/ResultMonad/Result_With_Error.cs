@@ -158,7 +158,7 @@ namespace ResultMonad
         {
             unchecked
             {
-                return (_error.GetHashCode() * 397) ^ (int)_resultStatus;
+                return (_error.GetHashCode() * 397) ^ (int)_resultStatus ^ typeof(T).GetHashCode();
             }
         }
 

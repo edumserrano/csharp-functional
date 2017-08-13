@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Shouldly;
 using Xunit;
 
-namespace ResultMonad.Tests.ResultSimple
+namespace ResultMonad.Tests.ResultSimpleMonad
 {
     [Trait("Monad", "ResultSimple")]
     public class ResultSimpleTests
@@ -64,14 +64,14 @@ namespace ResultMonad.Tests.ResultSimple
         }
 
         [Fact]
-        public void ToString_returns_result_success_message_when_result_is_ok()
+        public void ToString_returns_ResultSimple_success_message_when_result_is_ok()
         {
             var result = Result.Ok();
             result.ToString().ShouldBe(ResultMessages.SuccessResult);
         }
 
         [Fact]
-        public void ToString_returns_result_fail_message_when_result_is_fail()
+        public void ToString_returns_ResultSimple_fail_message_when_result_is_fail()
         {
             var result = Result.Fail();
             result.ToString().ShouldBe(ResultMessages.FailureResult);

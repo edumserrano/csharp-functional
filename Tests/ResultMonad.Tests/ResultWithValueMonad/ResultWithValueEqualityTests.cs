@@ -1,7 +1,7 @@
 ﻿using Shouldly;
 using Xunit;
 
-namespace ResultMonad.Tests.ResultWithValue
+namespace ResultMonad.Tests.ResultWithValueMonad
 {
     [Trait("Monad", "ResultSimple")]
     public class ResultWithValueEqualityTests
