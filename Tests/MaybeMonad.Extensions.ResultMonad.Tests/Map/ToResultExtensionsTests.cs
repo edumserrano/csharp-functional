@@ -1,12 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using MaybeMonad.Extensions.ResultMonad.Map;
+﻿using MaybeMonad.Extensions.ResultMonad.Map;
 using Shouldly;
 using Xunit;
 
 namespace MaybeMonad.Extensions.ResultMonad.Tests.Map
 {
     [Trait("Extensions", "Maybe")]
-    [ExcludeFromCodeCoverage]
     public class ToResultExtensionsTests
     {
         [Fact]
