@@ -7,19 +7,19 @@ namespace ResultMonad.Tests.Extensions.ResultWithValue.Map
     public class ToResultTests
     {
         [Fact]
-        public void To_propagates_ok_result_to_ResultWithError()
+        public void To_propagates_ok_status_from_ResultWithValue_to_Result()
         {
-            var result = Result.Ok(1);
-            var httpResult = result.ToResult();
-            httpResult.IsSuccess.ShouldBe(result.IsSuccess);
+            var resultWithValue = Result.Ok(1);
+            var result = resultWithValue.ToResult();
+            result.IsSuccess.ShouldBe(resultWithValue.IsSuccess);
         }
 
         [Fact]
-        public void To_propagates_fail_result_to_ResultWithError()
+        public void To_propagates_fail_result_to_Result()
         {
-            var result = Result.Fail<int>();
-            var httpResult = result.ToResult();
-            httpResult.IsFailure.ShouldBe(result.IsFailure);
+            var resultWithvalue = Result.Fail<int>();
+            var result = resultWithvalue.ToResult();
+            result.IsFailure.ShouldBe(resultWithvalue.IsFailure);
         }
     }
 }

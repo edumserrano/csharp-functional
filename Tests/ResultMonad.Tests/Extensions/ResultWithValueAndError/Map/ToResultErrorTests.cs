@@ -9,25 +9,25 @@ namespace ResultMonad.Tests.Extensions.ResultWithValueAndError.Map
         [Fact]
         public void To_propagates_ok_result_to_ResultWithError()
         {
-            var result = Result.Ok<int, string>(1);
-            var httpResult = result.ToResultWithError();
-            httpResult.IsSuccess.ShouldBe(result.IsSuccess);
+            var resultWithValueAndError = Result.Ok<int, string>(1);
+            var resultWithError = resultWithValueAndError.ToResultWithError();
+            resultWithError.IsSuccess.ShouldBe(resultWithValueAndError.IsSuccess);
         }
 
         [Fact]
         public void To_propagates_fail_result_to_ResultWithError()
         {
-            var result = Result.Fail<int, string>("error");
-            var httpResult = result.ToResultWithError();
-            httpResult.IsFailure.ShouldBe(result.IsFailure);
+            var resultWithValueAndError = Result.Fail<int, string>("error");
+            var resultWithError = resultWithValueAndError.ToResultWithError();
+            resultWithError.IsFailure.ShouldBe(resultWithValueAndError.IsFailure);
         }
 
         [Fact]
         public void To_propagates_error_from_result_to_ResultWithError()
         {
-            var result = Result.Fail<int, string>("error");
-            var httpResult = result.ToResultWithError();
-            httpResult.Error.ShouldBe(result.Error);
+            var resultWithValueAndError = Result.Fail<int, string>("error");
+            var resultWithError = resultWithValueAndError.ToResultWithError();
+            resultWithError.Error.ShouldBe(resultWithValueAndError.Error);
         }
     }
 }

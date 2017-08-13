@@ -8,7 +8,7 @@ namespace MaybeMonad.Extensions.ResultMonad.Tests.Map
     public class ToResultWithValueExtensionsTests
     {
         [Fact]
-        public void To_creates_ok_result_if_maybe_has_value()
+        public void To_creates_ok_ResultWithValue_if_Maybe_has_value()
         {
             var result = Maybe.From(1)
                     .ToResultWithValue();
@@ -16,7 +16,7 @@ namespace MaybeMonad.Extensions.ResultMonad.Tests.Map
         }
 
         [Fact]
-        public void To_creates_fail_result_if_maybe_does_not_have_value()
+        public void To_creates_fail_ResultWithValue_if_Maybe_is_empty()
         {
             var result = Maybe<int>.Nothing
                     .ToResultWithValue();
@@ -24,7 +24,7 @@ namespace MaybeMonad.Extensions.ResultMonad.Tests.Map
         }
 
         [Fact]
-        public void To_propagates_value_if_maybe_has_value()
+        public void To_propagates_value_to_ResultWithValue_if_Maybe_has_value()
         {
             var value = 1;
             var result = Maybe.From(value)
