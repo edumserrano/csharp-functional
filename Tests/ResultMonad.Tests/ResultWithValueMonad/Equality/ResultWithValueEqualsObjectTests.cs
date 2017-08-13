@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
     public class ResultWithValueEqualsObjectTests
     {
         [Fact]
-        public void Equals_between_ok_ResultWithValue_and_object_is_true_if_object_is_the_same_as_the_value_in_ResultWithValue()
+        public void Equals_between_ok_ResultWithValue_and_object_is_true_if_object_is_equal_to_the_value_in_ResultWithValue()
         {
             var value = "abc";
             var result = Result.Ok(value);
@@ -17,7 +17,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_ok_ResultWithValue_and_object_is_false_if_object_is_not_the_same_as_the_value_in_ResultWithValue()
+        public void Equals_between_ok_ResultWithValue_and_object_is_false_if_object_is_not_equal_to_the_value_in_ResultWithValue()
         {
             var result = Result.Ok("abc");
             object someObject = "zzz";
@@ -26,7 +26,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_ok_ResultWithValue_and_object_is_true_if_object_is_ok_ResultWithValue_with_same_value()
+        public void Equals_between_ok_ResultWithValue_and_object_is_true_if_object_is_ok_ResultWithValue_and_both_values_are_equal()
         {
             var value = "abc";
             var result = Result.Ok(value);
@@ -36,7 +36,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_ok_ResultWithValue_and_object_is_false_if_object_is_ok_ResultWithValue_with_different_value()
+        public void Equals_between_ok_ResultWithValue_and_object_is_false_if_object_is_ok_ResultWithValue_and_both_values_are_not_equal()
         {
             var result = Result.Ok("abc");
             object someObject = Result.Ok("zzz");
@@ -45,12 +45,21 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_fail_ResultWithValue_and_object_is_true_if_object_is_fail_ResultWithValue()
+        public void Equals_between_fail_ResultWithValue_and_object_is_true_if_object_is_fail_ResultWithValue_with_values_of_the_same_type()
         {
             var result = Result.Fail<string>();
             object someObject = Result.Fail<string>();
             var isEqual = result.Equals(someObject);
             isEqual.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void Equals_between_fail_ResultWithValue_and_object_is_false_if_object_is_fail_ResultWithValue_with_values_of_different_type()
+        {
+            var result = Result.Fail<int>();
+            object someObject = Result.Fail<string>();
+            var isEqual = result.Equals(someObject);
+            isEqual.ShouldBeFalse();
         }
 
         [Fact]

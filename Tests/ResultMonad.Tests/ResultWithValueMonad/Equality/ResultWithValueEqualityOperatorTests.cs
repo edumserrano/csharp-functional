@@ -16,7 +16,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_value_and_fail_ResultWithValue_with_same_value_is_false()
+        public void Equality_operator_between_value_and_fail_ResultWithValue_is_false()
         {
             var value = "abc";
             var result = Result.Fail<string>();
@@ -25,7 +25,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_two_ok_ResultWithValue_with_same_value_is_true()
+        public void Equality_operator_between_two_ok_ResultWithValue_is_true_if_values_are_equal()
         {
             var value = "abc";
             var result1 = Result.Ok(value);
@@ -35,7 +35,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_two_ok_ResultWithValue_with_different_value_is_false()
+        public void Equality_operator_between_two_ok_ResultWithValue_is_false_if_values_are_not_equal()
         {
             var result1 = Result.Ok("abc");
             var result2 = Result.Ok("zzz");
@@ -62,16 +62,16 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_value_and_ok_ResultWithValue_with_same_value_is_false()
+        public void Inequality_operator_between_value_and_ok_ResultWithValue_is_false_if_values_are_equal()
         {
             var value = "abc";
             var result = Result.Ok(value);
             var isDifferent = result != value;
             isDifferent.ShouldBeFalse();
         }
-        
+
         [Fact]
-        public void Inequality_operator_between_value_and_fail_ResultWithValue_with_same_value_is_true()
+        public void Inequality_operator_between_value_and_fail_ResultWithValue_is_true_if_value_is_not_fail_ResultWithValue()
         {
             var value = "abc";
             var result = Result.Fail<string>();
@@ -80,7 +80,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_two_ok_ResultWithValue_with_same_value_is_false()
+        public void Inequality_operator_between_two_ok_ResultWithValue_is_false_if_values_are_equal()
         {
             var value = "abc";
             var result1 = Result.Ok(value);
@@ -90,7 +90,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Inequality_operator_between_two_ok_ResultWithValue_with_different_value_is_true()
+        public void Inequality_operator_between_two_ok_ResultWithValue_is_true_if_values_are_not_equal()
         {
             var result1 = Result.Ok("abc");
             var result2 = Result.Ok("zzz");
@@ -106,7 +106,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
             var isDifferent = result1 != result2;
             isDifferent.ShouldBeFalse();
         }
-        
+
         [Fact]
         public void Inequality_operator_between_ok_ResultWithValue_and_fail_ResultWithValue_is_true()
         {

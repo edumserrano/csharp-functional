@@ -7,7 +7,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
     public class ResultWithValueEqualsResultWithValueTests
     {
         [Fact]
-        public void Equals_between_two_ok_ResultWithValue_is_true_if_they_have_the_same_value()
+        public void Equals_between_two_ok_ResultWithValue_is_true_if_both_values_are_equal()
         {
             var value = "abc";
             var result = Result.Ok(value);
@@ -17,7 +17,7 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_two_ok_ResultWithValue_is_false_if_they_do_not_have_the_same_value()
+        public void Equals_between_two_ok_ResultWithValue_is_false_if_both_values_are_not_equal()
         {
             var result = Result.Ok("abc");
             var result2 = Result.Ok("zzz");
@@ -26,14 +26,14 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_two_fail_ResultWithValue_is_true()
+        public void Equals_between_two_fail_ResultWithValue_is_true_if_the_values_are_of_the_same_type()
         {
             var result = Result.Fail<string>();
             var result2 = Result.Fail<string>();
             var isEqual = result.Equals(result2);
             isEqual.ShouldBeTrue();
         }
-
+        
         [Fact]
         public void Equals_between_ok_ResultWithValue_and_fail_ResultWithValue_is_false()
         {
