@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Equality\MaybeInequalityOperatorTests.cs" />
     <Compile Include="Equality\MaybeEqualityOperatorTests.cs" />
     <Compile Include="Equality\MaybeEqualsObjectTests.cs" />
     <Compile Include="Equality\MaybeEqualsMaybeTests.cs" />
