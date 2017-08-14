@@ -84,9 +84,14 @@
     <Compile Include="HttpResultWithValue\HttpResultWithValueEqualityTests.cs" />
     <Compile Include="HttpResultWithValue\HttpResultWithValueTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="State\Equality\HttpStateEqualsHttpStateTests.cs" />
+    <Compile Include="State\Equality\HttpStateGetHashCodeTests.cs" />
+    <Compile Include="State\HttpStateBuilderTests.cs" />
+    <Compile Include="State\HttpStateTests.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CodeCoverage.runsettings" />
     <None Include="packages.config" />
     <None Include="xunit.runner.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -105,6 +110,7 @@
       <Name>MaybeMonad</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

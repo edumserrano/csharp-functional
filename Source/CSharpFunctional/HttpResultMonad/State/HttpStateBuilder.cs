@@ -71,7 +71,7 @@ namespace HttpResultMonad.State
             return this;
         }
 
-        public static async Task<HttpState> Build(HttpResponseMessage response)
+        public static async Task<HttpState> BuildAsync(HttpResponseMessage response)
         {
             var url = response.RequestMessage.RequestUri;
             var httpMethod = response.RequestMessage.Method;

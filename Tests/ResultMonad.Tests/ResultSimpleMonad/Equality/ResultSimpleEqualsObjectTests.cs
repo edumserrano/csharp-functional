@@ -7,6 +7,14 @@ namespace ResultMonad.Tests.ResultSimpleMonad.Equality
     public class ResultSimpleEqualsObjectTests
     {
         [Fact]
+        public void Equals_betwwen_ResultSimple_and_null_is_false()
+        {
+            var result = Result.Ok();
+            var isEqual = result.Equals(null);
+            isEqual.ShouldBeFalse();
+        }
+
+        [Fact]
         public void Equals_betwwen_ok_ResultSimple_and_object_is_true_if_object_is_ok_ResultSimple()
         {
             var result1 = Result.Ok();

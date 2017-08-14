@@ -7,6 +7,14 @@ namespace ResultMonad.Tests.ResultWithValueMonad.Equality
     public class ResultWithValueEqualsObjectTests
     {
         [Fact]
+        public void Equals_betwwen_ResultWithValue_and_null_is_false()
+        {
+            var result = Result.Ok("value");
+            var isEqual = result.Equals(null);
+            isEqual.ShouldBeFalse();
+        }
+
+        [Fact]
         public void Equals_between_ok_ResultWithValue_and_object_is_true_if_object_is_equal_to_the_value_in_ResultWithValue()
         {
             var value = "abc";

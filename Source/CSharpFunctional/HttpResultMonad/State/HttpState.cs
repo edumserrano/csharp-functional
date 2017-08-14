@@ -8,7 +8,7 @@ namespace HttpResultMonad.State
 {
     public struct HttpState : IEquatable<HttpState>
     {
-        public HttpState(HttpStateBuilder builder)
+        internal HttpState(HttpStateBuilder builder)
         {
             Url = builder.Url;
             HttpMethod = builder.HttpMethod;

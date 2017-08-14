@@ -7,6 +7,14 @@ namespace ResultMonad.Tests.ResultWithErrorMonad.Equality
     public class ResultWithErrorEqualsObjectTests
     {
         [Fact]
+        public void Equals_betwwen_ResultWithError_and_null_is_false()
+        {
+            var result = ResultWithError.Fail("abc");
+            var isEqual = result.Equals(null);
+            isEqual.ShouldBeFalse();
+        }
+
+        [Fact]
         public void Equals_between_fail_ResultWithError_and_object_is_true_if_object_equals_the_error_in_ResultWithError()
         {
             var error = "abc";

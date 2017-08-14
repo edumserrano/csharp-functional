@@ -7,6 +7,14 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
     public class ResultWithValueAndErrorEqualsObjectTests
     {
         [Fact]
+        public void Equals_betwwen_ResultWithValueAndError_and_null_is_false()
+        {
+            var result = Result.Ok<string, string>("value");
+            var isEqual = result.Equals(null);
+            isEqual.ShouldBeFalse();
+        }
+
+        [Fact]
         public void Equals_between_ok_ResultWithValueAndError_and_object_is_true_if_object_is_ok_ResultWithValueAndError_and_both_values_are_equal()
         {
             var value = "abc";
@@ -63,7 +71,7 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad.Equality
             var isEqual = result.Equals(someObject);
             isEqual.ShouldBeFalse();
         }
-        
+
         [Fact]
         public void Equals_between_fail_ResultWithValueAndError_and_object_is_false_if_object_is_not_ResultWithValueAndError_of_the_same_value_and_error_type()
         {

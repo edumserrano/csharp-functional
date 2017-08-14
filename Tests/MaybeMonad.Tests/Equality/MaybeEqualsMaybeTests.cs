@@ -7,6 +7,14 @@ namespace MaybeMonad.Tests.Equality
     public class MaybeEqualsMaybeTests
     {
         [Fact]
+        public void Equals_between_maybe_of_T_and_null_is_false()
+        {
+            var maybe = Maybe.From("abc");
+            var isEqual = maybe.Equals(null);
+            isEqual.ShouldBeFalse();
+        }
+
+        [Fact]
         public void Equals_between_maybes_with_same_value_is_true()
         {
             var value = "abc";

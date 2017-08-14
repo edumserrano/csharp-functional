@@ -7,6 +7,14 @@ namespace MaybeMonad.Tests.Equality
     public class MaybeEqualityOperatorTests
     {
         [Fact]
+        public void Equality_operator_between_maybe_and_null_is_false()
+        {
+            var maybe = Maybe.From("abc");
+            var isEqual = maybe == null;
+            isEqual.ShouldBeFalse();
+        }
+
+        [Fact]
         public void Equality_operator_between_value_and_maybe_with_same_value_is_true()
         {
             var value = "abc";
@@ -32,7 +40,7 @@ namespace MaybeMonad.Tests.Equality
             var isEqual = maybe == value;
             isEqual.ShouldBeFalse();
         }
-        
+
         [Fact]
         public void Equality_operator_between_maybes_with_same_value_is_true()
         {
@@ -50,6 +58,14 @@ namespace MaybeMonad.Tests.Equality
             var maybe2 = Maybe.From("zzz");
             var isEqual = maybe1 == maybe2;
             isEqual.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void Inequality_operator_between_maybe_and_null_is_true()
+        {
+            var maybe = Maybe.From("abc");
+            var isEqual = maybe != null;
+            isEqual.ShouldBeTrue();
         }
 
         [Fact]
