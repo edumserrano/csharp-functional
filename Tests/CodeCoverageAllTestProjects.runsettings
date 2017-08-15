@@ -15,7 +15,7 @@
                 <ModulePath>.*ResultMonad.Extensions.dll</ModulePath>
                 <ModulePath>.*ResultMonad.Extensions.HttpResultMonad.dll</ModulePath>
                 <ModulePath>.*HttpResultMonad.dll</ModulePath>
-                <ModulePath>.*HttpResultMonad.dll</ModulePath>
+                <ModulePath>.*HttpResultMonad.Extensions.dll</ModulePath>
               </Include>
             </ModulePaths>
 
