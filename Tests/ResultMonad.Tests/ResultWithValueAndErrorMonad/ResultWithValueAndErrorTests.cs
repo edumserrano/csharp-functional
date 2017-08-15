@@ -9,6 +9,20 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad
     public class ResultWithValueAndErrorTests
     {
         [Fact]
+        public void Creating_ok_ResultWithValueAndError_with_null_value_throws_exception()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => Result.Ok<string, string>(null));
+            exception.Message.ShouldStartWith(ResultMessages.SuccessResultMustHaveValue);
+        }
+
+        [Fact]
+        public void Creating_fail_ResultWithValueAndError_with_null_error_throws_exception()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => Result.Fail<string, string>(null));
+            exception.Message.ShouldStartWith(ResultMessages.FailureResultMustHaveError);
+        }
+
+        [Fact]
         public void Ok_ResultWithValueAndError_IsSuccess_is_true()
         {
             var result = Result.Ok<string, string>("abc");
@@ -74,21 +88,6 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad
                 var value = result.Error;
             });
             exception.Message.ShouldBe(ResultMessages.NoErrorForSuccess);
-        }
-
-
-        [Fact]
-        public void Creating_ok_ResultWithValueAndError_with_null_value_throws_exception()
-        {
-            var exception = Should.Throw<ArgumentNullException>(() => Result.Ok<string, string>(null));
-            exception.Message.ShouldStartWith(ResultMessages.SuccessResultMustHaveValue);
-        }
-
-        [Fact]
-        public void Creating_fail_ResultWithValueAndError_with_null_error_throws_exception()
-        {
-            var exception = Should.Throw<ArgumentNullException>(() => Result.Fail<string, string>(null));
-            exception.Message.ShouldStartWith(ResultMessages.FailureResultMustHaveError);
         }
 
         [Fact]

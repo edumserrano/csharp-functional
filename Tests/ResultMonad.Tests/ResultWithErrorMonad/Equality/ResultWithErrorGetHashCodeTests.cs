@@ -40,7 +40,7 @@ namespace ResultMonad.Tests.ResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void GetHasCode_between_ok_ResultWithError_and_fail_result_is_not_equal()
+        public void GetHasCode_between_ok_ResultWithError_and_fail_ResultWithError_is_not_equal()
         {
             var result1 = ResultWithError.Ok<string>();
             var result2 = ResultWithError.Fail("abc");

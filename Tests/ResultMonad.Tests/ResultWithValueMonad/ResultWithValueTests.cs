@@ -9,6 +9,13 @@ namespace ResultMonad.Tests.ResultWithValueMonad
     public class ResultWithValueTests
     {
         [Fact]
+        public void Creating_ok_ResultWithValue_with_null_value_throws_exception()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => Result.Ok<string>(null));
+            exception.Message.ShouldStartWith(ResultMessages.SuccessResultMustHaveValue);
+        }
+        
+        [Fact]
         public void Ok_ResultWithValue_IsSuccess_is_true()
         {
             var result = Result.Ok("abc");
@@ -55,14 +62,6 @@ namespace ResultMonad.Tests.ResultWithValueMonad
             });
             exception.Message.ShouldBe(ResultMessages.NoValueForFailure);
         }
-
-        [Fact]
-        public void Creating_ok_ResultWithValue_with_null_value_throws_exception()
-        {
-            var exception = Should.Throw<ArgumentNullException>(() => Result.Ok<string>(null));
-            exception.Message.ShouldStartWith(ResultMessages.SuccessResultMustHaveValue);
-        }
-
 
         [Fact]
         public void From_if_predicate_is_true_returns_ok_ResultWithValue_with_value()

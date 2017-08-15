@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using HttpResultMonad.State;
 using MaybeMonad;
 using Shouldly;

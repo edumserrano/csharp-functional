@@ -3,7 +3,6 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultSimpleMonad.Equality
 {
-    [Trait("Monad", "ResultSimple")]
     public class HttpResultSimpleGetHashCodeTests
     {
         [Fact]

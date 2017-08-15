@@ -10,6 +10,13 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
     public class HttpResultWithErrorTests
     {
         [Fact]
+        public void Creating_fail_HttpResultWithError_with_null_as_error_throws_exception()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => HttpResultWithError.Fail<string>(null));
+            exception.Message.ShouldStartWith(HttpResultMessages.FailureResultMustHaveError);
+        }
+
+        [Fact]
         public void Ok_result_IsSuccess_is_true()
         {
             var result = HttpResultWithError.Ok<string>();

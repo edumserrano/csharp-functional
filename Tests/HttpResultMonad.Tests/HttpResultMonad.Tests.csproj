@@ -85,6 +85,7 @@
     <Compile Include="HttpResultWithErrorMonad\Equality\HttpResultWithErrorEqualsHttpResultWithErrorTests.cs" />
     <Compile Include="HttpResultWithErrorMonad\Equality\HttpResultWithErrorEqualsObjectTests.cs" />
     <Compile Include="HttpResultWithErrorMonad\Equality\HttpResultWithErrorEqualityOperatorTests.cs" />
+    <Compile Include="HttpResultWithErrorMonad\Equality\HttpResultWithErrorGetHashCodeTests.cs" />
     <Compile Include="HttpResultWithErrorMonad\HttpResultWithErrorTests.cs" />
     <Compile Include="HttpResultWithValueAndErrorMonad\Equality\HttpResultWithValueAndErrorEqualsHttpResultWithValueAndErrorTests.cs" />
     <Compile Include="HttpResultWithValueAndErrorMonad\Equality\HttpResultWithValueAndErrorEqualsObjectTests.cs" />

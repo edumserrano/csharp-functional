@@ -169,7 +169,6 @@ namespace HttpResultMonad
             }
         }
 
-
         #endregion
     }
 }

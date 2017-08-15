@@ -9,6 +9,13 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
     public class ResultWithErrorTests
     {
         [Fact]
+        public void Creating_fail_ResultWithError_with_null_as_error_throws_exception()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => ResultWithError.Fail<string>(null));
+            exception.Message.ShouldStartWith(ResultMessages.FailureResultMustHaveError);
+        }
+
+        [Fact]
         public void Ok_ResultWithError_IsSuccess_is_true()
         {
             var result = ResultWithError.Ok<string>();
@@ -43,13 +50,6 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
             var result = ResultWithError.Fail(error);
             var isEqual = result.Error.Equals(error);
             isEqual.ShouldBeTrue();
-        }
-
-        [Fact]
-        public void Creating_fail_ResultWithError_with_null_as_error_throws_exception()
-        {
-            var exception = Should.Throw<ArgumentNullException>(() => ResultWithError.Fail<string>(null));
-            exception.Message.ShouldStartWith(ResultMessages.FailureResultMustHaveError);
         }
 
         [Fact]
