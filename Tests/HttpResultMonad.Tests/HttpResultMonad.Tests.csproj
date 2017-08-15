@@ -79,6 +79,7 @@
     <Compile Include="HttpResultSimple\Equality\HttpResultSimpleEquasHttpResultSimpleTests.cs" />
     <Compile Include="HttpResultSimple\Equality\HttpResultSimpleEqualsObjectTests.cs" />
     <Compile Include="HttpResultSimple\Equality\HttpResultSimpleEqualityOperatorTests.cs" />
+    <Compile Include="HttpResultSimple\Equality\HttpResultSimpleGetHashCodeTests.cs" />
     <Compile Include="HttpResultSimple\HttpResultSimpleTests.cs" />
     <Compile Include="HttpResultWithError\Equality\HttpResultWithErrorInequalityOperatorTests.cs" />
     <Compile Include="HttpResultWithError\Equality\HttpResultWithErrorEqualsHttpResultWithErrorTests.cs" />

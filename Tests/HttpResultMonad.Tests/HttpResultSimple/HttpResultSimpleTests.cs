@@ -9,35 +9,35 @@ namespace HttpResultMonad.Tests.HttpResultSimple
     public class HttpResultSimpleTests
     {
         [Fact]
-        public void Ok_HttpResult_IsSuccess_is_true()
+        public void Ok_HttpResultSimple_IsSuccess_is_true()
         {
             var httpResult = HttpResult.Ok();
             httpResult.IsSuccess.ShouldBeTrue();
         }
 
         [Fact]
-        public void Ok_HttpResult_IsFailure_is_false()
+        public void Ok_HttpResultSimple_IsFailure_is_false()
         {
             var httpResult = HttpResult.Ok();
             httpResult.IsFailure.ShouldBeFalse();
         }
 
         [Fact]
-        public void Fail_HttpResult_IsSuccess_is_false()
+        public void Fail_HttpResultSimple_IsSuccess_is_false()
         {
             var httpResult = HttpResult.Fail();
             httpResult.IsSuccess.ShouldBeFalse();
         }
 
         [Fact]
-        public void Fail_HttpResult_IsFailure_is_true()
+        public void Fail_HttpResultSimple_IsFailure_is_true()
         {
             var httpResult = HttpResult.Fail();
             httpResult.IsFailure.ShouldBeTrue();
         }
 
         [Fact]
-        public void OK_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
+        public void OK_HttpResultSimple_withouth_passing_in_HttpState_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResult.Ok();
             httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
@@ -45,7 +45,7 @@ namespace HttpResultMonad.Tests.HttpResultSimple
 
 
         [Fact]
-        public void Fail_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
+        public void Fail_HttpResultSimple_withouth_passing_in_HttpState_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResult.Fail();
             httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);

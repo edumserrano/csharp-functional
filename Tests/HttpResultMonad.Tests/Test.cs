@@ -9,7 +9,7 @@ namespace HttpResultMonad.Tests
 {
     internal static class Test
     {
-        public static HttpState CreateHttpStateA()
+        public static Maybe<HttpState> CreateHttpStateA()
         {
             var requestHeaders = new List<KeyValuePair<string, IEnumerable<string>>>
             {
