@@ -85,14 +85,7 @@ namespace ResultMonad
         }
 
         #endregion
-
-        public override string ToString()
-        {
-            return IsSuccess
-                ? ResultMessages.SuccessResult
-                : ResultMessages.FailureResult;
-        }
-
+        
         [DebuggerStepThrough]
         public static Result Ok()
         {

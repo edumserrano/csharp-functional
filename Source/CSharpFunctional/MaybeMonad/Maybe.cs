@@ -152,13 +152,5 @@ namespace MaybeMonad
                 return (EqualityComparer<T>.Default.GetHashCode(_value) * 397) ^ (int)_status;
             }
         }
-
-        [DebuggerStepThrough]
-        public override string ToString()
-        {
-            return HasNoValue
-                ? MaybeMessages.EmptyMaybe(typeof(T))
-                : Value.ToString();
-        }
     }
 }

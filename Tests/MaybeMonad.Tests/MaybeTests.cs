@@ -64,20 +64,5 @@ namespace MaybeMonad.Tests
             Maybe<string> maybe = value;
             maybe.ShouldBe(Maybe<string>.Nothing);
         }
-
-        [Fact]
-        public void ToString_returns_ToString_of_value_when_maybe_is_not_empty()
-        {
-            var value = 1;
-            var maybe = Maybe.From(value);
-            maybe.ToString().ShouldBe(value.ToString());
-        }
-
-        [Fact]
-        public void ToString_returns_empty_maybe_message_when_maybe_is_empty()
-        {
-            var maybe = Maybe<string>.Nothing;
-            maybe.ToString().ShouldBe(MaybeMessages.EmptyMaybe(typeof(string)));
-        }
     }
 }

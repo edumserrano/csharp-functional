@@ -108,7 +108,7 @@ namespace HttpResultMonad
         }
 
         #endregion
-
+        
         [DebuggerStepThrough]
         public static HttpResult Ok()
         {

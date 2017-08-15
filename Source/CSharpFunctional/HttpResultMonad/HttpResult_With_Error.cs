@@ -61,7 +61,7 @@ namespace HttpResultMonad
         {
             if (httpResultStatus == HttpResultStatus.Fail && error.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(error), HttpResultWithErrorMessages.FailureResultMustHaveError);
+                throw new ArgumentNullException(nameof(error), HttpResultMessages.FailureResultMustHaveError);
             }
 
             _httpResultStatus = httpResultStatus;
@@ -94,7 +94,7 @@ namespace HttpResultMonad
             {
                 if (IsSuccess)
                 {
-                    throw new InvalidOperationException(HttpResultWithErrorMessages.NoErrorForSuccess);
+                    throw new InvalidOperationException(HttpResultMessages.NoErrorForSuccess);
                 }
 
                 return _error.Value;
@@ -171,13 +171,5 @@ namespace HttpResultMonad
 
 
         #endregion
-
-        [DebuggerStepThrough]
-        public override string ToString()
-        {
-            return IsSuccess
-                ? HttpResultWithErrorMessages.GetSuccessResultWithErrorToStringMessage(typeof(T))
-                : Error.ToString();
-        }
     }
 }

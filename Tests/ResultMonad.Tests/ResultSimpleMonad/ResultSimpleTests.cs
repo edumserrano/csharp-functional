@@ -62,19 +62,5 @@ namespace ResultMonad.Tests.ResultSimpleMonad
             var combinedResult = Result.Combine(resultsLists.ToArray());
             combinedResult.IsFailure.ShouldBeTrue();
         }
-
-        [Fact]
-        public void ToString_returns_ResultSimple_success_message_when_ResultSimple_is_ok()
-        {
-            var result = Result.Ok();
-            result.ToString().ShouldBe(ResultMessages.SuccessResult);
-        }
-
-        [Fact]
-        public void ToString_returns_ResultSimple_fail_message_when_ResultSimple_is_fail()
-        {
-            var result = Result.Fail();
-            result.ToString().ShouldBe(ResultMessages.FailureResult);
-        }
     }
 }

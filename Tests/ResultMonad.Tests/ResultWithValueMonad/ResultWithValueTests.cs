@@ -107,20 +107,5 @@ namespace ResultMonad.Tests.ResultWithValueMonad
             var combinedResult = Result.Combine(resultsLists.ToArray());
             combinedResult.IsFailure.ShouldBeTrue();
         }
-
-        [Fact]
-        public void ToString_returns_ToString_of_value_when_ResultWithValue_is_ok()
-        {
-            var value = 1;
-            var result = Result.Ok(value);
-            result.ToString().ShouldBe(value.ToString());
-        }
-
-        [Fact]
-        public void ToString_returns_ResultWithValue_error_message_when_ResultWithValue_is_fail()
-        {
-            var result = Result.Fail<string>();
-            result.ToString().ShouldBe(ResultMessages.GetFailureResultToStringMessage(typeof(string)));
-        }
     }
 }

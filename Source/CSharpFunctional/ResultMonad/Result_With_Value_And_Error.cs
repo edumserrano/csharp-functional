@@ -135,13 +135,5 @@ namespace ResultMonad
         }
 
         #endregion
-
-        [DebuggerStepThrough]
-        public override string ToString()
-        {
-            return IsFailure
-                ? Error.ToString()
-                : Value.ToString();
-        }
     }
 }

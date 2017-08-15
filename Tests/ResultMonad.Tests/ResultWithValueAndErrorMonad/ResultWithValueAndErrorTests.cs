@@ -141,21 +141,5 @@ namespace ResultMonad.Tests.ResultWithValueAndErrorMonad
             combinedResult.IsFailure.ShouldBeTrue();
             combinedResult.Error.ShouldBe(firstFailure.Error);
         }
-
-        [Fact]
-        public void ToString_returns_ToString_of_value_when_ResultWithValueAndError_is_ok()
-        {
-            var value = 1;
-            var result = Result.Ok<int, string>(value);
-            result.ToString().ShouldBe(value.ToString());
-        }
-
-        [Fact]
-        public void ToString_returns_ToString_of_error_when_ResultWithValueAndError_is_fail()
-        {
-            var error = 1;
-            var result = Result.Fail<string, int>(error);
-            result.ToString().ShouldBe(error.ToString());
-        }
     }
 }

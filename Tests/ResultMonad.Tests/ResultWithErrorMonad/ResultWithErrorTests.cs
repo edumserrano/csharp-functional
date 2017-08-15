@@ -110,20 +110,5 @@ namespace ResultMonad.Tests.ResultWithErrorMonad
             combinedResult.IsFailure.ShouldBeTrue();
             combinedResult.Error.ShouldBe(firstFailure.Error);
         }
-
-        [Fact]
-        public void ToString_returns_ResultWithError_success_message_when_ResultWithError_is_ok()
-        {
-            var result = ResultWithError.Ok<string>();
-            result.ToString().ShouldBe(ResultMessages.GetSuccessResultWithErrorToStringMessage(typeof(string)));
-        }
-
-        [Fact]
-        public void ToString_returns_ToString_of_error_when_ResultWithError_is_fail()
-        {
-            var error = 1;
-            var result = ResultWithError.Fail(error);
-            result.ToString().ShouldBe(error.ToString());
-        }
     }
 }

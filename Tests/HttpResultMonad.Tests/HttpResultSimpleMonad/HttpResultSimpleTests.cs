@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using HttpResultMonad.State;
 using MaybeMonad;
 using Shouldly;
@@ -60,7 +61,7 @@ namespace HttpResultMonad.Tests.HttpResultSimpleMonad
                 HttpResult.Ok(),
                 HttpResult.Ok()
             };
-            
+
             var combinedResult = HttpResult.Combine(resultsLists.ToArray());
             combinedResult.IsSuccess.ShouldBeTrue();
         }

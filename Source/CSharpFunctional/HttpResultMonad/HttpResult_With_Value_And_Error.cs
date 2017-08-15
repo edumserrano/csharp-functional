@@ -28,12 +28,12 @@ namespace HttpResultMonad
         {
             if (status == HttpResultStatus.Fail && error.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(error), HttpResultWithErrorMessages.FailureResultMustHaveError);
+                throw new ArgumentNullException(nameof(error), HttpResultMessages.FailureResultMustHaveError);
             }
 
             if (status == HttpResultStatus.Ok && value.HasNoValue)
             {
-                throw new ArgumentNullException(nameof(value), HttpResultWithErrorMessages.SuccessResultMustHaveValue);
+                throw new ArgumentNullException(nameof(value), HttpResultMessages.SuccessResultMustHaveValue);
             }
 
             _value = value;
@@ -67,7 +67,7 @@ namespace HttpResultMonad
             {
                 if (IsFailure)
                 {
-                    throw new InvalidOperationException(HttpResultWithErrorMessages.NoValueForFailure);
+                    throw new InvalidOperationException(HttpResultMessages.NoValueForFailure);
                 }
 
                 return _value.Value;
@@ -81,7 +81,7 @@ namespace HttpResultMonad
             {
                 if (IsSuccess)
                 {
-                    throw new InvalidOperationException(HttpResultWithErrorMessages.NoErrorForSuccess);
+                    throw new InvalidOperationException(HttpResultMessages.NoErrorForSuccess);
                 }
 
                 return _error.Value;
@@ -159,11 +159,5 @@ namespace HttpResultMonad
         }
 
         #endregion
-
-        [DebuggerStepThrough]
-        public override string ToString()
-        {
-            return IsFailure ? HttpResultWithErrorMessages.GetFailureResultToStringMessage(typeof(TValue), typeof(TError)) : Value.ToString();
-        }
     }
 }
