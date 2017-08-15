@@ -91,6 +91,7 @@
     <Compile Include="HttpResultWithValueAndErrorMonad\Equality\HttpResultWithValueAndErrorEqualsObjectTests.cs" />
     <Compile Include="HttpResultWithValueAndErrorMonad\Equality\HttpResultWithValueAndErrorInequalityOperatorTests.cs" />
     <Compile Include="HttpResultWithValueAndErrorMonad\Equality\HttpResultWithValueAndErrorEqualityOperatorTests.cs" />
+    <Compile Include="HttpResultWithValueAndErrorMonad\Equality\HttpResultWithValueAndErrorGetHashCodeTests.cs" />
     <Compile Include="HttpResultWithValueAndErrorMonad\HttpResultWithValueAndErrorTests.cs" />
     <Compile Include="HttpResultWithValueMonad\Equality\HttpResultWithValueInequalityOperatorTests.cs" />
     <Compile Include="HttpResultWithValueMonad\Equality\HttpResultWithValueEqualsHttpResultWithValueTests.cs" />
