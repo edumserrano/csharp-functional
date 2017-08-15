@@ -1,7 +1,7 @@
 ﻿using Shouldly;
 using Xunit;
 
-namespace HttpResultMonad.Tests.HttpResultWithValue.Equality
+namespace HttpResultMonad.Tests.HttpResultWithValueMonad.Equality
 {
     public class HttpResultWithValueEqualityOperatorTests
     {

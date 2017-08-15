@@ -4,7 +4,7 @@ using MaybeMonad;
 using Shouldly;
 using Xunit;
 
-namespace HttpResultMonad.Tests.HttpResultSimple
+namespace HttpResultMonad.Tests.HttpResultSimpleMonad
 {
     public class HttpResultSimpleTests
     {

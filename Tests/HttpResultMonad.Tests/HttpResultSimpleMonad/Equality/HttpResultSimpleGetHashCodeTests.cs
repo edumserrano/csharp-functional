@@ -1,7 +1,7 @@
 ﻿using Shouldly;
 using Xunit;
 
-namespace HttpResultMonad.Tests.HttpResultSimple.Equality
+namespace HttpResultMonad.Tests.HttpResultSimpleMonad.Equality
 {
     [Trait("Monad", "ResultSimple")]
     public class HttpResultSimpleGetHashCodeTests

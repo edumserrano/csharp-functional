@@ -5,35 +5,35 @@ using MaybeMonad;
 using Shouldly;
 using Xunit;
 
-namespace HttpResultMonad.Tests.HttpResultWithValue
+namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad
 {
-    public class HttpResultWithValueTests
+    public class HttpResultWithValueAndErrorTests
     {
         [Fact]
         public void Ok_result_IsSuccess_is_true()
         {
-            var result = HttpResult.Ok("abc");
+            var result = HttpResult.Ok<string, string>("abc");
             result.IsSuccess.ShouldBeTrue();
         }
 
         [Fact]
         public void Ok_result_IsFailure_is_false()
         {
-            var result = HttpResult.Ok("abc");
+            var result = HttpResult.Ok<string, string>("abc");
             result.IsFailure.ShouldBeFalse();
         }
 
         [Fact]
         public void Fail_result_IsSuccess_is_false()
         {
-            var result = HttpResult.Fail<string>();
+            var result = HttpResult.Fail<string, string>("abc");
             result.IsSuccess.ShouldBeFalse();
         }
 
         [Fact]
         public void Fail_result_IsFailure_equals_true()
         {
-            var result = HttpResult.Fail<string>();
+            var result = HttpResult.Fail<string, string>("abc");
             result.IsFailure.ShouldBeTrue();
         }
 
@@ -41,7 +41,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValue
         public void Acessing_the_value_of_ok_result_returns_value()
         {
             var value = "abc";
-            var result = HttpResult.Ok(value);
+            var result = HttpResult.Ok<string, string>(value);
             var isEqual = result.Value.Equals(value);
             isEqual.ShouldBeTrue();
         }
@@ -49,7 +49,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValue
         [Fact]
         public void Acessing_the_value_of_fail_result_throws_exception()
         {
-            var result = HttpResult.Fail<string>();
+            var result = HttpResult.Fail<string, string>("abc");
             var exception = Should.Throw<InvalidOperationException>(() =>
             {
                 var value = result.Value;
@@ -57,16 +57,35 @@ namespace HttpResultMonad.Tests.HttpResultWithValue
         }
 
         [Fact]
+        public void Acessing_the_error_of_fail_result_returns_error()
+        {
+            var error = "abc";
+            var result = HttpResult.Fail<string, string>(error);
+            var isEqual = result.Error.Equals(error);
+            isEqual.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void Acessing_the_error_of_ok_result_throws_exception()
+        {
+            var result = HttpResult.Ok<string, string>("abc");
+            var exception = Should.Throw<InvalidOperationException>(() =>
+            {
+                var value = result.Error;
+            });
+        }
+
+        [Fact]
         public void OK_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
         {
-            var httpResult = HttpResult.Ok("value");
+            var httpResult = HttpResult.Ok<string, string>("value");
             httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
         }
 
         [Fact]
         public void Fail_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
         {
-            var httpResult = HttpResult.Fail<string>();
+            var httpResult = HttpResult.Fail<string, string>("error");
             httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
         }
 
@@ -74,26 +93,30 @@ namespace HttpResultMonad.Tests.HttpResultWithValue
         public void From_if_predicate_is_true_returns_ok_result_with_value()
         {
             var value = 1;
-            var result = HttpResult.From(() => true, value);
+            var error = "error";
+            var result = HttpResult.From(() => true, value, error);
             result.IsSuccess.ShouldBeTrue();
             result.Value.ShouldBe(value);
         }
 
         [Fact]
-        public void From_if_predicate_is_false_returns_fail_result()
+        public void From_if_predicate_is_false_returns_fail_result_with_errir()
         {
-            var result = HttpResult.From(() => false, "value if predicate is true");
+            var value = 1;
+            var error = "error";
+            var result = HttpResult.From(() => false, value, error);
             result.IsFailure.ShouldBeTrue();
+            result.Error.ShouldBe(error);
         }
 
         [Fact]
         public void Combine_if_all_results_are_ok_returns_ok_result()
         {
-            var resultsLists = new List<HttpResult<string>>
+            var resultsLists = new List<HttpResult<int, string>>
             {
-                HttpResult.Ok("value"),
-                HttpResult.Ok("value"),
-                HttpResult.Ok("value")
+                HttpResult.Ok<int,string>(1),
+                HttpResult.Ok<int,string>(2),
+                HttpResult.Ok<int,string>(3)
             };
 
             var combinedResult = HttpResult.Combine(resultsLists.ToArray());
@@ -103,20 +126,21 @@ namespace HttpResultMonad.Tests.HttpResultWithValue
         [Fact]
         public void Combine_returns_first_fail_result_if_at_least_one_result_is_a_fail()
         {
-            var httpState1 = Test.CreateHttpStateA();
-            var httpState2 = Test.CreateHttpStateB();
+            var firstHttpState = Test.CreateHttpStateA();
+            var secondHttpState = Test.CreateHttpStateB();
 
-            var firstFailure = HttpResult.Fail<string>(httpState1);
-            var resultsLists = new List<HttpResult<string>>
+            var firstFailure = HttpResult.Fail<int, string>("error", firstHttpState);
+            var resultsLists = new List<HttpResult<int, string>>
             {
-                HttpResult.Ok("value"),
+                HttpResult.Ok<int,string>(1),
                 firstFailure,
-                HttpResult.Ok("value"),
-                HttpResult.Fail<string>(httpState2)
+                HttpResult.Ok<int,string>(2),
+                HttpResult.Fail<int,string>("secod error",secondHttpState)
             };
 
             var combinedResult = HttpResult.Combine(resultsLists.ToArray());
             combinedResult.IsFailure.ShouldBeTrue();
+            combinedResult.Error.ShouldBe(firstFailure.Error);
             combinedResult.HttpState.ShouldBe(firstFailure.HttpState);
         }
     }

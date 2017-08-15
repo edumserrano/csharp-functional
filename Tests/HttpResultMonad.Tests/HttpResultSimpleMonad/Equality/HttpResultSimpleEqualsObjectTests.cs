@@ -1,7 +1,7 @@
 ﻿using Shouldly;
 using Xunit;
 
-namespace HttpResultMonad.Tests.HttpResultSimple.Equality
+namespace HttpResultMonad.Tests.HttpResultSimpleMonad.Equality
 {
     public class HttpResultSimpleEqualsObjectTests
     {
