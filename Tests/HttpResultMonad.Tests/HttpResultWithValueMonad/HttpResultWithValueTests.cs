@@ -10,6 +10,13 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad
     public class HttpResultWithValueTests
     {
         [Fact]
+        public void Creating_ok_HtttpResultWithValue_with_null_value_throws_exception()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => HttpResult.Ok<string>(null));
+            exception.Message.ShouldStartWith(HttpResultMessages.SuccessResultMustHaveValue);
+        }
+
+        [Fact]
         public void Ok_result_IsSuccess_is_true()
         {
             var result = HttpResult.Ok("abc");

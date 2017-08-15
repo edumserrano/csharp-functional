@@ -96,6 +96,7 @@
     <Compile Include="HttpResultWithValueMonad\Equality\HttpResultWithValueEqualsHttpResultWithValueTests.cs" />
     <Compile Include="HttpResultWithValueMonad\Equality\HttpResultWithValueEqualsObjectTests.cs" />
     <Compile Include="HttpResultWithValueMonad\Equality\HttpResultWithValueEqualityOperatorTests.cs" />
+    <Compile Include="HttpResultWithValueMonad\Equality\HttpResultWithValueGetHashCodeTests.cs" />
     <Compile Include="HttpResultWithValueMonad\HttpResultWithValueTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="State\Equality\HttpStateEqualsHttpStateTests.cs" />

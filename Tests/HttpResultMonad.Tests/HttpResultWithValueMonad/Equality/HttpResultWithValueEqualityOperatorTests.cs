@@ -6,7 +6,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad.Equality
     public class HttpResultWithValueEqualityOperatorTests
     {
         [Fact]
-        public void Equality_operator_between_two_ok_results_is_true_if_the_http_state_are_equal()
+        public void Equality_operator_between_two_ok_HttpResultWithValue_is_true_if_the_HttpState_are_equal()
         {
             var value = "abc";
             var httpState = Test.CreateHttpStateA();
@@ -23,7 +23,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_two_ok_results_with_different_value_is_false()
+        public void Equality_operator_between_two_ok_HttpResultWithValue_is_false_if_the_values_are_not_equal()
         {
             var result1 = HttpResult.Ok("abc");
             var result2 = HttpResult.Ok("zzz");
@@ -32,7 +32,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_two_ok_results_with_different_http_state_is_false()
+        public void Equality_operator_between_two_ok_HttpResultWithValue_is_false_if_the_HttpState_are_not_equal()
         {
             var result1 = HttpResult.Ok("abc", Test.CreateHttpStateA());
             var result2 = HttpResult.Ok("abc", Test.CreateHttpStateB());
@@ -41,7 +41,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_two_fail_results_is_true_if_they_have_the_same_http_state()
+        public void Equality_operator_between_two_fail_HttpResultWithValue_is_true_if_the_HttpState_are_equal()
         {
             var httpState = Test.CreateHttpStateA();
             var result1 = HttpResult.Fail<string>();
@@ -57,7 +57,16 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_ok_result_and_fail_result_is_false()
+        public void Equality_operator_between_two_fail_HttpResultWithValue_is_false_if_the_HttpState_are_not_equal()
+        {
+            var result1 = HttpResult.Fail(Test.CreateHttpStateA());
+            var result2 = HttpResult.Fail(Test.CreateHttpStateB());
+            var isEqual = result1 == result2;
+            isEqual.ShouldBeFalse();
+        }
+
+        [Fact]
+        public void Equality_operator_between_ok_HttpResultWithValue_and_fail_HttpResultWithValue_is_false()
         {
             var okResult = HttpResult.Ok("abc");
             var errorResult = HttpResult.Fail<string>();
