@@ -6,7 +6,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
     public class HttpResultWithErrorEqualsObjectTests
     {
         [Fact]
-        public void Equals_between_fail_httpResultWithError_and_object_is_false_if_object_is_not_an_httpResultWithError()
+        public void Equals_between_fail_HttpResultWithError_and_object_is_false_if_object_is_not_an_HttpResultWithError()
         {
             var result = HttpResultWithError.Fail("abc");
             object someObject = "abc";
@@ -15,7 +15,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_fail_httpResultWithError_and_object_is_true_if_object_is_fail_httpResultWithError_with_same_error_and_http_state()
+        public void Equals_between_fail_HttpResultWithError_and_object_is_true_if_object_is_fail_HttpResultWithError_with_equal_error_and_HttpState()
         {
             var result = HttpResultWithError.Fail("error", Test.CreateHttpStateA());
             object someObject = HttpResultWithError.Fail("error", Test.CreateHttpStateA());
@@ -24,7 +24,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_fail_httpResultWithError_and_object_is_false_if_object_is_fail_httpResultWithError_with_different_error()
+        public void Equals_between_fail_HttpResultWithError_and_object_is_false_if_object_is_fail_HttpResultWithError_with_different_error()
         {
             var result = HttpResultWithError.Fail("abc");
             object someObject = HttpResultWithError.Fail("zzz");
@@ -33,7 +33,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_fail_httpResultWithError_and_object_is_false_if_object_is_fail_httpResultWithError_with_different_http_state()
+        public void Equals_between_fail_HttpResultWithError_and_object_is_false_if_object_is_fail_HttpResultWithError_with_different_HttpState()
         {
             var result = HttpResultWithError.Fail("abc", Test.CreateHttpStateA());
             object someObject = HttpResultWithError.Fail("abc", Test.CreateHttpStateB());
@@ -42,7 +42,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_ok_httpResultWithError_and_object_is_true_if_object_is_ok_result()
+        public void Equals_between_ok_HttpResultWithError_and_object_is_true_if_object_is_ok_HttpResultWithError()
         {
             var result = HttpResultWithError.Ok<string>();
             object someObject = HttpResultWithError.Ok<string>();
@@ -51,7 +51,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_ok_httpResultWithError_and_object_is_false_if_object_is_not_ok_result()
+        public void Equals_between_ok_HttpResultWithError_and_object_is_false_if_object_is_not_ok_HttpResultWithError()
         {
             var result = HttpResultWithError.Ok<string>();
             object someObject = "zzz";

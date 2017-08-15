@@ -17,35 +17,35 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
         }
 
         [Fact]
-        public void Ok_result_IsSuccess_is_true()
+        public void Ok_HttpResultWithError_IsSuccess_is_true()
         {
             var result = HttpResultWithError.Ok<string>();
             result.IsSuccess.ShouldBeTrue();
         }
 
         [Fact]
-        public void Ok_result_IsFailure_is_false()
+        public void Ok_HttpResultWithError_IsFailure_is_false()
         {
             var result = HttpResultWithError.Ok<string>();
             result.IsFailure.ShouldBeFalse();
         }
 
         [Fact]
-        public void Fail_result_IsSuccess_is_false()
+        public void Fail_HttpResultWithError_IsSuccess_is_false()
         {
             var result = HttpResultWithError.Fail("abc");
             result.IsSuccess.ShouldBeFalse();
         }
 
         [Fact]
-        public void Fail_result_IsFailure_equals_true()
+        public void Fail_HttpResultWithError_IsFailure_equals_true()
         {
             var result = HttpResultWithError.Fail("abc");
             result.IsFailure.ShouldBeTrue();
         }
 
         [Fact]
-        public void Acessing_the_error_of_fail_result_returns_error()
+        public void Acessing_the_error_of_fail_HttpResultWithError_returns_error()
         {
             var error = "abc";
             var result = HttpResultWithError.Fail(error);
@@ -54,7 +54,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
         }
 
         [Fact]
-        public void Acessing_the_error_of_ok_result_throws_exception()
+        public void Acessing_the_error_of_ok_HttpResultWithError_throws_exception()
         {
             var result = HttpResultWithError.Ok<string>();
             var exception = Should.Throw<InvalidOperationException>(() =>
@@ -64,7 +64,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
         }
 
         [Fact]
-        public void OK_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
+        public void OK_HttpResult_withouth_passing_in_HttpState_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResultWithError.Ok<string>();
             httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
@@ -72,14 +72,14 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
 
 
         [Fact]
-        public void Fail_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
+        public void Fail_HttpResult_withouth_passing_in_HttpState_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResultWithError.Fail("abc");
             httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
         }
 
         [Fact]
-        public void From_if_predicate_is_true_returns_ok_result()
+        public void From_if_predicate_is_true_returns_ok_HttpResultWithError()
         {
             var error = "error";
             var result = HttpResultWithError.From(() => true, error);
@@ -87,7 +87,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
         }
 
         [Fact]
-        public void From_if_predicate_is_false_returns_fail_result_with_error()
+        public void From_if_predicate_is_false_returns_fail_HttpResultWithError_with_error()
         {
             var error = "error";
             var result = HttpResultWithError.From(() => false, error);
@@ -96,7 +96,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
         }
 
         [Fact]
-        public void Combine_if_all_results_are_ok_returns_ok_result()
+        public void Combine_if_all_HttpResultWithError_are_ok_returns_ok_HttpResultWithError()
         {
             var resultsLists = new List<HttpResultWithError<string>>
             {
@@ -110,7 +110,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
         }
 
         [Fact]
-        public void Combine_returns_first_fail_result_if_at_least_one_result_is_a_fail()
+        public void Combine_returns_first_fail_HttpResultWithError_if_at_least_one_HttpResultWithError_is_a_fail()
         {
             var firstHttpState = Test.CreateHttpStateA();
             var secondHttpState = Test.CreateHttpStateB();
