@@ -17,10 +17,16 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
         [Fact]
         public void Equals_between_fail_HttpResultWithError_and_object_is_true_if_object_is_fail_HttpResultWithError_with_equal_error_and_HttpState()
         {
-            var result = HttpResultWithError.Fail("error", Test.CreateHttpStateA());
-            object someObject = HttpResultWithError.Fail("error", Test.CreateHttpStateA());
-            var isEqual = result.Equals(someObject);
-            isEqual.ShouldBeTrue();
+            var error = "error";
+            var httpState = Test.CreateHttpStateA();
+            var result1 = HttpResultWithError.Fail(error);
+            object someObject1 = HttpResultWithError.Fail(error);
+            var result2 = HttpResultWithError.Fail(error, httpState);
+            object someObject2 = HttpResultWithError.Fail(error, httpState);
+            var isEqual1 = result1.Equals(someObject1);
+            var isEqual2 = result2.Equals(someObject2);
+            isEqual1.ShouldBeTrue();
+            isEqual2.ShouldBeTrue();
         }
 
         [Fact]
@@ -42,12 +48,17 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
         }
 
         [Fact]
-        public void Equals_between_ok_HttpResultWithError_and_object_is_true_if_object_is_ok_HttpResultWithError()
+        public void Equals_between_ok_HttpResultWithError_and_object_is_true_if_object_is_ok_HttpResultWithError_with_equal_HttpState()
         {
-            var result = HttpResultWithError.Ok<string>();
-            object someObject = HttpResultWithError.Ok<string>();
-            var isEqual = result.Equals(someObject);
-            isEqual.ShouldBeTrue();
+            var httpState = Test.CreateHttpStateA();
+            var result1 = HttpResultWithError.Ok<string>();
+            object someObject1 = HttpResultWithError.Ok<string>();
+            var result2 = HttpResultWithError.Ok<string>(httpState);
+            object someObject2 = HttpResultWithError.Ok<string>(httpState);
+            var isEqual1 = result1.Equals(someObject1);
+            var isEqual2 = result2.Equals(someObject2);
+            isEqual1.ShouldBeTrue();
+            isEqual2.ShouldBeTrue();
         }
 
         [Fact]

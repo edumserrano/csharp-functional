@@ -20,10 +20,15 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad.Equality
         {
             var value = "abc";
             var httpState = Test.CreateHttpStateA();
-            var result = HttpResult.Ok(value, httpState);
-            object someObject = HttpResult.Ok(value, httpState);
-            var isEqual = result.Equals(someObject);
-            isEqual.ShouldBeTrue();
+            var result1 = HttpResult.Ok(value);
+            object someObject1 = HttpResult.Ok(value);
+            var result2 = HttpResult.Ok(value, httpState);
+            object someObject2 = HttpResult.Ok(value, httpState);
+
+            var isEqual1 = result1.Equals(someObject1);
+            var isEqual2 = result2.Equals(someObject2);
+            isEqual1.ShouldBeTrue();
+            isEqual2.ShouldBeTrue();
         }
 
         [Fact]
@@ -57,12 +62,16 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad.Equality
         public void Equals_between_fail_HttpResultWithValue_and_object_is_true_if_object_is_fail_HttpResultWithValue_with_equal_HttpState()
         {
             var httpState = Test.CreateHttpStateA();
-            var result = HttpResult.Fail<string>(httpState);
-            object someObject = HttpResult.Fail<string>(httpState);
+            var result1 = HttpResult.Fail<string>();
+            object someObject1 = HttpResult.Fail<string>();
+            var result2 = HttpResult.Fail<string>(httpState);
+            object someObject2 = HttpResult.Fail<string>(httpState);
 
-            var isEqual = result.Equals(someObject);
+            var isEqual1 = result1.Equals(someObject1);
+            var isEqual2 = result2.Equals(someObject2);
 
-            isEqual.ShouldBeTrue();
+            isEqual1.ShouldBeTrue();
+            isEqual2.ShouldBeTrue();
         }
 
         [Fact]

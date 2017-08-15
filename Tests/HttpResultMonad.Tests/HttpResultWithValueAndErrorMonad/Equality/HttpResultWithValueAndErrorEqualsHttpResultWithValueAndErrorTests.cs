@@ -6,68 +6,74 @@ namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad.Equality
     public class HttpResultWithValueAndErrorEqualsHttpResultWithValueAndErrorTests
     {
         [Fact]
-        public void Equals_between_two_ok_results_is_true_if_they_have_the_same_value_and_http_state()
+        public void Equals_between_two_ok_HttpResultWithValueAndError_is_true_if_they_have_the_value_and_HttpState_are_equal()
         {
             var state = Test.CreateHttpStateA();
-            var result = HttpResult.Ok<string, string>("value", state);
-            var result2 = HttpResult.Ok<string, string>("value", state);
-            var isEqual = result.Equals(result2);
-            isEqual.ShouldBeTrue();
+            var result1 = HttpResult.Ok<string, string>("value");
+            var result2 = HttpResult.Ok<string, string>("value");
+            var result3 = HttpResult.Ok<string, string>("value", state);
+            var result4 = HttpResult.Ok<string, string>("value", state);
+            var isEqual1 = result1.Equals(result2);
+            var isEqual2 = result3.Equals(result4);
+            isEqual1.ShouldBeTrue();
+            isEqual2.ShouldBeTrue();
         }
 
         [Fact]
-        public void Equals_between_two_ok_results_is_false_if_they_do_not_have_the_same_value()
+        public void Equals_between_two_ok_HttpResultWithValueAndError_is_false_if_the_values_are_not_equal()
         {
-            var result = HttpResult.Ok<string, string>("abc");
+            var result1 = HttpResult.Ok<string, string>("abc");
             var result2 = HttpResult.Ok<string, string>("zzz");
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeFalse();
         }
 
         [Fact]
-        public void Equals_between_two_ok_results_is_false_if_they_do_not_have_the_same_http_state()
+        public void Equals_between_two_ok_HttpResultWithValueAndError_is_false_if_the_HttpState_are_not_equal()
         {
-            var result = HttpResult.Ok<string, string>("abc", Test.CreateHttpStateA());
+            var result1 = HttpResult.Ok<string, string>("abc", Test.CreateHttpStateA());
             var result2 = HttpResult.Ok<string, string>("abc", Test.CreateHttpStateB());
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeFalse();
         }
 
         [Fact]
-        public void Equals_between_two_fail_results_is_true_if_they_have_the_same_error_and_http_state()
+        public void Equals_between_two_fail_HttpResultWithValueAndError_is_true_if_the_error_and_HttpState_are_equal()
         {
             var httpState = Test.CreateHttpStateA();
-            var result = HttpResult.Fail<string, string>("error", httpState);
+            var result1 = HttpResult.Fail<string, string>("error", httpState);
             var result2 = HttpResult.Fail<string, string>("error", httpState);
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeTrue();
         }
 
         [Fact]
-        public void Equals_between_two_fail_results_is_false_if_they_do_not_have_the_same_error()
+        public void Equals_between_two_fail_HttpResultWithValueAndError_is_false_if_the_errors_are_not_equal()
         {
-            var result = HttpResult.Fail<string, string>("abc");
+            var result1 = HttpResult.Fail<string, string>("abc");
             var result2 = HttpResult.Fail<string, string>("zzz");
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeFalse();
         }
 
         [Fact]
-        public void Equals_between_two_fail_results_is_false_if_they_do_not_have_the_same_http_state()
+        public void Equals_between_two_fail_HttpResultWithValueAndError_is_false_if_the_HttpState_are_not_equal()
         {
-            var result = HttpResult.Fail<string, string>("abc", Test.CreateHttpStateA());
+            var result1 = HttpResult.Fail<string, string>("abc", Test.CreateHttpStateA());
             var result2 = HttpResult.Fail<string, string>("abc", Test.CreateHttpStateB());
-            var isEqual = result.Equals(result2);
+            var isEqual = result1.Equals(result2);
             isEqual.ShouldBeFalse();
         }
 
         [Fact]
-        public void Equals_between_ok_result_and_fail_result_is_false()
+        public void Equals_between_ok_HttpResultWithValueAndError_and_fail_HttpResultWithValueAndError_is_false()
         {
-            var result = HttpResult.Ok<string, string>("abc");
+            var result1 = HttpResult.Ok<string, string>("abc");
             var result2 = HttpResult.Fail<string, string>("abc");
-            var isEqual = result.Equals(result2);
-            isEqual.ShouldBeFalse();
+            var isEqual1 = result1.Equals(result2);
+            var isEqual2 = result2.Equals(result1);
+            isEqual1.ShouldBeFalse();
+            isEqual2.ShouldBeFalse();
         }
     }
 }
