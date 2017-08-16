@@ -75,13 +75,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultWithError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultErrorTests.cs" />
-    <Compile Include="ResultWithError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
-    <Compile Include="ResultWithValueAndError\OnError\OnErrorToHttpResultWithValueAndErrorTests.cs" />
-    <Compile Include="ResultWithValueAndError\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests_OnSuccessFunc_From_TValue_To_KValue.cs" />
-    <Compile Include="ResultWithValueAndError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultErrorTests_OnSuccessFunc_from_TValue_to_HttpResultError_of_TError.cs" />
+    <Compile Include="ResultWithErrorMonad\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithErrorTests1.cs" />
+    <Compile Include="ResultWithErrorMonad\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnError\OnErrorToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithErrorTests1.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CodeCoverage.runsettings" />
     <None Include="packages.config" />
     <None Include="xunit.runner.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Map\ToResulTests.cs" />
-    <Compile Include="Map\ToResultWithValueAndErrorTests_with_errorFunc_to_TError.cs" />
+    <Compile Include="Map\ToResultWithValueAndErrorTests.cs" />
     <Compile Include="Map\ToResultWithValueTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -73,16 +73,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpResultSimple\OnError\WithAsyncLeftOperand\OnErrorToHttpResultErrorTests.cs" />
-    <Compile Include="HttpResultWithError\OnError\WithAsyncLeftOperand\OnErrorToHttpResultErrorTests.cs" />
-    <Compile Include="HttpResultWithError\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
-    <Compile Include="HttpResultWithValueAndError\OnSuccess\WithAsyncBothOperands\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
-    <Compile Include="HttpResultWithValueAndError\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
-    <Compile Include="HttpResultWithValue\OnError\WithAsyncLeftOperand\OnErrorToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="HttpResultSimpleMonad\OnError\WithAsyncLeftOperand\OnErrorToHttpResultWithErrorTests1.cs" />
+    <Compile Include="HttpResultWithErrorMonad\OnError\WithAsyncLeftOperand\OnErrorToHttpResultErrorTests.cs" />
+    <Compile Include="HttpResultWithErrorMonad\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="HttpResultWithValueAndErrorMonad\OnError\WithAsyncLeftOperand\OnErrorToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="HttpResultWithValueAndErrorMonad\OnSuccess\WithAsyncBothOperands\OnSuccessToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="HttpResultWithValueAndErrorMonad\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="HttpResultWithValueMonad\OnError\WithAsyncLeftOperand\OnErrorToHttpResultWithValueAndErrorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CodeCoverage.runsettings" />
     <None Include="packages.config" />
     <None Include="xunit.runner.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
