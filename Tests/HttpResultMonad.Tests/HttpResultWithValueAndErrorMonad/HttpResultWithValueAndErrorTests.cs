@@ -7,6 +7,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad
 {
+    [Trait("Monad", "HttpResultWithValueAndError")]
     public class HttpResultWithValueAndErrorTests
     {
         [Fact]

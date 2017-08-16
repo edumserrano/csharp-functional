@@ -10,6 +10,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.State
 {
+    [Trait("HttpResultMonads", "HttpState")]
     public class HttpStateBuilderTests
     {
         [Fact]

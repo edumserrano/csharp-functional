@@ -5,6 +5,7 @@ using Xunit;
 
 namespace HttpResultMonad.Extensions.Tests.HttpResultWithValueAndErrorMonad.OnSuccess.WithAsyncRightOperand
 {
+    [Trait("Extensions", "HttpResultWithValueAndError")]
     public class OnSuccessToHttpResultWithValueAndErrorTests1
     {
         [Fact]

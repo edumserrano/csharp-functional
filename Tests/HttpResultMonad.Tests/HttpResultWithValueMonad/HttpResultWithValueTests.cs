@@ -7,6 +7,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultWithValueMonad
 {
+    [Trait("Monad", "HttpResultWithValue")]
     public class HttpResultWithValueTests
     {
         [Fact]

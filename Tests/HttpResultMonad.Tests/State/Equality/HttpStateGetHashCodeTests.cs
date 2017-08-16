@@ -8,6 +8,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.State.Equality
 {
+    [Trait("HttpResultMonads", "HttpState")]
     public class HttpStateGetHashCodeTests
     {
         [Fact]

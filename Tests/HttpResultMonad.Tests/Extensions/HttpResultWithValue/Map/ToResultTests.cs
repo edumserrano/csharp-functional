@@ -4,10 +4,11 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.Extensions.HttpResultWithValue.Map
 {
+    [Trait("Monad", "HttpResultSimple")]
     public class ToResultTests
     {
         [Fact]
-        public void To_propagates_ok_result_to_httpResult()
+        public void To_propagates_ok_status_to_HttpResultWithValue()
         {
             var result = HttpResult.Ok(1);
             var httpResult = result.ToHttpResult();
@@ -15,7 +16,7 @@ namespace HttpResultMonad.Tests.Extensions.HttpResultWithValue.Map
         }
 
         [Fact]
-        public void To_propagates_fail_result_to_httpResult()
+        public void To_propagates_fail_status_to_HttpResultWithValue()
         {
             var result = HttpResult.Fail<int>();
             var httpResult = result.ToHttpResult();
@@ -23,7 +24,7 @@ namespace HttpResultMonad.Tests.Extensions.HttpResultWithValue.Map
         }
 
         [Fact]
-        public void To_propagate_http_state_to_httpResult_if_http_result_is_ok()
+        public void To_propagate_HttpState_to_HttpResultWithValue_if_status_is_ok()
         {
             var httpState = Test.CreateHttpStateA();
             var result = HttpResult.Ok(1, httpState);
@@ -32,7 +33,7 @@ namespace HttpResultMonad.Tests.Extensions.HttpResultWithValue.Map
         }
 
         [Fact]
-        public void To_propagates_http_state_to_httpResult_if_http_result_is_fail()
+        public void To_propagates_HttpState_to_HttpResultWithValue_if_status_is_fail()
         {
             var httpState = Test.CreateHttpStateA();
             var result = HttpResult.Fail<int>(httpState);

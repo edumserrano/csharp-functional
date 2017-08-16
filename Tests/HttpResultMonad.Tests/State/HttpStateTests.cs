@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Http;
 using HttpResultMonad.State;
@@ -9,6 +8,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.State
 {
+    [Trait("HttpResultMonads", "HttpState")]
     public class HttpStateTests
     {
         [Fact]

@@ -3,6 +3,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultSimpleMonad.Equality
 {
+    [Trait("Monad", "HttpResultWithSimple")]
     public class HttpResultSimpleEquasHttpResultSimpleTests
     {
         [Fact]

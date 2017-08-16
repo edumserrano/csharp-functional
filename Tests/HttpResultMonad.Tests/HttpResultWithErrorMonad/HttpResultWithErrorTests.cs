@@ -7,6 +7,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
 {
+    [Trait("Monad", "HttpResultWithError")]
     public class HttpResultWithErrorTests
     {
         [Fact]

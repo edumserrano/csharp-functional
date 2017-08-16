@@ -6,6 +6,7 @@ using Xunit;
 
 namespace HttpResultMonad.Extensions.Tests.HttpResultSimpleMonad.OnError.WithAsyncLeftOperand
 {
+    [Trait("Extensions", "HttpResult")]
     public class OnErrorToHttpResultWithErrorTests1
     {
         [Fact]

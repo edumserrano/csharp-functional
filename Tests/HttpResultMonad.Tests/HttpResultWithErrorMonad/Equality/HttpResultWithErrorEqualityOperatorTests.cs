@@ -3,6 +3,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality
 {
+    [Trait("Monad", "HttpResultWithError")]
     public class HttpResultWithErrorEqualityOperatorTests
     {
         [Fact]

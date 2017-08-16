@@ -3,9 +3,10 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad.Equality
 {
+    [Trait("Monad", "HttpResultWithValueAndError")]
     public class HttpResultWithValueAndErrorInequalityOperatorTests
     {
-       [Fact]
+        [Fact]
         public void Inequality_operator_between_two_ok_HttpResultWithValueAndError_is_false_if_the_value_and_HttpState_are_equal()
         {
             var httpState = Test.CreateHttpStateA();
@@ -36,7 +37,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad.Equality
             var isEqual = result1 != result2;
             isEqual.ShouldBeTrue();
         }
-        
+
         [Fact]
         public void Inequality_operator_between_two_fail_HttpResultWithValueAndError_is_false_if_the_error_and_HttpState_are_equal()
         {
