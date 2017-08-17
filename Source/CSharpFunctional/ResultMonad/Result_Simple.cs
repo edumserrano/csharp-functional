@@ -16,7 +16,6 @@ namespace ResultMonad
         private Result(ResultStatus resultStatus)
         {
             _resultStatus = resultStatus;
-
         }
 
         public bool IsFailure
