@@ -76,5 +76,5 @@ Mapping from one monad type to another
 
 
 
-Putting it all together
------------------------
+Putting it all together: Railway-oriented programming
+-----------------------------------------------------

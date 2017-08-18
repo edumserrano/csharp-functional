@@ -24,6 +24,5 @@ the code examples shown might not be applicable to all domains. This might work 
    http-result-monad
    combine
    extensions
-   railway
    tips-and-resources
    repository
