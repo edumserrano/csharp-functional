@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+
 namespace HttpResultMonad.State
 {
     public struct HttpState : IEquatable<HttpState>
@@ -18,7 +19,8 @@ namespace HttpResultMonad.State
             ResponseRawBody = builder.ResponseRawBody;
         }
 
-
+        public static HttpState Empty => new HttpState();
+        
         public Uri Url { get; }
 
         public HttpMethod HttpMethod { get; }

@@ -1,116 +1,104 @@
 HttpResult monad
 ================
 
-The essence of the Result monad is to augment the outcome of an operation with a success status. 
-There are four variations of the Result monad:
+Please read :ref:`about the result monad <result-monad>` first because the HttpResult monad is essentially the same with an added state property of type HttpState.
+As the result monad, there are four variations of the HttpResult monad:
 
-	* Result : simply augments the outcome of an operation with a success status.
-	* ResultWithError<TError> : besides the success status it includes an Error property which must have a value if the success status is false.
-	* Result<TValue> : besides the success status it includes a Value property which must have a value if the success status is true.
-	* Result<TValue,TError> : besides the success status it includes a Value property which must have a value if the success status is true and an Error property which must have a value if the success status is false.
+	* HttpResult
+	* HttpResultWithError<TError>
+	* HttpResult<TValue>
+	* HttpResult<TValue,TError> 
 
-All variations of the Result monad contain an IsSuccess and it's inverse IsFailure property that indicate if the operation was successful or not.
+All variations of the HttpResult monad contain an IsSuccess and it's inverse IsFailure property that indicate if the operation was successful or not; as well as an HttpState property that represents the http operation that was performed.
+
+To use this you should create a wrapper on the methods that do your http communication. For instance, if you are using the HttpClient class you could do the following::
+
+	private HttpClient _httpClient;
+
+ 	private async Task<HttpResult> GetHttpResult(string url)
+    {
+        using (var response = await _httpClient.GetAsync(url))
+        {
+            Maybe<HttpState> httpState = await HttpStateBuilder.BuildAsync(response);
+            if (!response.IsSuccessStatusCode)
+            {
+                return HttpResult.Fail(httpState); 
+            }
+
+            return HttpResult.Ok(httpState);
+        }
+    }
+
+The above example shows the idea for using the HttpResult class. You are responsible for capturing the HttpState and then deciding wheter you should return an ok or a fail HttpResult. To create an HttpState you should use the :ref:`HttpStateBuilder <http-state-builder>` class.
+
+For an example class using HttpClient see the |httpResultClientClass|_. If you want to use HttpResultClient install the |httpResultClientNuget|_.
+
 
 Installing
 ----------
 
-The Result monad NuGet package can be found at |resultNuget|_.
+The HttpResult monad NuGet package can be found at |httpResultNuget|_.
 Installing is performed via NuGet::
 
-	PM> Install-Package ResultMonad
+	PM> Install-Package HttpResultMonad
 
 
-Result: How To 
---------------
+HttpResult monads: How To 
+-------------------------
 
-The Result type is meant to be used when the method does not return any value and if it fails you do not care about the details of the failure.
+Please read the :ref:`how-to for each variation of the Result monad <how-to-result-monad>` to understand how to use the HttpResult monads.
+The only difference is that the HttpResult also requires an HttpState in its Ok() and Fail() methods. See :ref:`the HttpState <http-state>` and :ref:`HttpStateBuilder <http-state-builder>` sections to understand how to create an HttpState instance.
 
-To create a Result instance you do::
+.. _http-state:
 
-	var okResult = Result.Ok();
-	var failResult = Result.Fail();
+HttpState: How To 
+------------------
 
-ResultWithError: How To 
------------------------
+The HttpState represents an the result of an http operation. It contains the following properties::
 
-The ResultWithError<TError> type is meant to be used when the method does not return any value but if it fails you want information regarding the failure.
+	public Uri Url { get; }
 
-To create a ResultWithError instance you do::
+	public HttpMethod HttpMethod { get; }
 
-	var okResult = ResultWithError.Ok<string>();
-	var failResult = ResultWithError.Fail("some error info");
+	public HttpStatusCode HttpStatusCode { get; }
 
-To access the error you do::
+	public List<KeyValuePair<string, IEnumerable<string>>> RequestHeaders { get; }
 
-	var failResult = ResultWithError.Fail("some error info");
-	var error = failResult.Error; // evaluates to "some error info"
+	public string RequestRawBody { get; }
 
-Accessing the Error property of an ok ResultWithError throws InvalidOperationException exception::
+	public List<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders { get; }
 
-	var okResult = ResultWithError.Ok<string>();
-	var error = failResult.Error; //throws exception
+	public string ResponseRawBody { get; }
 
-You can also use the From method to create a ResultWithError. It accepts a predicate function and an error. If the predicate evaluates to true the method returns an ok ResultWithError, if the predicate evaluates to false it returns a fail ResultWithError containing the error::
+If you need to create an empty state do::
 
-	var okResult = ResultWithError.From(()=>true, "some error info"); 	// creates an ok ResultWithError<string>
-	var failResult = ResultWithError.From(()=>false, "some error info");	// creates a fail ResultWithError<string> with "some error info" as the error
+	var emptyState = HttpState.Empty;
 
-Result<TValue>: How To 
-----------------------
+To check if an HttpState is emtpy do::
 
-The Result<TValue> type is meant to be used when the method does returns a value but if it fails you do not want information regarding the failure.
+	var emptyState = HttpState.Empty;
+	var isEmptyState = emptyState.Equals(HttpState.Empty); //evaluates to true
 
-To create a Result<TValue> instance you do::
+.. _http-state-builder:
 
-	var okResult = Result.Ok("some value");
-	var failResult = Result.Fail<string>();
+HttpStateBuilder: How To 
+-------------------------------
 
-To access the value you do::
+The HttpStateBuilder allows you to contruct an HttpState. You can use the With methods and chose which properties you want to add to the HttpState and in the end call Build() as such::
 
-	var okResult = Result.Ok("some value");
-	var value = okResult.Value; // evaluates to "some value"
+	var state = new HttpStateBuilder()
+                .WithHttpMethod(HttpMethod.Get)
+                .WithUrl(new Uri("https://github.com"))
+                .WithHttpStatusCode(HttpStatusCode.OK)
+                .WithRequestRawBody("raw request body A")
+                .WithResponseRawBody("raw response body A")
+                .WithRequestHeaders(requestHeaders)
+                .WithResponseHeaders(responseHeaders)
+                .Build();
 
-Accessing the Value property of a fail Result<TValue> throws InvalidOperationException exception::
+Or you can use the BuildAsync to create one from an HttpResponseMessage instance::
 
-	var okResult = Result.Ok<string>();
-	var error = okResult.Error; //throws exception
+    HttpResponseMessage httpResponse = /*using HttpClient will return an instance of HttpResponseMessage*/
+	var state = await HttpStateBuilder.BuildAsync(httpResponse);
 
-You can also use the From method to create a Result<TValue>. It accepts a predicate function and a value. If the predicate evaluates to true the method returns an ok Result<TValue> containing the value, if the predicate evaluates to false it returns a fail Result<TValue>::
 
-	var okResult = Result.From(()=>true, "some value"); 	// creates an ok Result<string> with "some value" as the value
-	var failResult = Result.From(()=>false, "some value");	// creates a fail Result<string> 
-
-Result<TValue,TError>: How To 
------------------------------
-
-The Result<TValue,TError> type is meant to be used when the method does returns a value and if in addition, if it fails, it will return an error.
-
-To create a Result<TValue,TError> instance you do::
-
-	var okResult = Result.Ok<string,int>("some value");
-	var failResult = Result.Fail<string,int>(0);
-
-To access the value you do::
-
-	var okResult = Result.Ok<string,int>("some value");
-	var value = okResult.Value; // evaluates to "some value"
-
-To access the error you do::
-
-	var failResult = Result.Fail<string,int>(0);
-	var error = failResult.Error; // evaluates to 0
-
-Accessing the Value property of a fail Result<TValue,TError> throws InvalidOperationException exception::
-
-	var failResult = Result.Fail<string,int>(0);
-	var value = failResult.Value; //throws exception
-
-Accessing the Error property of an ok Result<TValue,TError> throws InvalidOperationException exception::
-
-	var okResult = Result.Ok<string,int>("some value");
-	var error = okResult.Error; //throws exception
-
-You can also use the From method to create a Result<TValue,TError>. It accepts a predicate function, a value and an error. If the predicate evaluates to true the method returns an ok Result<TValue,TError> containing the value, if the predicate evaluates to false it returns a fail Result<TValue,TError> containing the error::
-
-	var okResult = Result.From<string,int>(()=>true, "some value",0); 	// creates an ok Result<string,int> with "some value" as the value
-	var failResult = Result.From<string,int>(()=>false, "some value",0);	// creates a fail Result<string,int> with 0 as the error 

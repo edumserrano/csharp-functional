@@ -9,7 +9,7 @@ namespace HttpResultMonad.Tests
 {
     internal static class Test
     {
-        public static Maybe<HttpState> CreateHttpStateA()
+        public static HttpState CreateHttpStateA()
         {
             var requestHeaders = new List<KeyValuePair<string, IEnumerable<string>>>
             {
@@ -32,7 +32,7 @@ namespace HttpResultMonad.Tests
                 .Build();
         }
 
-        public static Maybe<HttpState> CreateHttpStateB()
+        public static HttpState CreateHttpStateB()
         {
             return new HttpStateBuilder()
                 .WithHttpMethod(HttpMethod.Delete)

@@ -119,9 +119,9 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
             var firstFailure = HttpResultWithError.Fail("error", firstHttpState);
             var resultsLists = new List<HttpResultWithError<string>>
             {
-                HttpResultWithError.Ok<string>(),
+                HttpResultWithError.Ok<string>(HttpState.Empty),
                 firstFailure,
-                HttpResultWithError.Ok<string>(),
+                HttpResultWithError.Ok<string>(HttpState.Empty),
                 HttpResultWithError.Fail("second error",secondHttpState)
             };
 

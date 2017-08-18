@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Linq;
 using MaybeMonad;
 using ResultMonad.Extensions.ResultWithValueAndErrorMonad.Map;
-using ResultMonad.Extensions.ResultWithValueMonad.Map;
 
 namespace ResultMonad
 {
@@ -143,7 +142,7 @@ namespace ResultMonad
             var anyFailure = results.Any(x => x.IsFailure);
             return !anyFailure
                 ? Result.Ok()
-                : results.First(x => x.IsFailure);
+                : Result.Fail();
         }
 
         [DebuggerStepThrough]
@@ -152,7 +151,7 @@ namespace ResultMonad
             var anyFailure = results.Any(x => x.IsFailure);
             return !anyFailure
                 ? Result.Ok()
-                : results.First(x => x.IsFailure).ToResult();
+                : Result.Fail();
         }
 
 

@@ -1,45 +1,80 @@
-.. _how-to-test-an-analyzer:
+Extensions
+==========
 
-How to test an analyzer
-=======================
+The extension methods available don't cover every possible scenario. I encourage you to take a look at the code in the |repo|_ and create your own.
 
-Once you have :ref:`created your test project <creating-test-proj>` I believe the best way to test your analyzer is to look at the example unit tests that are created as part of the :ref:`default Visual Studio template for creating a Roslyn Analyzer <easy-way>`.
+Out of the box extensions
+-------------------------
 
-The test project created by the default template has two folders inside with helper classes for testing Analyzers and Code Fix Providers:
+The extension methods divided into the following NuGet packages::
 
-* Helpers 
-* Verifiers
+* |ResultMonadExtensionsNuget|_ : extensions to the result monads that always return another instance of a result monad.
+* |HttpResultMonadExtensionsNuget|_ : extensions to the http result monads that always return another instance of an http result monad.
+* |ResultMonadExtensionsHttpResultMonadNuget|_ : extensions to the result monad that return an instance of an http result monad.
+* |MaybeMonadExtensionsResultMonadNuget|_ : extensions to the maybe monad that return an instance of a result monad.
 
-I recommend that you copy these and re-use the classes to test your analyzers and code fixes. In the `roslyn-analyzers repository <https://github.com/edumserrano/roslyn-analyzers/tree/master/Tests/Analyzers.Tests/_TestEnvironment>`_ I have adapted the code from these folders to better suit my testing.
+The |ResultMonadExtensionsHttpResultMonadNuget| is separated from the |ResultMonadExtensionsNuget|, just as the |ResultMonadExtensionsHttpResultMonadNuget| is separated from the |HttpResultMonadExtensionsNuget|, because it allows you to only work with either the Result monad or the HttpResult monad. 
+If they were together then installing extensions for the result monad would mean that you would have to install the http result monad NuGet as well even though you didn't want to use it.
 
-Testing strategy
+Installing
+----------
+
+Installing is performed via NuGet. For example to install the |ResultMonadExtensionsNuget| do::
+
+	PM> Install-Package ResultMonad.Extensions
+
+Maybe extensions
 ----------------
 
-Although you can create the contents of the C# source file as a string directly in the test I recommend that you create a test solution and add there all the files that are required for your tests. Add the cases that should trigger your analyzers, the cases that should not trigger the analyzers, how the code is before the code fix provider and how it should be after.
+The only Maybe extensions allow to map from a maybe monad to a result monad.
 
-This solution should be a separate solution from the solution where you have your analyzer because it is likely that you will have code in there that will not compile. This solution is not meant to build sucessfully. It is only meant to have the source files for your test cases.
+Example usages would be::
 
-I believe this is a better strategy than using string because it will make it easier to mantain your tests, Visual Studio helps you right the test code and you can use the test solution when :ref:`debugging with the experimental version of Visual Studio <how-to-debug>`.
+	Maybe<User> maybeUser = GetUserById(id);
+	Result result1 = maybeUser.ToResult();
+	/*
+	* if maybeUser.HasValue is true then result1.IsSuccess is true.
+	* if maybeUser.HasValue is false then result1.IsFailure is true.
+	*/
 
-
-
-
-
-
-
-You can combine a set of results. Combine is useful to determine if a set of operations all succeeded or not. It will return an ok result only if all combined results are ok::
-
-	var resultsLists1 = new List<Result>
-	{
-		Result.Ok(),
-		Result.Ok()
-	};
+	Result<User> result2 = maybeUser.ToResultWithValue(); 
+	/*
+	* if maybeUser.HasValue is true then result2.IsSuccess is true and result2.Value evaluates to maybeUser.Value.
+	* if maybeUser.HasValue is false then result2.IsFailure is true.
+	*/
 	
-	var resultsLists2 = new List<Result>
-	{
-		Result.Ok(),
-		Result.Fail()
-	};
+	Result<User,string> result3 = maybeUser.ToResultWithValueAndError(()=>"no user found"); //result3.Value evaluates to maybeUser.Value if ;
+	/*
+	* if maybeUser.HasValue is true then result3.IsSuccess is true and result3.Value evaluates to maybeUser.Value.
+	* if maybeUser.HasValue is false then result3.IsFailure is true and result3.Value evaluates to "no user found".
+	*/
 
-	Result combinedResult1 = Result.Combine(resultsLists1.ToArray()); // creates an ok result
-	Result combinedResult2 = Result.Combine(resultsLists2.ToArray()); // creates a fail result
+Result and HttpResult extensions
+--------------------------------
+
+.. note:: here when the word result is used it refers to either a result monad or an http result monad.
+
+The available extensions are of the type:
+
+* OnSuccess: executes if the IsSuccess property of the result is true;
+* OnFailure: executes if the IsFailure property of the result is true;
+* Ensure: evaluates a condition and executes if the condition is true;
+
+One that is not yet implemented but is definitily useful would be the OnBoth. OnBoth would execute regardless of the IsSuccess/IsFailure of the result.
+
+An example of using an OnSuccess extension would be::
+
+
+An example of using an OnFailure extension would be::
+
+
+An example of using an Ensure extension would be::
+
+
+Mapping from one monad type to another
+--------------------------------------
+
+
+
+Putting it all together
+-----------------------

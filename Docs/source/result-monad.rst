@@ -1,3 +1,5 @@
+.. _result-monad:
+
 Result monad
 ============
 
@@ -19,13 +21,14 @@ Installing is performed via NuGet::
 
 	PM> Install-Package ResultMonad
 
+.. _how-to-result-monad:
 
 Result: How To 
 --------------
 
 The Result type is meant to be used when the method does not return any value and if it fails you do not care about the details of the failure.
 
-To create a Result instance you do::
+To create a Result instance do::
 
 	var okResult = Result.Ok();
 	var failResult = Result.Fail();
@@ -35,12 +38,12 @@ ResultWithError: How To
 
 The ResultWithError<TError> type is meant to be used when the method does not return any value but if it fails you want information regarding the failure.
 
-To create a ResultWithError instance you do::
+To create a ResultWithError instance do::
 
 	var okResult = ResultWithError.Ok<string>();
 	var failResult = ResultWithError.Fail("some error info");
 
-To access the error you do::
+To access the error do::
 
 	var failResult = ResultWithError.Fail("some error info");
 	var error = failResult.Error; // evaluates to "some error info"
@@ -60,12 +63,12 @@ Result<TValue>: How To
 
 The Result<TValue> type is meant to be used when the method does returns a value but if it fails you do not want information regarding the failure.
 
-To create a Result<TValue> instance you do::
+To create a Result<TValue> instance do::
 
 	var okResult = Result.Ok("some value");
 	var failResult = Result.Fail<string>();
 
-To access the value you do::
+To access the value do::
 
 	var okResult = Result.Ok("some value");
 	var value = okResult.Value; // evaluates to "some value"
@@ -85,17 +88,17 @@ Result<TValue,TError>: How To
 
 The Result<TValue,TError> type is meant to be used when the method does returns a value and if in addition, if it fails, it will return an error.
 
-To create a Result<TValue,TError> instance you do::
+To create a Result<TValue,TError> instance do::
 
 	var okResult = Result.Ok<string,int>("some value");
 	var failResult = Result.Fail<string,int>(0);
 
-To access the value you do::
+To access the value do::
 
 	var okResult = Result.Ok<string,int>("some value");
 	var value = okResult.Value; // evaluates to "some value"
 
-To access the error you do::
+To access the error do::
 
 	var failResult = Result.Fail<string,int>(0);
 	var error = failResult.Error; // evaluates to 0

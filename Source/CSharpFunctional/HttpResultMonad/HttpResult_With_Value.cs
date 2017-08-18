@@ -14,10 +14,10 @@ namespace HttpResultMonad
         private readonly HttpResultStatus _httpResultStatus;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly Maybe<HttpState> _httpState;
+        private readonly HttpState _httpState;
 
         [DebuggerStepThrough]
-        internal HttpResult(HttpResultStatus status, Maybe<T> value, Maybe<HttpState> httpState)
+        internal HttpResult(HttpResultStatus status, Maybe<T> value, HttpState httpState)
         {
             if (status == HttpResultStatus.Ok && value.HasNoValue)
             {
@@ -61,7 +61,7 @@ namespace HttpResultMonad
             }
         }
 
-        public Maybe<HttpState> HttpState
+        public HttpState HttpState
         {
             [DebuggerStepThrough]
             get

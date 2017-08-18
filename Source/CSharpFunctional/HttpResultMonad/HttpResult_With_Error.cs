@@ -13,35 +13,15 @@ namespace HttpResultMonad
     public struct HttpResultWithError
     {
         [DebuggerStepThrough]
-        public static HttpResultWithError<T> Ok<T>()
-        {
-            return Ok<T>(Maybe<HttpState>.Nothing);
-        }
-
-        [DebuggerStepThrough]
-        public static HttpResultWithError<T> Ok<T>(Maybe<HttpState> httpState)
+        public static HttpResultWithError<T> Ok<T>(HttpState httpState)
         {
             return new HttpResultWithError<T>(HttpResultStatus.Ok, Maybe<T>.Nothing, httpState);
         }
 
         [DebuggerStepThrough]
-        public static HttpResultWithError<T> Fail<T>(T error)
-        {
-            return Fail(error, Maybe<HttpState>.Nothing);
-        }
-
-        [DebuggerStepThrough]
-        public static HttpResultWithError<T> Fail<T>(T error, Maybe<HttpState> httpState)
+        public static HttpResultWithError<T> Fail<T>(T error, HttpState httpState)
         {
             return new HttpResultWithError<T>(HttpResultStatus.Fail, error, httpState);
-        }
-
-        [DebuggerStepThrough]
-        public static HttpResultWithError<TError> From<TError>(Func<bool> predicate, TError error)
-        {
-            return predicate()
-                ? Ok<TError>()
-                : Fail(error);
         }
     }
 
@@ -54,10 +34,10 @@ namespace HttpResultMonad
         private readonly HttpResultStatus _httpResultStatus;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly Maybe<HttpState> _httpState;
+        private readonly HttpState _httpState;
 
         [DebuggerStepThrough]
-        internal HttpResultWithError(HttpResultStatus httpResultStatus, Maybe<T> error, Maybe<HttpState> httpState)
+        internal HttpResultWithError(HttpResultStatus httpResultStatus, Maybe<T> error, HttpState httpState)
         {
             if (httpResultStatus == HttpResultStatus.Fail && error.HasNoValue)
             {
@@ -101,7 +81,7 @@ namespace HttpResultMonad
             }
         }
 
-        public Maybe<HttpState> HttpState
+        public HttpState HttpState
         {
             [DebuggerStepThrough]
             get

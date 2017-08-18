@@ -14,10 +14,10 @@ namespace HttpResultMonad
         private readonly HttpResultStatus _httpResultStatus;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly Maybe<HttpState> _httpState;
+        private readonly HttpState _httpState;
 
         [DebuggerStepThrough]
-        private HttpResult(HttpResultStatus httpResultStatus, Maybe<HttpState> httpState)
+        private HttpResult(HttpResultStatus httpResultStatus, HttpState httpState)
         {
             _httpResultStatus = httpResultStatus;
             _httpState = httpState;
@@ -41,7 +41,7 @@ namespace HttpResultMonad
             }
         }
 
-        public Maybe<HttpState> HttpState
+        public HttpState HttpState
         {
             [DebuggerStepThrough]
             get
@@ -108,94 +108,42 @@ namespace HttpResultMonad
         }
 
         #endregion
-        
-        [DebuggerStepThrough]
-        public static HttpResult Ok()
-        {
-            return Ok(Maybe<HttpState>.Nothing);
-        }
 
         [DebuggerStepThrough]
-        public static HttpResult Ok(Maybe<HttpState> httpState)
+        public static HttpResult Ok(HttpState httpState)
         {
             return new HttpResult(HttpResultStatus.Ok, httpState);
         }
 
-        [DebuggerStepThrough]
-        public static HttpResult Fail()
-        {
-            return Fail(Maybe<HttpState>.Nothing);
-        }
 
         [DebuggerStepThrough]
-        public static HttpResult Fail(Maybe<HttpState> httpState)
+        public static HttpResult Fail(HttpState httpState)
         {
             return new HttpResult(HttpResultStatus.Fail, httpState);
         }
 
         [DebuggerStepThrough]
-        public static HttpResult<TValue> Ok<TValue>(TValue value)
-        {
-            return Ok(value, Maybe<HttpState>.Nothing);
-        }
-
-        [DebuggerStepThrough]
-        public static HttpResult<TValue> Ok<TValue>(TValue value, Maybe<HttpState> httpState)
+        public static HttpResult<TValue> Ok<TValue>(TValue value, HttpState httpState)
         {
             return new HttpResult<TValue>(HttpResultStatus.Ok, value, httpState);
         }
 
         [DebuggerStepThrough]
-        public static HttpResult<TValue> Fail<TValue>()
-        {
-            return Fail<TValue>(Maybe<HttpState>.Nothing);
-        }
-
-
-        [DebuggerStepThrough]
-        public static HttpResult<TValue> Fail<TValue>(Maybe<HttpState> httpState)
+        public static HttpResult<TValue> Fail<TValue>(HttpState httpState)
         {
             return new HttpResult<TValue>(HttpResultStatus.Fail, Maybe<TValue>.Nothing, httpState);
         }
 
         [DebuggerStepThrough]
-        public static HttpResult<TValue, TError> Ok<TValue, TError>(TValue value)
-        {
-            return Ok<TValue, TError>(value, Maybe<HttpState>.Nothing);
-        }
-
-        [DebuggerStepThrough]
-        public static HttpResult<TValue, TError> Ok<TValue, TError>(TValue value, Maybe<HttpState> httpState)
+        public static HttpResult<TValue, TError> Ok<TValue, TError>(TValue value, HttpState httpState)
         {
             return new HttpResult<TValue, TError>(HttpResultStatus.Ok, value, Maybe<TError>.Nothing, httpState);
         }
 
         [DebuggerStepThrough]
-        public static HttpResult<TValue, TError> Fail<TValue, TError>(TError error)
-        {
-            return Fail<TValue, TError>(error, Maybe<HttpState>.Nothing);
-        }
-
-        [DebuggerStepThrough]
-        public static HttpResult<TValue, TError> Fail<TValue, TError>(TError error, Maybe<HttpState> httpState)
+        public static HttpResult<TValue, TError> Fail<TValue, TError>(TError error, HttpState httpState)
         {
             return new HttpResult<TValue, TError>(HttpResultStatus.Fail, Maybe<TValue>.Nothing, error, httpState);
-        }
-
-        [DebuggerStepThrough]
-        public static HttpResult<TValue> From<TValue>(Func<bool> predicate, TValue value)
-        {
-            return predicate()
-                ? Ok(value)
-                : Fail<TValue>();
-        }
-
-        [DebuggerStepThrough]
-        public static HttpResult<TValue, TError> From<TValue, TError>(Func<bool> predicate, TValue value, TError error)
-        {
-            return predicate()
-                ? Ok<TValue, TError>(value)
-                : Fail<TValue, TError>(error);
         }
 
         [DebuggerStepThrough]
@@ -203,7 +151,7 @@ namespace HttpResultMonad
         {
             var anyFailure = results.Any(x => x.IsFailure);
             return !anyFailure
-                ? Ok()
+                ? Ok(State.HttpState.Empty)
                 : results.First(x => x.IsFailure);
         }
 
@@ -212,7 +160,7 @@ namespace HttpResultMonad
         {
             var anyFailure = results.Any(x => x.IsFailure);
             return !anyFailure
-                ? Ok()
+                ? Ok(State.HttpState.Empty)
                 : results.First(x => x.IsFailure).ToHttpResult();
         }
 
@@ -222,7 +170,7 @@ namespace HttpResultMonad
         {
             var anyFailure = resultsWithError.Any(x => x.IsFailure);
             return !anyFailure
-                ? HttpResultWithError.Ok<TError>()
+                ? HttpResultWithError.Ok<TError>(State.HttpState.Empty)
                 : resultsWithError.First(x => x.IsFailure);
         }
 
@@ -231,7 +179,7 @@ namespace HttpResultMonad
         {
             var anyFailure = results.Any(x => x.IsFailure);
             return !anyFailure
-                ? HttpResultWithError.Ok<TError>()
+                ? HttpResultWithError.Ok<TError>(State.HttpState.Empty)
                 : results.First(x => x.IsFailure).ToHttpResultWithError();
         }
     }
