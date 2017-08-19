@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using HttpResultMonad.State;
-using MaybeMonad;
 using Shouldly;
 using Xunit;
 
@@ -94,36 +93,16 @@ namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad
         public void OK_HttpResult_withouth_passing_in_HttpState_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResult.Ok<string, string>("value");
-            httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
+            httpResult.HttpState.ShouldBe(HttpState.Empty);
         }
 
         [Fact]
         public void Fail_HttpResult_withouth_passing_in_HttpState_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResult.Fail<string, string>("error");
-            httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
+            httpResult.HttpState.ShouldBe(HttpState.Empty);
         }
-
-        [Fact]
-        public void From_if_predicate_is_true_returns_ok_HttpResultWithValueAndError_with_value()
-        {
-            var value = 1;
-            var error = "error";
-            var result = HttpResult.From(() => true, value, error);
-            result.IsSuccess.ShouldBeTrue();
-            result.Value.ShouldBe(value);
-        }
-
-        [Fact]
-        public void From_if_predicate_is_false_returns_fail_HttpResultWithValueAndError_with_errir()
-        {
-            var value = 1;
-            var error = "error";
-            var result = HttpResult.From(() => false, value, error);
-            result.IsFailure.ShouldBeTrue();
-            result.Error.ShouldBe(error);
-        }
-
+        
         [Fact]
         public void Combine_if_all_results_are_ok_returns_ok_result()
         {

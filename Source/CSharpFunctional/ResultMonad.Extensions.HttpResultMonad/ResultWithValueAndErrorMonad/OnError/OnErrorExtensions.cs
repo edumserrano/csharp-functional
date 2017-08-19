@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using HttpResultMonad;
+using HttpResultMonad.State;
 
 namespace ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndErrorMonad.OnError
 {
@@ -13,11 +14,11 @@ namespace ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndErrorMonad.On
         {
             if (result.IsSuccess)
             {
-                return HttpResult.Ok<TValue, KError>(result.Value);
+                return HttpResult.Ok<TValue, KError>(result.Value, HttpState.Empty);
             }
 
             var newError = errorFunc(result.Error);
-            return HttpResult.Fail<TValue, KError>(newError);
+            return HttpResult.Fail<TValue, KError>(newError, HttpState.Empty);
         }
     }
 }

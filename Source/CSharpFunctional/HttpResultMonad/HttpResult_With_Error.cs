@@ -13,9 +13,21 @@ namespace HttpResultMonad
     public struct HttpResultWithError
     {
         [DebuggerStepThrough]
+        public static HttpResultWithError<T> Ok<T>()
+        {
+            return new HttpResultWithError<T>(HttpResultStatus.Ok, Maybe<T>.Nothing, HttpState.Empty);
+        }
+
+        [DebuggerStepThrough]
         public static HttpResultWithError<T> Ok<T>(HttpState httpState)
         {
             return new HttpResultWithError<T>(HttpResultStatus.Ok, Maybe<T>.Nothing, httpState);
+        }
+
+        [DebuggerStepThrough]
+        public static HttpResultWithError<T> Fail<T>(T error)
+        {
+            return new HttpResultWithError<T>(HttpResultStatus.Fail, error, HttpState.Empty);
         }
 
         [DebuggerStepThrough]

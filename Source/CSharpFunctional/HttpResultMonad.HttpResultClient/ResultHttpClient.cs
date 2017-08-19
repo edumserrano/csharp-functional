@@ -5,7 +5,6 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using HttpResultMonad.State;
-using MaybeMonad;
 
 namespace HttpResultMonad.HttpResultClient
 {
@@ -207,8 +206,8 @@ namespace HttpResultMonad.HttpResultClient
                 {
                     var httpState = await HttpStateBuilder.BuildAsync(response);
                     return response.IsSuccessStatusCode
-                        ? HttpResult.Ok(Maybe.From(httpState))
-                        : HttpResult.Fail(Maybe.From(httpState));
+                        ? HttpResult.Ok(httpState)
+                        : HttpResult.Fail(httpState);
                 }
             }
         }
@@ -274,13 +273,10 @@ namespace HttpResultMonad.HttpResultClient
         {
             using (var response = await HttpClient.GetAsync(url))
             {
-                Maybe<HttpState> httpState = await HttpStateBuilder.BuildAsync(response);
-                if (!response.IsSuccessStatusCode)
-                {
-                    return HttpResult.Fail(httpState);
-                }
-
-                return HttpResult.Ok(httpState);
+                var httpState = await HttpStateBuilder.BuildAsync(response);
+                return response.IsSuccessStatusCode
+                    ? HttpResult.Ok(httpState)
+                    : HttpResult.Fail(httpState);
             }
         }
 

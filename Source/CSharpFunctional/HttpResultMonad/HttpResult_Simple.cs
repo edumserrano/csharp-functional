@@ -110,16 +110,33 @@ namespace HttpResultMonad
         #endregion
 
         [DebuggerStepThrough]
+        public static HttpResult Ok()
+        {
+            return new HttpResult(HttpResultStatus.Ok, HttpState.Empty);
+        }
+
+        [DebuggerStepThrough]
         public static HttpResult Ok(HttpState httpState)
         {
             return new HttpResult(HttpResultStatus.Ok, httpState);
         }
-
+        
+        [DebuggerStepThrough]
+        public static HttpResult Fail()
+        {
+            return new HttpResult(HttpResultStatus.Fail, HttpState.Empty);
+        }
 
         [DebuggerStepThrough]
         public static HttpResult Fail(HttpState httpState)
         {
             return new HttpResult(HttpResultStatus.Fail, httpState);
+        }
+
+        [DebuggerStepThrough]
+        public static HttpResult<TValue> Ok<TValue>(TValue value)
+        {
+            return new HttpResult<TValue>(HttpResultStatus.Ok, value, HttpState.Empty);
         }
 
         [DebuggerStepThrough]
@@ -129,15 +146,33 @@ namespace HttpResultMonad
         }
 
         [DebuggerStepThrough]
+        public static HttpResult<TValue> Fail<TValue>()
+        {
+            return new HttpResult<TValue>(HttpResultStatus.Fail, Maybe<TValue>.Nothing, HttpState.Empty);
+        }
+
+        [DebuggerStepThrough]
         public static HttpResult<TValue> Fail<TValue>(HttpState httpState)
         {
             return new HttpResult<TValue>(HttpResultStatus.Fail, Maybe<TValue>.Nothing, httpState);
         }
 
         [DebuggerStepThrough]
+        public static HttpResult<TValue, TError> Ok<TValue, TError>(TValue value)
+        {
+            return new HttpResult<TValue, TError>(HttpResultStatus.Ok, value, Maybe<TError>.Nothing, HttpState.Empty);
+        }
+
+        [DebuggerStepThrough]
         public static HttpResult<TValue, TError> Ok<TValue, TError>(TValue value, HttpState httpState)
         {
             return new HttpResult<TValue, TError>(HttpResultStatus.Ok, value, Maybe<TError>.Nothing, httpState);
+        }
+
+        [DebuggerStepThrough]
+        public static HttpResult<TValue, TError> Fail<TValue, TError>(TError error)
+        {
+            return new HttpResult<TValue, TError>(HttpResultStatus.Fail, Maybe<TValue>.Nothing, error, HttpState.Empty);
         }
 
         [DebuggerStepThrough]

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using HttpResultMonad.State;
-using MaybeMonad;
 
 namespace HttpResultMonad.Extensions.Tests
 {
@@ -32,7 +31,7 @@ namespace HttpResultMonad.Extensions.Tests
                 .Build();
         }
 
-        public static Maybe<HttpState> CreateHttpStateB()
+        public static HttpState CreateHttpStateB()
         {
             return new HttpStateBuilder()
                 .WithHttpMethod(HttpMethod.Delete)

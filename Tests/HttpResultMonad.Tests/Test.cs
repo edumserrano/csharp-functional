@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using HttpResultMonad.State;
-using MaybeMonad;
 
 namespace HttpResultMonad.Tests
 {

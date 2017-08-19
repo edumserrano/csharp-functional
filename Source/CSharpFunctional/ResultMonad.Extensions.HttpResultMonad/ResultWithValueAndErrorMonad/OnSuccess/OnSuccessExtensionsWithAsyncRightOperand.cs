@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using HttpResultMonad;
+using HttpResultMonad.State;
 
 namespace ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndErrorMonad.OnSuccess
 {
@@ -13,7 +14,7 @@ namespace ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndErrorMonad.On
             Func<TValue, Task<HttpResultWithError<TError>>> onSuccessFunc)
         {
             return result.IsFailure
-                ? Task.FromResult(HttpResultWithError.Fail(result.Error))
+                ? Task.FromResult(HttpResultWithError.Fail(result.Error, HttpState.Empty))
                 : onSuccessFunc(result.Value);
         }
 
@@ -23,7 +24,7 @@ namespace ResultMonad.Extensions.HttpResultMonad.ResultWithValueAndErrorMonad.On
             Func<TValue, Task<HttpResult<KValue, TError>>> onSuccessFunc)
         {
             return result.IsFailure
-                ? Task.FromResult(HttpResult.Fail<KValue, TError>(result.Error))
+                ? Task.FromResult(HttpResult.Fail<KValue, TError>(result.Error, HttpState.Empty))
                 : onSuccessFunc(result.Value);
         }
     }

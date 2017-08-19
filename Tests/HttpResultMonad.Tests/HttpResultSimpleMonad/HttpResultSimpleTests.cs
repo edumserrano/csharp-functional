@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using HttpResultMonad.State;
-using MaybeMonad;
 using Shouldly;
 using Xunit;
 
@@ -41,7 +40,7 @@ namespace HttpResultMonad.Tests.HttpResultSimpleMonad
         public void OK_HttpResultSimple_withouth_passing_in_HttpState_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResult.Ok();
-            httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
+            httpResult.HttpState.ShouldBe(HttpState.Empty);
         }
 
 
@@ -49,7 +48,7 @@ namespace HttpResultMonad.Tests.HttpResultSimpleMonad
         public void Fail_HttpResultSimple_withouth_passing_in_HttpState_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResult.Fail();
-            httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
+            httpResult.HttpState.ShouldBe(HttpState.Empty);
         }
 
         [Fact]

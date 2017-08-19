@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using HttpResultMonad;
+using HttpResultMonad.State;
 using ResultMonad.Extensions.HttpResultMonad.ResultWithErrorMonad.OnSuccess;
 using Shouldly;
 using Xunit;
@@ -75,7 +76,7 @@ namespace ResultMonad.Extensions.HttpResultMonad.Tests.ResultWithErrorMonad.OnSu
             var result = await ResultWithError.Ok<string>()
                 .OnSuccessToHttpResultWithError(OnSuccessFunc());
 
-            result.HttpState.HasNoValue.ShouldBeTrue();
+            result.HttpState.ShouldBe(HttpState.Empty);
 
             Func<Task<HttpResultWithError<string>>> OnSuccessFunc()
             {
@@ -93,7 +94,7 @@ namespace ResultMonad.Extensions.HttpResultMonad.Tests.ResultWithErrorMonad.OnSu
             var result = await ResultWithError.Fail("error")
                 .OnSuccessToHttpResultWithError(OnSuccessFunc());
 
-            result.HttpState.HasNoValue.ShouldBeTrue();
+            result.HttpState.ShouldBe(HttpState.Empty);
 
             Func<Task<HttpResultWithError<string>>> OnSuccessFunc()
             {

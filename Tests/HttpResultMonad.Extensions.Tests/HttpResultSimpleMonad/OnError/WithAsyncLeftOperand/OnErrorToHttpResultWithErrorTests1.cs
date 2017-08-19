@@ -66,7 +66,7 @@ namespace HttpResultMonad.Extensions.Tests.HttpResultSimpleMonad.OnError.WithAsy
         public async Task OnError_propagates_http_state_if_result_is_ok()
         {
             var httpState = Test.CreateHttpStateA();
-            var result = await Task.FromResult(HttpResult.Ok(Maybe.From(httpState)))
+            var result = await Task.FromResult(HttpResult.Ok(httpState))
                 .OnErrorToHttpResultWithError(() => "error");
 
             result.HttpState.ShouldBe(httpState);

@@ -3,20 +3,42 @@
 Notes on the repository
 =======================
 
-There are two solutions in the `roslyn-analyzers repository <https://github.com/edumserrano/roslyn-analyzers>`_:
+There is one in the |repo|_:
   
-  * `Source/RoslynAnalyzers/RoslynAnalyzers.sln <https://github.com/edumserrano/roslyn-analyzers/tree/master/Source/RoslynAnalyzers>`_
-  * `Tests/RoslynAnalyzersTestData/RoslynAnalyzersTestData.sln <https://github.com/edumserrano/roslyn-analyzers/tree/master/Tests/RoslynAnalyzersTestData>`_
+  * `Source/CSharpFunctional/CSharpFunctional.sln <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional>`_
 
+CSharpFunctional.sln
+--------------------
 
-RoslynAnalyzers.sln
--------------------
+The main solution with the monads, extensions and unit tests projects.
 
-The main solution with the analyzers, unit tests and debug project:
+The monad projects are:
 
-* The code for the analyzers and code fix providers is at `Source/RoslynAnalyzers/Analyzers <https://github.com/edumserrano/roslyn-analyzers/tree/master/Source/RoslynAnalyzers/Analyzers>`_.
-* The code for the unit tests is at `Tests/Analyzers.Tests <https://github.com/edumserrano/roslyn-analyzers/tree/master/Tests/Analyzers.Tests>`_.
-* The debug project is at `Debug/DebugAnalyzers.Vsix <https://github.com/edumserrano/roslyn-analyzers/tree/master/Debug/DebugAnalyzers.Vsix>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad>`_.
+
+The monad extensions projects are:
+
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.Extensions>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions.HttpResultMonad>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad.Extensions.ResultMonad>`_.
+
+Example of applying HttpResult monad on a class that does http calls (HttpClient):
+
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.HttpResultClient>`_.
+
+The test projects are:
+
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Extensions.Tests>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Tests>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Extensions.ResultMonad.Tests>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Tests>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Extensions.HttpResultMonad.Tests>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Extensions.Tests>`_.
+* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Tests>`_.
+* The code for the analyzers and code fix providers is at `zxcdzsd>`_.
 
 The analyzers and respective code fix providers are grouped under the same folder. Not all analyzers have a code fix provider.
 

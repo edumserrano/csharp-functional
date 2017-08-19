@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using HttpResultMonad.State;
-using MaybeMonad;
 using Shouldly;
 using Xunit;
 
@@ -68,32 +67,16 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad
         public void OK_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResult.Ok("value");
-            httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
+            httpResult.HttpState.ShouldBe(HttpState.Empty);
         }
 
         [Fact]
         public void Fail_HttpResult_withouth_passing_in_http_state_has_maybe_nothing_for_that_field()
         {
             var httpResult = HttpResult.Fail<string>();
-            httpResult.HttpState.ShouldBe(Maybe<HttpState>.Nothing);
+            httpResult.HttpState.ShouldBe(HttpState.Empty);
         }
-
-        [Fact]
-        public void From_if_predicate_is_true_returns_ok_result_with_value()
-        {
-            var value = 1;
-            var result = HttpResult.From(() => true, value);
-            result.IsSuccess.ShouldBeTrue();
-            result.Value.ShouldBe(value);
-        }
-
-        [Fact]
-        public void From_if_predicate_is_false_returns_fail_result()
-        {
-            var result = HttpResult.From(() => false, "value if predicate is true");
-            result.IsFailure.ShouldBeTrue();
-        }
-
+        
         [Fact]
         public void Combine_if_all_results_are_ok_returns_ok_result()
         {
