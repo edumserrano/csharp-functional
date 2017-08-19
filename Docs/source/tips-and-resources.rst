@@ -37,3 +37,6 @@ Tips and more resources
   * **Formatter Service**
   * **Renamer Service**
   * **Simplifier Service**
+
+
+  links no fim de https://fsharpforfunandprofit.com/rop/

@@ -9,12 +9,12 @@ namespace HttpResultMonad.Extensions.HttpResultWithValueAndErrorMonad.OnSuccess
         [DebuggerStepThrough]
         public static async Task<HttpResult<KValue, TError>> OnSuccessToHttpResultWithValueAndError<TValue, TError, KValue>(
             this Task<HttpResult<TValue, TError>> result,
-            Func<TValue, Task<HttpResult<KValue, TError>>> func)
+            Func<TValue, Task<HttpResult<KValue, TError>>> onSuccessFunc)
         {
             var taskResult = await result.ConfigureAwait(false);
             return taskResult.IsFailure
                 ? HttpResult.Fail<KValue, TError>(taskResult.Error, taskResult.HttpState)
-                : await func(taskResult.Value).ConfigureAwait(false);
+                : await onSuccessFunc(taskResult.Value).ConfigureAwait(false);
         }
     }
 }

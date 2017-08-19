@@ -8,14 +8,14 @@ namespace HttpResultMonad.Extensions.HttpResultWithErrorMonad.OnSuccess
         [DebuggerStepThrough]
         public static HttpResult<TValue, TError> OnSuccessToHttpResultWithValueAndError<TValue, TError>(
             this HttpResultWithError<TError> httpResultWithError,
-            Func<TValue> func)
+            Func<TValue> onSuccessFunc)
         {
             if (httpResultWithError.IsFailure)
             {
                 return HttpResult.Fail<TValue, TError>(httpResultWithError.Error, httpResultWithError.HttpState);
             }
 
-            var newValue = func();
+            var newValue = onSuccessFunc();
             return HttpResult.Ok<TValue, TError>(newValue, httpResultWithError.HttpState);
         }
     }

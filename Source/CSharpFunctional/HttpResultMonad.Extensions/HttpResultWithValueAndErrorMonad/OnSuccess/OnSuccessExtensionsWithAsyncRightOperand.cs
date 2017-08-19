@@ -9,11 +9,11 @@ namespace HttpResultMonad.Extensions.HttpResultWithValueAndErrorMonad.OnSuccess
         [DebuggerStepThrough]
         public static Task<HttpResult<KValue, TError>> OnSuccessToHttpResultWithValueAndError<TValue, TError, KValue>(
             this HttpResult<TValue, TError> httpResult,
-            Func<TValue, Task<HttpResult<KValue, TError>>> func)
+            Func<TValue, Task<HttpResult<KValue, TError>>> onSuccessFunc)
         {
             return httpResult.IsFailure
                 ? Task.FromResult(HttpResult.Fail<KValue, TError>(httpResult.Error, httpResult.HttpState))
-                : func(httpResult.Value);
+                : onSuccessFunc(httpResult.Value);
         }
     }
 }
