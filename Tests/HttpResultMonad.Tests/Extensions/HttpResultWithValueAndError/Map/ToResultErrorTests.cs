@@ -1,5 +1,6 @@
 ﻿using HttpResultMonad.Extensions.HttpResultWithValueAndError.Map;
 using Shouldly;
+using Tests.Shared;
 using Xunit;
 
 namespace HttpResultMonad.Tests.Extensions.HttpResultWithValueAndError.Map

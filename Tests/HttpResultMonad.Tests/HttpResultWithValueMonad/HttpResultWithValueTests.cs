@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using HttpResultMonad.State;
 using Shouldly;
+using Tests.Shared;
 using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultWithValueMonad

@@ -1,4 +1,5 @@
 ﻿using Shouldly;
+using Tests.Shared;
 using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultWithErrorMonad.Equality

@@ -2,6 +2,7 @@
 using HttpResultMonad.Extensions.HttpResultSimpleMonad.OnError;
 using MaybeMonad;
 using Shouldly;
+using Tests.Shared;
 using Xunit;
 
 namespace HttpResultMonad.Extensions.Tests.HttpResultSimpleMonad.OnError.WithAsyncLeftOperand

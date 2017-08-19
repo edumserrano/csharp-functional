@@ -7,7 +7,7 @@ namespace HttpResultMonad
 {
     /*
     The purpose of this struct is just for syntax usage of the HttpResultWithError struct.
-    It allow the following syntax: HttpResultWithError.Ok<int> instead of HttpResultWithError<int>.Ok
+    It allows the following syntax: HttpResultWithError.Ok<int> instead of HttpResultWithError<int>.Ok
     It thus allows keeping the same syntax between extension and non-extension methods.
     */
     public struct HttpResultWithError
@@ -19,7 +19,7 @@ namespace HttpResultMonad
         }
 
         [DebuggerStepThrough]
-        public static HttpResultWithError<T> Ok<T>(HttpState httpState)
+        public static HttpResultWithError<T> Ok<T>(IHttpState httpState)
         {
             return new HttpResultWithError<T>(HttpResultStatus.Ok, Maybe<T>.Nothing, httpState);
         }
@@ -31,7 +31,7 @@ namespace HttpResultMonad
         }
 
         [DebuggerStepThrough]
-        public static HttpResultWithError<T> Fail<T>(T error, HttpState httpState)
+        public static HttpResultWithError<T> Fail<T>(T error, IHttpState httpState)
         {
             return new HttpResultWithError<T>(HttpResultStatus.Fail, error, httpState);
         }
@@ -46,10 +46,10 @@ namespace HttpResultMonad
         private readonly HttpResultStatus _httpResultStatus;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly HttpState _httpState;
+        private readonly IHttpState _httpState;
 
         [DebuggerStepThrough]
-        internal HttpResultWithError(HttpResultStatus httpResultStatus, Maybe<T> error, HttpState httpState)
+        internal HttpResultWithError(HttpResultStatus httpResultStatus, Maybe<T> error, IHttpState httpState)
         {
             if (httpResultStatus == HttpResultStatus.Fail && error.HasNoValue)
             {
@@ -93,7 +93,7 @@ namespace HttpResultMonad
             }
         }
 
-        public HttpState HttpState
+        public IHttpState HttpState
         {
             [DebuggerStepThrough]
             get

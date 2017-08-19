@@ -1,6 +1,7 @@
 ﻿using System;
 using HttpResultMonad.Extensions.HttpResultWithErrorMonad.OnSuccess;
 using Shouldly;
+using Tests.Shared;
 using Xunit;
 
 namespace HttpResultMonad.Extensions.Tests.HttpResultWithErrorMonad.OnSuccess

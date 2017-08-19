@@ -17,14 +17,14 @@ namespace HttpResultMonad
         private readonly HttpResultStatus _httpResultStatus;
 
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private readonly HttpState _httpState;
+        private readonly IHttpState _httpState;
 
         [DebuggerStepThrough]
         internal HttpResult(
             HttpResultStatus status,
             Maybe<TValue> value,
             Maybe<TError> error,
-            HttpState httpState)
+            IHttpState httpState)
         {
             if (status == HttpResultStatus.Fail && error.HasNoValue)
             {
@@ -88,7 +88,7 @@ namespace HttpResultMonad
             }
         }
 
-        public HttpState HttpState
+        public IHttpState HttpState
         {
             [DebuggerStepThrough]
             get

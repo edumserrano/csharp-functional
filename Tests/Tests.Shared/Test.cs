@@ -4,11 +4,11 @@ using System.Net;
 using System.Net.Http;
 using HttpResultMonad.State;
 
-namespace HttpResultMonad.Tests
+namespace Tests.Shared
 {
     internal static class Test
     {
-        public static HttpState CreateHttpStateA()
+        public static IHttpState CreateHttpStateA()
         {
             var requestHeaders = new List<KeyValuePair<string, IEnumerable<string>>>
             {
@@ -20,25 +20,25 @@ namespace HttpResultMonad.Tests
                 new KeyValuePair<string, IEnumerable<string>>("content-type", new[] {"typeA", "typeB"})
             };
 
-            return new HttpStateBuilder()
+            return new HttpStateTestBuilder()
                 .WithHttpMethod(HttpMethod.Get)
                 .WithUrl(new Uri("https://soundcloud.com"))
                 .WithHttpStatusCode(HttpStatusCode.OK)
-                .WithRequestRawBody("raw request body A")
-                .WithResponseRawBody("raw response body A")
+                .WithRequestBody("raw request body A")
+                .WithResponseBody("raw response body A")
                 .WithRequestHeaders(requestHeaders)
                 .WithResponseHeaders(responseHeaders)
                 .Build();
         }
 
-        public static HttpState CreateHttpStateB()
+        public static IHttpState CreateHttpStateB()
         {
-            return new HttpStateBuilder()
+            return new HttpStateTestBuilder()
                 .WithHttpMethod(HttpMethod.Delete)
                 .WithUrl(new Uri("https://google.com"))
                 .WithHttpStatusCode(HttpStatusCode.Forbidden)
-                .WithRequestRawBody("raw request body B")
-                .WithResponseRawBody("raw response body B")
+                .WithRequestBody("raw request body B")
+                .WithResponseBody("raw response body B")
                 .Build();
         }
     }

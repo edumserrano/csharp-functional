@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using HttpResultMonad.Extensions.HttpResultWithErrorMonad.OnError;
 using Shouldly;
+using Tests.Shared;
 using Xunit;
 
 namespace HttpResultMonad.Extensions.Tests.HttpResultWithErrorMonad.OnError.WithAsyncLeftOperand

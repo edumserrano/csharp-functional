@@ -22,7 +22,7 @@ namespace HttpResultMonad.HttpResultClient
 
             using (var response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false))
             {
-                var httpState = await HttpStateBuilder.BuildAsync(response);
+                IHttpState httpState = new HttpClientHttpState(response);
                 return response.IsSuccessStatusCode
                     ? HttpResult.Ok(httpState)
                     : HttpResult.Fail(httpState);
