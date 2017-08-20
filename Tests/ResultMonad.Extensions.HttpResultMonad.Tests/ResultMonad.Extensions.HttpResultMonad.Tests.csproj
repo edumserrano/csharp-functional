@@ -79,6 +79,7 @@
     <Compile Include="ResultWithErrorMonad\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests1.cs" />
     <Compile Include="ResultWithValueAndErrorMonad\OnError\OnErrorToHttpResultWithValueAndErrorTests1.cs" />
     <Compile Include="ResultWithValueAndErrorMonad\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="ResultWithValueAndErrorMonad\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithErrorTests2.cs" />
     <Compile Include="ResultWithValueAndErrorMonad\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithErrorTests1.cs" />
   </ItemGroup>
   <ItemGroup>

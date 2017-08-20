@@ -4,7 +4,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultSimpleMonad.Equality
 {
-    [Trait("Monad", "HttpResultWithSimple")]
+    [Trait("Monad", "HttpResultSimple")]
     public class HttpResultSimpleEqualityOperatorTests
     {
         [Fact]

@@ -20,7 +20,7 @@ namespace Tests.Shared
                 new KeyValuePair<string, IEnumerable<string>>("content-type", new[] {"typeA", "typeB"})
             };
 
-            return new HttpStateTestBuilder()
+            var state = new HttpStateTestBuilder()
                 .WithHttpMethod(HttpMethod.Get)
                 .WithUrl(new Uri("https://soundcloud.com"))
                 .WithHttpStatusCode(HttpStatusCode.OK)
@@ -29,6 +29,8 @@ namespace Tests.Shared
                 .WithRequestHeaders(requestHeaders)
                 .WithResponseHeaders(responseHeaders)
                 .Build();
+            
+            return state;
         }
 
         public static IHttpState CreateHttpStateB()

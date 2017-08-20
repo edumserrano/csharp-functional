@@ -11,6 +11,19 @@ namespace HttpResultMonad.Tests.State
     public class EmptyHttpStateTests
     {
         [Fact]
+        public void EmptyState_is_empty()
+        {
+            var emptyHttpState = HttpState.Empty;
+            emptyHttpState.Url.ShouldBeNull();
+            emptyHttpState.HttpMethod.ShouldBeNull();
+            emptyHttpState.HttpStatusCode.ShouldBe(0);
+            emptyHttpState.RequestContentLength.ShouldBeNull();
+            emptyHttpState.ResponseContentLength.ShouldBeNull();
+            emptyHttpState.RequestHeaders.ShouldBeNull();
+            emptyHttpState.ResponseHeaders.ShouldBeNull();
+        }
+
+        [Fact]
         public async Task GetRequestBodyAsync_returns_null_stream()
         {
             var emptyHttpState = HttpState.Empty;
@@ -24,6 +37,17 @@ namespace HttpResultMonad.Tests.State
             var emptyHttpState = HttpState.Empty;
             var requestBody = await emptyHttpState.GetResponseBodyAsync();
             requestBody.ShouldBe(Stream.Null);
+        }
+
+
+        [Fact]
+        public void Equals_between_two_EmptyHttpState_that_are_the_same_reference_is_true()
+        {
+            var emptyHttpState1 = HttpState.Empty;
+            var emptyHttpState2 = emptyHttpState1;
+
+            var isEqual = emptyHttpState1.Equals(emptyHttpState2);
+            isEqual.ShouldBeTrue();
         }
 
         [Fact]

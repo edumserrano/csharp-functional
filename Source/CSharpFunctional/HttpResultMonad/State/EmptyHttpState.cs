@@ -41,9 +41,7 @@ namespace HttpResultMonad.State
         {
             return Task.FromResult(Stream.Null);
         }
-
-        public void Dispose() { }
-
+        
         public bool Equals(EmptyHttpHttpState other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -58,17 +56,7 @@ namespace HttpResultMonad.State
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                var hashCode = (Url != null ? Url.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (HttpMethod != null ? HttpMethod.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ HttpStatusCode;
-                hashCode = (hashCode * 397) ^ RequestContentLength.GetHashCode();
-                hashCode = (hashCode * 397) ^ ResponseContentLength.GetHashCode();
-                hashCode = (hashCode * 397) ^ (RequestHeaders != null ? RequestHeaders.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (ResponseHeaders != null ? ResponseHeaders.GetHashCode() : 0);
-                return hashCode;
-            }
+            return 0;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HttpResultMonad.State
 {
-    public interface IHttpState : IDisposable
+    public interface IHttpState
     {
         Uri Url { get; }
 

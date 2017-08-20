@@ -6,7 +6,7 @@ using Xunit;
 
 namespace HttpResultMonad.Tests.HttpResultSimpleMonad
 {
-    [Trait("Monad", "HttpResultWithSimple")]
+    [Trait("Monad", "HttpResultSimple")]
     public class HttpResultSimpleTests
     {
         [Fact]
