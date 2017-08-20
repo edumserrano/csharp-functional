@@ -5,7 +5,7 @@ namespace HttpResultMonad.State
 {
     public static class StateExtensions
     {
-        public static bool HeadersEquals(
+        public static bool EqualsHeaders(
             this List<KeyValuePair<string, IEnumerable<string>>> headers,
             List<KeyValuePair<string, IEnumerable<string>>> otherHeaders)
         {

@@ -42,13 +42,13 @@ namespace HttpResultMonad.HttpResultOnHttpClient.Tests
             httpClientState.HttpMethod.ShouldBe(testHttpRequestMessage.Method.ToString());
             httpClientState.RequestContentLength.ShouldBe(testHttpRequestMessage.Content.Headers.ContentLength);
             httpClientState.RequestHeaders
-                .HeadersEquals(testHttpRequestMessage.Headers.Concat(testHttpRequestMessage.Content.Headers).ToList())
+                .EqualsHeaders(testHttpRequestMessage.Headers.Concat(testHttpRequestMessage.Content.Headers).ToList())
                 .ShouldBeTrue();
 
             httpClientState.HttpStatusCode.ShouldBe((int)testHttpResponseMessage.StatusCode);
             httpClientState.ResponseContentLength.ShouldBe(testHttpResponseMessage.Content.Headers.ContentLength);
             httpClientState.ResponseHeaders
-                .HeadersEquals(testHttpResponseMessage.Headers.Concat(testHttpResponseMessage.Content.Headers).ToList())
+                .EqualsHeaders(testHttpResponseMessage.Headers.Concat(testHttpResponseMessage.Content.Headers).ToList())
                 .ShouldBeTrue();
         }
 

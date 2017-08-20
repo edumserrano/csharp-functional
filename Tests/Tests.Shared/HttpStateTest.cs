@@ -94,8 +94,8 @@ namespace Tests.Shared
             return Equals(Url, other.Url)
                    && Equals(HttpMethod, other.HttpMethod)
                    && HttpStatusCode == other.HttpStatusCode
-                   && RequestHeaders.HeadersEquals(other.RequestHeaders)
-                   && ResponseHeaders.HeadersEquals(other.ResponseHeaders)
+                   && RequestHeaders.EqualsHeaders(other.RequestHeaders)
+                   && ResponseHeaders.EqualsHeaders(other.ResponseHeaders)
                    && string.Equals(_requestBodyStr, other._requestBodyStr)
                    && string.Equals(_responseBodyStr, other._responseBodyStr);
         }
