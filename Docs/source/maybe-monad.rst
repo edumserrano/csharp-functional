@@ -1,3 +1,5 @@
+.. include:: links.rst
+
 Maybe monad
 ===========
 
@@ -38,7 +40,7 @@ This fixes both of the previous issues because now:
 Installing
 ----------
 
-The Maybe monad NuGet package can be found at |maybeNuget|_.
+The Maybe monad NuGet package can be found at |MaybeNuget|_.
 Installing is performed via NuGet::
 
 	PM> Install-Package MaybeMonad

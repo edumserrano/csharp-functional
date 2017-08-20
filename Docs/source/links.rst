@@ -4,22 +4,29 @@
 .. |repo| replace:: csharp-functional repository
 .. _repo: https://github.com/edumserrano/csharp-functional
 
-.. _maybeNuget: https://github.com/edumserrano/csharp-functional
-.. _resultNuget: https://github.com/edumserrano/csharp-functional
-.. _httpResultNuget: https://github.com/edumserrano/csharp-functional
-
-.. |httpResultClientNuget| replace:: HttpResultMonad.HttpResultClient NuGet
-.. _httpResultClientNuget: https://github.com/edumserrano/csharp-functional
-
-.. |httpResultClientClass| replace:: HttpResultClient class
-.. _httpResultClientClass: https://github.com/edumserrano/csharp-functional
-
-.. |ResultMonadExtensionsNuget| replace:: ResultMonad.Extensions Nuget
-.. |HttpResultMonadExtensionsNuget| replace:: HttpResultMonad.Extensions Nuget
-.. |ResultMonadExtensionsHttpResultMonadNuget| replace:: ResultMonad.Extensions.HttpResultMonad Nuget
-.. |MaybeMonadExtensionsResultMonadNuget| replace:: MaybeMonad.Extensions.ResultMonad Nuget
-
+.. _MaybeNuget: https://github.com/edumserrano/csharp-functional
+.. _ResultNuget: https://github.com/edumserrano/csharp-functional
+.. _HttpResultNuget: https://github.com/edumserrano/csharp-functional
 .. _ResultMonadExtensionsNuget: https://github.com/edumserrano/csharp-functional
 .. _HttpResultMonadExtensionsNuget: https://github.com/edumserrano/csharp-functional
 .. _ResultMonadExtensionsHttpResultMonadNuget: https://github.com/edumserrano/csharp-functional
 .. _MaybeMonadExtensionsResultMonadNuget: https://github.com/edumserrano/csharp-functional
+.. _HttpResultOnHttpClientNuget: https://github.com/edumserrano/csharp-functional
+
+
+.. |MaybeNuget| replace:: MaybeMonad Nuget
+.. |ResultNuget| replace:: ResultMonad Nuget
+.. |HttpResultNuget| replace:: HttpResultMonad Nuget
+.. |ResultMonadExtensionsNuget| replace:: ResultMonad.Extensions Nuget
+.. |HttpResultMonadExtensionsNuget| replace:: HttpResultMonad.Extensions Nuget
+.. |ResultMonadExtensionsHttpResultMonadNuget| replace:: ResultMonad.Extensions.HttpResultMonad Nuget
+.. |MaybeMonadExtensionsResultMonadNuget| replace:: MaybeMonad.Extensions.ResultMonad Nuget
+.. |HttpResultOnHttpClientNuget| replace:: HttpResultMonad.HttpResultOnHttpClient NuGet
+
+
+
+.. _HttpResultClientClass: https://github.com/edumserrano/csharp-functional/blob/master/Source/CSharpFunctional/HttpResultMonad.HttpResultOnHttpClient/HttpResultClient.cs
+.. |HttpResultClientClass| replace:: HttpResultClient class
+
+.. |HttpClient| replace:: System.Net.Http.HttpClient
+.. _HttpClient: https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0>

@@ -1,3 +1,5 @@
+.. include:: links.rst
+
 .. _repository:
 
 Notes on the repository
@@ -10,55 +12,66 @@ There is one in the |repo|_:
 CSharpFunctional.sln
 --------------------
 
+
+=================================================================================================================  ============ =================================================== ============================================================================================================================================================================================================================ 
+Description                                                                                                        Type         NuGet                                               Location                                                         
+=================================================================================================================  ============ =================================================== ============================================================================================================================================================================================================================ 
+The Maybe monad                                                                                                    Source       |MaybeNuget|_                                       `MaybeMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad>`_                     
+The Result monad                                                                                                   Source       |ResultNuget|_                                      `ResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad>`_
+The HttpResult monad                                                                                               Source       |HttpResultNuget|_                                  `HttpResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad>`_
+The Result monad extensions                                                                                        Source       |ResultMonadExtensionsNuget|_                       `ResultMonad.Extensions <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions>`_                  
+The HttpResult monad extensions                                                                                    Source       |HttpResultMonadExtensionsNuget|_                   `HttpResultMonad.Extensions <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.Extensions>`_                                                           
+The Result monad extensions that :ref:`transforms them <monad-transformations>` into HttpResult monad              Source       |ResultMonadExtensionsHttpResultMonadNuget|_        `ResultMonad.Extensions.HttpResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions.HttpResultMonad>`_                                                 
+The Maybe monad extensions that :ref:`transforms them <monad-transformations>` into Result monad                   Source       |MaybeMonadExtensionsResultMonadNuget|_             `MaybeMonad.Extensions.ResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad.Extensions.ResultMonad>`_                                                
+Simple application of HttpResult monad on a class by using it with |HttpClient|_                                   Source       |HttpResultOnHttpClientNuget|_                      `HttpResultMonad.HttpResultOnHttpClient <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.HttpResultOnHttpClient>`_   
+Tests for the Maybe monad                                                                                          Test         N/A                                                 `MaybeMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Tests>`_                     
+Tests for the Result monad                                                                                         Test         N/A                                                 `ResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Tests>`_                  
+Tests for the HttpResult monad                                                                                     Test         N/A                                                 `HttpResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Tests>`_                            
+Tests for the Result monad extensions                                                                              Test         N/A                                                 `ResultMonad.Extensions.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Extensions.Tests>`_                       
+Tests for the HttpResult monad extensions                                                                          Test         N/A                                                 `HttpResultMonad.Extensions.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Extensions.Tests>`_                                                           
+Tests for the Result monad extensions that :ref:`transforms them <monad-transformations>` into HttpResult monad    Test         N/A                                                 `ResultMonad.Extensions.HttpResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Extensions.HttpResultMonad.Tests>`_                                                
+Tests for the Maybe monad extensions that :ref:`transforms them <monad-transformations>` into Result monad         Test         N/A                                                 `MaybeMonad.Extensions.ResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Extensions.ResultMonad.Tests>`_                                               
+Tests for the simple example of applying HttpResult monad on a class by using it with |HttpClient|_                Test         N/A                                                 `HttpResultMonad.HttpResultOnHttpClient.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.HttpResultOnHttpClient.Tests>`_                                            
+Shared code between test projects                                                                                  Test Library N/A                                                 `Tests.Shared <https://github.com/edumserrano/csharp-functional/tree/master/Tests/Tests.Shared>`_                                                          
+=================================================================================================================  ============ =================================================== ============================================================================================================================================================================================================================  
+
+
+
+
+
 The main solution with the monads, extensions and unit tests projects.
 
 The monad projects are:
 
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad>`_.
+* The code for the Maybe monad is at `MaybeMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad>`_.
+* The code for the Result monad is at `ResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad>`_.
+* The code for the HttpResult monad is at `HttpResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad>`_.
 
 The monad extensions projects are:
 
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.Extensions>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions.HttpResultMonad>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad.Extensions.ResultMonad>`_.
+* The code for the Result monad extensions is at `ResultMonad.Extensions <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions>`_.
+* The code for the HttpResult monad extensions is at `HttpResultMonad.Extensions <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.Extensions>`_.
+* The code for the Result monad extensions that :ref:`transforms them <monad-transformations>` into HttpResult monad is at `ResultMonad.Extensions.HttpResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions.HttpResultMonad>`_.
+* The code for the Maybe monad extensions that :ref:`transforms them <monad-transformations>` into Result monad is at `MaybeMonad.Extensions.ResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad.Extensions.ResultMonad>`_.
 
-Example of applying HttpResult monad on a class that does http calls (HttpClient):
+Simple example of applying HttpResult monad on a class by using it with `System.Net.Http.HttpClient <https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netstandard-2.0>`_ :
 
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.HttpResultClient>`_.
+* The code is at `HttpResultMonad.HttpResultOnHttpClient <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.HttpResultOnHttpClient>`_.
 
 The test projects are:
 
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Extensions.Tests>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Tests>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Extensions.ResultMonad.Tests>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Tests>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Extensions.HttpResultMonad.Tests>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Extensions.Tests>`_.
-* The code for the analyzers and code fix providers is at `https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Tests>`_.
-* The code for the analyzers and code fix providers is at `zxcdzsd>`_.
-
-The analyzers and respective code fix providers are grouped under the same folder. Not all analyzers have a code fix provider.
-
-All the tests use either the `CSharpDiagnosticAnalyzerTest <https://github.com/edumserrano/roslyn-analyzers/blob/master/Tests/Analyzers.Tests/_TestEnvironment/Base/CSharpDiagnosticAnalyzerTest.cs>`_ or the `CSharpCodeFixProviderTest <https://github.com/edumserrano/roslyn-analyzers/blob/master/Tests/Analyzers.Tests/_TestEnvironment/Base/CSharpCodeFixProviderTest.cs>`_ as the base class depending if it's a test for an analyzer or for a code fix provider.
-
-The classes inside `Tests/Analyzers.Tests/_TestEnvironment/Roslyn <https://github.com/edumserrano/roslyn-analyzers/tree/master/Tests/Analyzers.Tests/_TestEnvironment/Roslyn>`_ are a :ref:`refactored version of the classes provided by the default template <how-to-test-an-analyzer>` for unit testing analyzers and code fix providers. 
-
-To debug the analyzers set the project DebugAnalyzers.Vsix as the startup project and follow the instructions :ref:`here <how-to-debug>`.
-
-.. note:: Because I used the Tuple syntax from C# 7.0 on the analyzers project I had to do the following for the unit test project to work:
-
-   * Update the NuGet package System.ValueTuple to 4.3.1 on the unit test project.
-   * Install the Nuget package System.Composition 1.0.31 on the unit test project.
+* The code for testing HttpResult monad extensions is at `HttpResultMonad.Extensions.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Extensions.Tests>`_.
+* The code for testing the application of HttpResult based on the HttpClient class is at `HttpResultMonad.HttpResultOnHttpClient.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.HttpResultOnHttpClient.Tests>`_.
+* The code for testing the HttpResult monad is at `HttpResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Tests>`_.
+* The code for testing the Maybe monad to Result monad extensions is at `MaybeMonad.Extensions.ResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Extensions.ResultMonad.Tests>`_.
+* The code for testing the Maybe monad is at `MaybeMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Tests>`_.
+* The code for testing the Result monad to HttpResultMonad extensions is at `ResultMonad.Extensions.HttpResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Extensions.HttpResultMonad.Tests>`_.
+* The code for testing the Result monad extensions is at `ResultMonad.Extensions.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Extensions.Tests>`_.
+* The code for testing the result monad is at `ResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Tests>`_.
+* Shared code between test projects is at `Tests.Shared <https://github.com/edumserrano/csharp-functional/tree/master/Tests/Tests.Shared>`_.
 
 RoslynAnalyzersTestData.sln
 ---------------------------
-
-Contains test cases to be used in the unit test project. 
-
-It is also used when debugging the analyzers because once you run the DebugAnalyzers.Vsix you can chose to open this solution with the experimental version of Visual Studio and then open the classes that should or should not trigger the analyzer. While doing this you can set breakpoints and debug the behavior of the analyzer/code fix provider.
 
 
 Documentation

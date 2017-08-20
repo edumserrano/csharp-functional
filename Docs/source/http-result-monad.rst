@@ -1,3 +1,5 @@
+.. include:: links.rst
+
 HttpResult monad
 ================
 
@@ -31,13 +33,13 @@ To use this you should create a wrapper on the methods that do your http communi
 
 The above example shows the idea for using the HttpResult class. You are responsible for capturing the HttpState and then deciding wheter you should return an ok or a fail HttpResult. To create an HttpState you should use the :ref:`HttpStateBuilder <http-state-builder>` class.
 
-For an example class using HttpClient see the |httpResultClientClass|_. If you want to use HttpResultClient install the |httpResultClientNuget|_.
+For an example class using HttpClient see the |HttpResultClientClass|_. If you want to use HttpResultClient install the |HttpResultOnHttpClientNuget|_.
 
 
 Installing
 ----------
 
-The HttpResult monad NuGet package can be found at |httpResultNuget|_.
+The HttpResult monad NuGet package can be found at |HttpResultNuget|_.
 Installing is performed via NuGet::
 
 	PM> Install-Package HttpResultMonad

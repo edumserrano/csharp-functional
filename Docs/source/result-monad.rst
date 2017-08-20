@@ -1,3 +1,5 @@
+.. include:: links.rst
+
 .. _result-monad:
 
 Result monad
@@ -16,7 +18,7 @@ All variations of the Result monad contain an IsSuccess and it's inverse IsFailu
 Installing
 ----------
 
-The Result monad NuGet package can be found at |resultNuget|_.
+The Result monad NuGet package can be found at |ResultNuget|_.
 Installing is performed via NuGet::
 
 	PM> Install-Package ResultMonad

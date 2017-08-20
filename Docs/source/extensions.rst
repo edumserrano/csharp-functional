@@ -29,7 +29,10 @@ For generic type transformations you will need to provide a function for each ty
 
 Mutates KValue to TValue by applying the onSuccessFunc to the instance of type TValue.
 
-For monad transformatitons you might not need any extra function if it's implicitly known how to create one monad from the other::
+.. _monad-transformations:
+
+
+For monad transformations you might not need any extra function if it's implicitly known how to create one monad from the other::
 
 	public static Result<T> ToResultWithValue<T>(this Maybe<T> maybe)
 	{

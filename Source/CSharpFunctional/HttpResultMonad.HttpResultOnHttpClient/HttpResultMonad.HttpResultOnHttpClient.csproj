@@ -2,9 +2,28 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <DebugType>Full</DebugType>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageId>HttpResultMonad.HttpResultOnHttpClient</PackageId>
+    <PackageVersion>1.0.1-alpha</PackageVersion>
+    <Title>HttpResultMonad.HttpResultOnHttpClient</Title>
+    <Authors>Eduardo Serrano</Authors>
+    <Owners>Eduardo Serrano</Owners>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/edumserrano/csharp-functional/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/edumserrano/csharp-functional</PackageProjectUrl>
+    <Description>Simple application of HttpResult monad on a class by using System.Net.Http.HttpClient</Description>
+    <PackageTags>http result httpresult httpclient functional monad csharp c#</PackageTags>
+
+    <!--<RepositoryUrl>https://github.com/edumserrano/roslyn-analyzers</RepositoryUrl>-->
+    <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
+    <!--<PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>-->
+    <!--<Copyright>Copyright</Copyright>-->
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeCoverage" Version="1.0.3" />
   </ItemGroup>
