@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Shouldly;
 using Tests.Shared;
 using Xunit;
+using HttpResultMonad.State;
 
 namespace HttpResultMonad.HttpResultOnHttpClient.Tests
 {
@@ -40,11 +41,15 @@ namespace HttpResultMonad.HttpResultOnHttpClient.Tests
             httpClientState.Url.ShouldBe(testHttpRequestMessage.RequestUri);
             httpClientState.HttpMethod.ShouldBe(testHttpRequestMessage.Method.ToString());
             httpClientState.RequestContentLength.ShouldBe(testHttpRequestMessage.Content.Headers.ContentLength);
-            httpClientState.RequestHeaders.HeadersEquals(testHttpRequestMessage.Headers.ToList()).ShouldBeTrue();
+            httpClientState.RequestHeaders
+                .HeadersEquals(testHttpRequestMessage.Headers.Concat(testHttpRequestMessage.Content.Headers).ToList())
+                .ShouldBeTrue();
 
             httpClientState.HttpStatusCode.ShouldBe((int)testHttpResponseMessage.StatusCode);
             httpClientState.ResponseContentLength.ShouldBe(testHttpResponseMessage.Content.Headers.ContentLength);
-            httpClientState.ResponseHeaders.HeadersEquals(testHttpResponseMessage.Headers.ToList()).ShouldBeTrue();
+            httpClientState.ResponseHeaders
+                .HeadersEquals(testHttpResponseMessage.Headers.Concat(testHttpResponseMessage.Content.Headers).ToList())
+                .ShouldBeTrue();
         }
 
         [Fact]

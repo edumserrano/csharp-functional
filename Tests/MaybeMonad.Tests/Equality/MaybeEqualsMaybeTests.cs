@@ -15,7 +15,7 @@ namespace MaybeMonad.Tests.Equality
         }
 
         [Fact]
-        public void Equals_between_maybes_with_same_value_is_true()
+        public void Equals_between_maybes_with_equal_value_is_true()
         {
             var value = "abc";
             var maybe1 = Maybe.From(value);
@@ -54,7 +54,7 @@ namespace MaybeMonad.Tests.Equality
         }
 
         [Fact]
-        public void Equals_between_value_and_maybe_with_same_value_is_true()
+        public void Equals_between_value_and_maybe_with_equal_value_is_true()
         {
             var value = "abc";
             var maybe = Maybe.From(value);

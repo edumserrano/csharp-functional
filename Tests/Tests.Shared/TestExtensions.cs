@@ -23,46 +23,6 @@ namespace Tests.Shared
             {
                 return reader.ReadToEnd();
             }
-        }
-
-        public static bool HeadersEquals(
-            this List<KeyValuePair<string, IEnumerable<string>>> headers,
-            List<KeyValuePair<string, IEnumerable<string>>> otherHeaders)
-        {
-            if (headers.Count != otherHeaders.Count)
-            {
-                return false;
-            }
-
-            foreach (var requestHeader in headers)
-            {
-                var keyMatched = false;
-
-                var key = requestHeader.Key;
-                var values = requestHeader.Value.ToList();
-
-                foreach (var otherRequestHeader in otherHeaders)
-                {
-                    var otherKey = otherRequestHeader.Key;
-                    if (string.Equals(key, otherKey))
-                    {
-                        keyMatched = true;
-                        var otherValues = otherRequestHeader.Value.ToList();
-                        if (!values.SequenceEqual(otherValues))
-                        {
-                            return false;
-                        }
-                        break;
-                    }
-                }
-
-                if (!keyMatched)
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
+        }        
     }
 }

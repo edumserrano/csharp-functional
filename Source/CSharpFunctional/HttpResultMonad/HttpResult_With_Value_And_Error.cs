@@ -125,11 +125,6 @@ namespace HttpResultMonad
         [DebuggerStepThrough]
         public bool Equals(HttpResult<TValue, TError> other)
         {
-            if (!HttpState.Equals(other.HttpState))
-            {
-                return false;
-            }
-
             if (IsFailure && other.IsFailure)
             {
                 return Error.Equals(other.Error);
@@ -151,7 +146,6 @@ namespace HttpResultMonad
                 var hashCode = _error.GetHashCode();
                 hashCode = (hashCode * 397) ^ _value.GetHashCode();
                 hashCode = (hashCode * 397) ^ (int)_httpResultStatus;
-                hashCode = (hashCode * 397) ^ _httpState.GetHashCode();
                 hashCode = (hashCode * 397) ^ typeof(TValue).GetHashCode();
                 hashCode = (hashCode * 397) ^ typeof(TError).GetHashCode();
                 return hashCode;

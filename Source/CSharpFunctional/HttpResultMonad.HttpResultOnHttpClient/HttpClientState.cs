@@ -8,7 +8,7 @@ using HttpResultMonad.State;
 
 namespace HttpResultMonad.HttpResultOnHttpClient
 {
-    public class HttpClientState : IHttpState
+    public class HttpClientState :IHttpState
     {
         private readonly HttpResponseMessage _response;
         private readonly HttpRequestMessage _request;
@@ -29,9 +29,9 @@ namespace HttpResultMonad.HttpResultOnHttpClient
 
         public long? ResponseContentLength => _response.Content.Headers.ContentLength;
 
-        public List<KeyValuePair<string, IEnumerable<string>>> RequestHeaders => _request.Headers.ToList();
+        public List<KeyValuePair<string, IEnumerable<string>>> RequestHeaders => GetRequestHeaders();
 
-        public List<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders => _response.Headers.ToList();
+        public List<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders => GetResponsetHeaders();
 
         public Task<Stream> ReadRequestBodyAsStreamAsync()
         {
@@ -74,5 +74,19 @@ namespace HttpResultMonad.HttpResultOnHttpClient
             _request.Dispose();
             _response.Dispose();
         }
+
+        private List<KeyValuePair<string, IEnumerable<string>>> GetRequestHeaders()
+        {
+            return _request.Headers
+                .Concat(_request.Content.Headers)
+                .ToList();
+        }
+
+        private List<KeyValuePair<string, IEnumerable<string>>> GetResponsetHeaders()
+        {
+            return _response.Headers
+                .Concat(_response.Content.Headers)
+                .ToList();
+        }        
     }
 }

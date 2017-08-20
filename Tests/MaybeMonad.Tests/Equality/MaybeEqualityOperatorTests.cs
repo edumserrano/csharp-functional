@@ -42,7 +42,7 @@ namespace MaybeMonad.Tests.Equality
         }
 
         [Fact]
-        public void Equality_operator_between_maybes_with_same_value_is_true()
+        public void Equality_operator_between_maybes_with_equal_value_is_true()
         {
             var value = "abc";
             var maybe1 = Maybe.From(value);

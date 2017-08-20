@@ -61,7 +61,7 @@ namespace HttpResultMonad.State
         {
             return Task.FromResult(new byte[0]);
         }
-
+        
         public bool Equals(EmptyHttpHttpState other)
         {
             if (ReferenceEquals(null, other)) return false;

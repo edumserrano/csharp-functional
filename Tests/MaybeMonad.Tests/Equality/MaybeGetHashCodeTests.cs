@@ -15,7 +15,7 @@ namespace MaybeMonad.Tests.Equality
         }
 
         [Fact]
-        public void GetHasCode_between_two_maybes_with_same_value_is_equal()
+        public void GetHasCode_between_two_maybes_with_equal_value_is_equal()
         {
             var maybe1 = Maybe.From("abc");
             var maybe2 = Maybe.From("abc");

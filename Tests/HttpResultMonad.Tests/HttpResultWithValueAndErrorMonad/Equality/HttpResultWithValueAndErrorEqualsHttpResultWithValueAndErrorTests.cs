@@ -8,13 +8,12 @@ namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad.Equality
     public class HttpResultWithValueAndErrorEqualsHttpResultWithValueAndErrorTests
     {
         [Fact]
-        public void Equals_between_two_ok_HttpResultWithValueAndError_is_true_if_they_have_the_value_and_HttpState_are_equal()
+        public void Equals_between_two_ok_HttpResultWithValueAndError_is_true_if_they_have_the_value_are_equal()
         {
-            var state = Test.CreateHttpStateA();
             var result1 = HttpResult.Ok<string, string>("value");
             var result2 = HttpResult.Ok<string, string>("value");
-            var result3 = HttpResult.Ok<string, string>("value", state);
-            var result4 = HttpResult.Ok<string, string>("value", state);
+            var result3 = HttpResult.Ok<string, string>("value", Test.CreateHttpStateA());
+            var result4 = HttpResult.Ok<string, string>("value", Test.CreateHttpStateB());
             var isEqual1 = result1.Equals(result2);
             var isEqual2 = result3.Equals(result4);
             isEqual1.ShouldBeTrue();
@@ -29,22 +28,12 @@ namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad.Equality
             var isEqual = result1.Equals(result2);
             isEqual.ShouldBeFalse();
         }
-
+        
         [Fact]
-        public void Equals_between_two_ok_HttpResultWithValueAndError_is_false_if_the_HttpState_are_not_equal()
+        public void Equals_between_two_fail_HttpResultWithValueAndError_is_true_if_the_error_are_equal()
         {
-            var result1 = HttpResult.Ok<string, string>("abc", Test.CreateHttpStateA());
-            var result2 = HttpResult.Ok<string, string>("abc", Test.CreateHttpStateB());
-            var isEqual = result1.Equals(result2);
-            isEqual.ShouldBeFalse();
-        }
-
-        [Fact]
-        public void Equals_between_two_fail_HttpResultWithValueAndError_is_true_if_the_error_and_HttpState_are_equal()
-        {
-            var httpState = Test.CreateHttpStateA();
-            var result1 = HttpResult.Fail<string, string>("error", httpState);
-            var result2 = HttpResult.Fail<string, string>("error", httpState);
+            var result1 = HttpResult.Fail<string, string>("error", Test.CreateHttpStateA());
+            var result2 = HttpResult.Fail<string, string>("error", Test.CreateHttpStateB());
             var isEqual = result1.Equals(result2);
             isEqual.ShouldBeTrue();
         }
@@ -57,16 +46,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValueAndErrorMonad.Equality
             var isEqual = result1.Equals(result2);
             isEqual.ShouldBeFalse();
         }
-
-        [Fact]
-        public void Equals_between_two_fail_HttpResultWithValueAndError_is_false_if_the_HttpState_are_not_equal()
-        {
-            var result1 = HttpResult.Fail<string, string>("abc", Test.CreateHttpStateA());
-            var result2 = HttpResult.Fail<string, string>("abc", Test.CreateHttpStateB());
-            var isEqual = result1.Equals(result2);
-            isEqual.ShouldBeFalse();
-        }
-
+        
         [Fact]
         public void Equals_between_ok_HttpResultWithValueAndError_and_fail_HttpResultWithValueAndError_is_false()
         {

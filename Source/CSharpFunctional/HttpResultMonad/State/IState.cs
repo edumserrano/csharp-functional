@@ -24,7 +24,7 @@ namespace HttpResultMonad.State
         Task<Stream> ReadRequestBodyAsStreamAsync();
 
         Task<Stream> ReadResponseBodyAsStreamAsync();
-        
+
         Task<string> ReadRequestBodyAsStringAsync();
 
         Task<string> ReadResponseBodyAsStringAsync();

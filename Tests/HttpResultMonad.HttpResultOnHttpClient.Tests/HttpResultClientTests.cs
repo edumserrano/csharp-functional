@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Shouldly;
-using Tests.Shared;
 using Xunit;
 
 namespace HttpResultMonad.HttpResultOnHttpClient.Tests
@@ -32,15 +30,17 @@ namespace HttpResultMonad.HttpResultOnHttpClient.Tests
         [Fact]
         public async Task SendAsync_when_response_status_is_success()
         {
+            var expectedRequestBody = "request content";
             var testHttpRequestMessage = new HttpRequestMessage(HttpMethod.Post, "http://www.github.com")
             {
-                Content = new StringContent("request content", Encoding.UTF8, "application/text"),
+                Content = new StringContent(expectedRequestBody, Encoding.UTF8, "application/text"),
                 Headers = { { "header1", "value1" }, { "header2", new List<string> { "value2A", "value2B" } } }
             };
+            var expectedResponseBody = "response content";
             var testHttpResponseMessage = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 RequestMessage = testHttpRequestMessage,
-                Content = new StringContent("response content", Encoding.UTF8, "application/text"),
+                Content = new StringContent(expectedResponseBody, Encoding.UTF8, "application/text"),
                 Headers = { { "header1", "value1" }, { "header2", new List<string> { "value2A", "value2B" } } }
             };
             var testHandler = new TestHttpClientHandler(() => Task.FromResult(testHttpResponseMessage));
@@ -48,49 +48,41 @@ namespace HttpResultMonad.HttpResultOnHttpClient.Tests
 
             var httpResultClient = new HttpResultClient(httpClient);
             var httpResult = await httpResultClient.SendAsync(testHttpRequestMessage);
-            var httpClientState = httpResult.HttpState;
 
-
-            httpClientState.Url.ShouldBe(testHttpRequestMessage.RequestUri);
-            httpClientState.HttpMethod.ShouldBe(testHttpRequestMessage.Method.ToString());
-            httpClientState.RequestContentLength.ShouldBe(testHttpRequestMessage.Content.Headers.ContentLength);
-            httpClientState.RequestHeaders.HeadersEquals(testHttpRequestMessage.Headers.ToList()).ShouldBeTrue();
-            
-            httpClientState.HttpStatusCode.ShouldBe((int)testHttpResponseMessage.StatusCode);
-            httpClientState.ResponseContentLength.ShouldBe(testHttpResponseMessage.Content.Headers.ContentLength);
-            httpClientState.ResponseHeaders.HeadersEquals(testHttpResponseMessage.Headers.ToList()).ShouldBeTrue();
+            httpResult.IsSuccess.ShouldBeTrue();
+            var httpStateRequestBody = await httpResult.HttpState.ReadRequestBodyAsStringAsync();
+            var httpStateResponseBody = await httpResult.HttpState.ReadResponseBodyAsStringAsync();
+            httpStateRequestBody.ShouldBe(expectedRequestBody);
+            httpStateResponseBody.ShouldBe(expectedResponseBody);
         }
 
         [Fact]
         public async Task SendAsync_when_response_status_is_false()
         {
+            var expectedRequestBody = "request content";
             var testHttpRequestMessage = new HttpRequestMessage(HttpMethod.Post, "http://www.github.com")
             {
-                Content = new StringContent("request content", Encoding.UTF8, "application/text"),
+                Content = new StringContent(expectedRequestBody, Encoding.UTF8, "application/text"),
                 Headers = { { "header1", "value1" }, { "header2", new List<string> { "value2A", "value2B" } } }
             };
+            var expectedResponseBody = "response content";
             var testHttpResponseMessage = new HttpResponseMessage(HttpStatusCode.BadRequest)
             {
                 RequestMessage = testHttpRequestMessage,
-                Content = new StringContent("response content", Encoding.UTF8, "application/text"),
+                Content = new StringContent(expectedResponseBody, Encoding.UTF8, "application/text"),
                 Headers = { { "header1", "value1" }, { "header2", new List<string> { "value2A", "value2B" } } }
             };
             var testHandler = new TestHttpClientHandler(() => Task.FromResult(testHttpResponseMessage));
             var httpClient = new HttpClient(testHandler);
-
+            
             var httpResultClient = new HttpResultClient(httpClient);
             var httpResult = await httpResultClient.SendAsync(testHttpRequestMessage);
-            var httpClientState = httpResult.HttpState;
 
-
-            httpClientState.Url.ShouldBe(testHttpRequestMessage.RequestUri);
-            httpClientState.HttpMethod.ShouldBe(testHttpRequestMessage.Method.ToString());
-            httpClientState.RequestContentLength.ShouldBe(testHttpRequestMessage.Content.Headers.ContentLength);
-            httpClientState.RequestHeaders.HeadersEquals(testHttpRequestMessage.Headers.ToList()).ShouldBeTrue();
-
-            httpClientState.HttpStatusCode.ShouldBe((int)testHttpResponseMessage.StatusCode);
-            httpClientState.ResponseContentLength.ShouldBe(testHttpResponseMessage.Content.Headers.ContentLength);
-            httpClientState.ResponseHeaders.HeadersEquals(testHttpResponseMessage.Headers.ToList()).ShouldBeTrue();
+            httpResult.IsSuccess.ShouldBeFalse();
+            var httpStateRequestBody = await httpResult.HttpState.ReadRequestBodyAsStringAsync();
+            var httpStateResponseBody = await httpResult.HttpState.ReadResponseBodyAsStringAsync();
+            httpStateRequestBody.ShouldBe(expectedRequestBody);
+            httpStateResponseBody.ShouldBe(expectedResponseBody);
         }
     }
 }
