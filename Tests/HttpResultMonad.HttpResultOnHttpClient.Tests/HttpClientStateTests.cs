@@ -12,6 +12,7 @@ using HttpResultMonad.State;
 
 namespace HttpResultMonad.HttpResultOnHttpClient.Tests
 {
+    [Trait("HttpResultClient", "HttpClientState")]
     public class HttpClientStateTests
     {
         [Fact]

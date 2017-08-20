@@ -9,6 +9,7 @@ using Xunit;
 
 namespace HttpResultMonad.HttpResultOnHttpClient.Tests
 {
+    [Trait("HttpResultClient", "HttpClient")]
     public class HttpResultClientTests
     {
         [Fact]
