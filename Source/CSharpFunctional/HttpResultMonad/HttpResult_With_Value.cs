@@ -25,7 +25,7 @@ namespace HttpResultMonad
             }
 
             _httpResultStatus = status;
-            _httpState = httpState;
+            _httpState = httpState ?? throw new ArgumentNullException(nameof(httpState));
             _value = status == HttpResultStatus.Ok ? value : Maybe<T>.Nothing;
         }
 
@@ -133,7 +133,7 @@ namespace HttpResultMonad
 
         public void Dispose()
         {
-            _httpState?.Dispose();
+            _httpState.Dispose();
         }
     }
 }

@@ -19,12 +19,6 @@ namespace HttpResultMonad.HttpResultOnHttpClient
             _request = response.RequestMessage;
         }
 
-        public HttpClientState(HttpRequestMessage request, HttpResponseMessage response)
-        {
-            _request = request ?? throw new ArgumentNullException(nameof(request));
-            _response = response ?? throw new ArgumentNullException(nameof(response));
-        }
-
         public Uri Url => _request.RequestUri;
 
         public string HttpMethod => _request.Method.ToString();

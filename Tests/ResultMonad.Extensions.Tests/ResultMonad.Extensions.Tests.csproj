@@ -17,4 +17,10 @@
     <ProjectReference Include="..\..\Source\CSharpFunctional\ResultMonad.Extensions\ResultMonad.Extensions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

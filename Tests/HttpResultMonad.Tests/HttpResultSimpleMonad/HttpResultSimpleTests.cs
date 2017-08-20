@@ -3,12 +3,29 @@ using HttpResultMonad.State;
 using Shouldly;
 using Tests.Shared;
 using Xunit;
+using System;
 
 namespace HttpResultMonad.Tests.HttpResultSimpleMonad
 {
     [Trait("Monad", "HttpResultSimple")]
     public class HttpResultSimpleTests
     {
+        [Fact]
+        public void Constructor_null_httpState_throws_ArgumentNullException()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => HttpResult.Ok(null));
+            exception.Message.ShouldContain("httpState");
+        }
+
+        [Fact]
+        public void Dispose_can_be_called_multiple_times()
+        {
+            var httpResult = HttpResult.Ok();
+            httpResult.Dispose();
+            httpResult.Dispose();
+            httpResult.Dispose();
+        }
+
         [Fact]
         public void Ok_HttpResultSimple_IsSuccess_is_true()
         {

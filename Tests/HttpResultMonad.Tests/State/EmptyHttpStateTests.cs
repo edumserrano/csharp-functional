@@ -24,6 +24,15 @@ namespace HttpResultMonad.Tests.State
         }
 
         [Fact]
+        public void Dispose_can_be_called_multiple_times()
+        {
+            var emptyHttpState = HttpState.Empty;
+            emptyHttpState.Dispose();
+            emptyHttpState.Dispose();
+            emptyHttpState.Dispose();
+        }
+
+        [Fact]
         public async Task ReadRequestBodyAsStreamAsync_returns_null_stream()
         {
             var emptyHttpState = HttpState.Empty;

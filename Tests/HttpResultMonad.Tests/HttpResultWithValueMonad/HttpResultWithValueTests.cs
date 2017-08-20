@@ -11,6 +11,22 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad
     public class HttpResultWithValueTests
     {
         [Fact]
+        public void Constructor_null_httpState_throws_ArgumentNullException()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => HttpResult.Ok<string, int>("some value", null));
+            exception.Message.ShouldContain("httpState");
+        }
+
+        [Fact]
+        public void Dispose_can_be_called_multiple_times()
+        {
+            var httpResult = HttpResult.Ok<string, int>("some value");
+            httpResult.Dispose();
+            httpResult.Dispose();
+            httpResult.Dispose();
+        }
+
+        [Fact]
         public void Creating_ok_HtttpResultWithValue_with_null_value_throws_exception()
         {
             var exception = Should.Throw<ArgumentNullException>(() => HttpResult.Ok<string>(null));
@@ -77,7 +93,7 @@ namespace HttpResultMonad.Tests.HttpResultWithValueMonad
             var httpResult = HttpResult.Fail<string>();
             httpResult.HttpState.ShouldBe(HttpState.Empty);
         }
-        
+
         [Fact]
         public void Combine_if_all_results_are_ok_returns_ok_result()
         {

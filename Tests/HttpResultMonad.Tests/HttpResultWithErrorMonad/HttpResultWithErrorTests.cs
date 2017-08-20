@@ -11,6 +11,22 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
     public class HttpResultWithErrorTests
     {
         [Fact]
+        public void Constructor_null_httpState_throws_ArgumentNullException()
+        {
+            var exception = Should.Throw<ArgumentNullException>(() => HttpResultWithError.Ok<string>(null));
+            exception.Message.ShouldContain("httpState");
+        }
+
+        [Fact]
+        public void Dispose_can_be_called_multiple_times()
+        {
+            var httpResult = HttpResultWithError.Ok<string>();
+            httpResult.Dispose();
+            httpResult.Dispose();
+            httpResult.Dispose();
+        }
+
+        [Fact]
         public void Creating_fail_HttpResultWithError_with_null_as_error_throws_exception()
         {
             var exception = Should.Throw<ArgumentNullException>(() => HttpResultWithError.Fail<string>(null));
@@ -78,7 +94,7 @@ namespace HttpResultMonad.Tests.HttpResultWithErrorMonad
             var httpResult = HttpResultWithError.Fail("abc");
             httpResult.HttpState.ShouldBe(HttpState.Empty);
         }
-        
+
         [Fact]
         public void Combine_if_all_HttpResultWithError_are_ok_returns_ok_HttpResultWithError()
         {
