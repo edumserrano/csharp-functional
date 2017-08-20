@@ -5,7 +5,7 @@ using System.Net.Http;
 
 namespace Tests.Shared
 {
-    internal class HttpStateTestBuilder
+    public class HttpStateTestBuilder
     {
         public HttpStateTestBuilder()
         {
@@ -71,19 +71,16 @@ namespace Tests.Shared
 
         public HttpStateTest Build()
         {
-            var requestStream = RequestBody.ToStream();
-            var responseStream = ResponseBody.ToStream();
-
             return new HttpStateTest(
                 url: Url,
                 httpMethod: HttpMethod.ToString(),
                 httpStatusCode: (int)HttpStatusCode,
-                requestContentLength: requestStream.Length,
-                responseContentLength: responseStream.Length,
+                requestContentLength: RequestBody.ToStream().Length,
+                responseContentLength: ResponseBody.ToStream().Length,
                 requestHeaders: RequestHeaders,
                 responseHeaders: ResponseHeaders,
-                requestBody: requestStream,
-                responseBody: responseStream);
+                requestBody: RequestBody,
+                responseBody: ResponseBody);
         }
     }
 }

@@ -45,11 +45,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeCoverage", "CodeCoverag
 		..\..\Tests\CodeCoverageAllTestProjects.runsettings = ..\..\Tests\CodeCoverageAllTestProjects.runsettings
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpResultMonad.HttpResultClient", "HttpResultMonad.HttpResultClient\HttpResultMonad.HttpResultClient.csproj", "{DF5DBF18-B434-4643-9D69-240359A27157}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Shared", "..\..\Tests\Tests.Shared\Tests.Shared.csproj", "{EDECAB91-B187-47BE-AC03-788DEDDF8AA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResultMonad.HttpResultClient", "..\..\Tests\HttpResultMonad.HttpResultClient\HttpResultMonad.HttpResultClient.csproj", "{852C5A63-381C-4078-A76C-1C6925B1ED94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResultMonad.HttpResultOnHttpClient", "HttpResultMonad.HttpResultOnHttpClient\HttpResultMonad.HttpResultOnHttpClient.csproj", "{D866FEE7-FAC8-40F3-AF01-1CCAC6055286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResultMonad.HttpResultOnHttpClient.Tests", "..\..\Tests\HttpResultMonad.HttpResultOnHttpClient.Tests\HttpResultMonad.HttpResultOnHttpClient.Tests.csproj", "{FBEBEF1D-404F-4510-854E-08B16C004670}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,18 +113,18 @@ Global
 		{34230919-64B2-4FA3-92C9-A5259FD8A063}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34230919-64B2-4FA3-92C9-A5259FD8A063}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34230919-64B2-4FA3-92C9-A5259FD8A063}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF5DBF18-B434-4643-9D69-240359A27157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF5DBF18-B434-4643-9D69-240359A27157}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF5DBF18-B434-4643-9D69-240359A27157}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF5DBF18-B434-4643-9D69-240359A27157}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDECAB91-B187-47BE-AC03-788DEDDF8AA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EDECAB91-B187-47BE-AC03-788DEDDF8AA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDECAB91-B187-47BE-AC03-788DEDDF8AA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDECAB91-B187-47BE-AC03-788DEDDF8AA0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{852C5A63-381C-4078-A76C-1C6925B1ED94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{852C5A63-381C-4078-A76C-1C6925B1ED94}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{852C5A63-381C-4078-A76C-1C6925B1ED94}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{852C5A63-381C-4078-A76C-1C6925B1ED94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D866FEE7-FAC8-40F3-AF01-1CCAC6055286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D866FEE7-FAC8-40F3-AF01-1CCAC6055286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D866FEE7-FAC8-40F3-AF01-1CCAC6055286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D866FEE7-FAC8-40F3-AF01-1CCAC6055286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBEBEF1D-404F-4510-854E-08B16C004670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEBEF1D-404F-4510-854E-08B16C004670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEBEF1D-404F-4510-854E-08B16C004670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEBEF1D-404F-4510-854E-08B16C004670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,8 +145,8 @@ Global
 		{4818ADE9-9128-4771-82EB-AA95AC92F88F} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{34230919-64B2-4FA3-92C9-A5259FD8A063} = {E9E343C6-9EE9-4EA4-81EC-6BFC09AE9402}
 		{98893718-231B-45A9-B02B-13D66748798B} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
-		{DF5DBF18-B434-4643-9D69-240359A27157} = {E9E343C6-9EE9-4EA4-81EC-6BFC09AE9402}
 		{EDECAB91-B187-47BE-AC03-788DEDDF8AA0} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
-		{852C5A63-381C-4078-A76C-1C6925B1ED94} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
+		{D866FEE7-FAC8-40F3-AF01-1CCAC6055286} = {E9E343C6-9EE9-4EA4-81EC-6BFC09AE9402}
+		{FBEBEF1D-404F-4510-854E-08B16C004670} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 	EndGlobalSection
 EndGlobal

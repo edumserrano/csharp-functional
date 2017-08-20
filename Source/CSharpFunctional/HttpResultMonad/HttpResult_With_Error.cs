@@ -37,7 +37,7 @@ namespace HttpResultMonad
         }
     }
 
-    public struct HttpResultWithError<T> : IEquatable<HttpResultWithError<T>>
+    public struct HttpResultWithError<T> : IEquatable<HttpResultWithError<T>>, IDisposable
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly Maybe<T> _error;
@@ -162,5 +162,10 @@ namespace HttpResultMonad
         }
 
         #endregion
+
+        public void Dispose()
+        {
+            _httpState?.Dispose();
+        }
     }
 }

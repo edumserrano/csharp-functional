@@ -32,16 +32,36 @@ namespace HttpResultMonad.State
 
         public List<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders { get; }
 
-        public Task<Stream> GetRequestBodyAsync()
+        public Task<Stream> ReadRequestBodyAsStreamAsync()
         {
             return Task.FromResult(Stream.Null);
         }
 
-        public Task<Stream> GetResponseBodyAsync()
+        public Task<Stream> ReadResponseBodyAsStreamAsync()
         {
             return Task.FromResult(Stream.Null);
         }
-        
+
+        public Task<string> ReadRequestBodyAsStringAsync()
+        {
+            return Task.FromResult(string.Empty);
+        }
+
+        public Task<string> ReadResponseBodyAsStringAsync()
+        {
+            return Task.FromResult(string.Empty);
+        }
+
+        public Task<byte[]> ReadRequestBodyAsByteArrayAsync()
+        {
+            return Task.FromResult(new byte[0]);
+        }
+
+        public Task<byte[]> ReadResponseBodyAsByteArrayAsync()
+        {
+            return Task.FromResult(new byte[0]);
+        }
+
         public bool Equals(EmptyHttpHttpState other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -58,5 +78,7 @@ namespace HttpResultMonad.State
         {
             return 0;
         }
+
+        public void Dispose() { }
     }
 }

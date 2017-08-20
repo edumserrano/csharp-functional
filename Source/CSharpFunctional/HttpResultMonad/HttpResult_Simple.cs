@@ -8,7 +8,7 @@ using MaybeMonad;
 
 namespace HttpResultMonad
 {
-    public struct HttpResult : IEquatable<HttpResult>
+    public struct HttpResult : IEquatable<HttpResult>, IDisposable
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly HttpResultStatus _httpResultStatus;
@@ -216,6 +216,11 @@ namespace HttpResultMonad
             return !anyFailure
                 ? HttpResultWithError.Ok<TError>(State.HttpState.Empty)
                 : results.First(x => x.IsFailure).ToHttpResultWithError();
+        }
+
+        public void Dispose()
+        {
+            _httpState?.Dispose();
         }
     }
 }

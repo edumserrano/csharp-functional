@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta4-build3742\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta4-build3742\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta4-build3742\build\xunit.core.props" Condition="Exists('..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta4-build3742\build\xunit.core.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{852C5A63-381C-4078-A76C-1C6925B1ED94}</ProjectGuid>
+    <ProjectGuid>{FBEBEF1D-404F-4510-854E-08B16C004670}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HttpResultMonad.HttpResultClient</RootNamespace>
-    <AssemblyName>HttpResultMonad.HttpResultClient</AssemblyName>
+    <RootNamespace>HttpResultMonad.HttpResultOnHttpClient.Tests</RootNamespace>
+    <AssemblyName>HttpResultMonad.HttpResultOnHttpClient.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -43,6 +44,21 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Net.Http.4.3.2\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\Source\CSharpFunctional\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\..\Source\CSharpFunctional\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
     </Reference>
@@ -57,14 +73,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="HttpClientStateTests.cs" />
+    <Compile Include="HttpResultClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHttpClientHandler.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CodeCoverage.runsettings" />
     <None Include="packages.config" />
+    <None Include="xunit.runner.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\Source\CSharpFunctional\packages\xunit.analyzers.0.6.1\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\CSharpFunctional\HttpResultMonad.HttpResultOnHttpClient\HttpResultMonad.HttpResultOnHttpClient.csproj">
+      <Project>{d866fee7-fac8-40f3-af01-1ccac6055286}</Project>
+      <Name>HttpResultMonad.HttpResultOnHttpClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Source\CSharpFunctional\HttpResultMonad\HttpResultMonad.csproj">
+      <Project>{7154c272-2d4a-4ee0-bc12-ce0c4cdf1ec0}</Project>
+      <Name>HttpResultMonad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests.Shared\Tests.Shared.csproj">
+      <Project>{edecab91-b187-47be-ac03-788deddf8aa0}</Project>
+      <Name>Tests.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -74,6 +110,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta4-build3742\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta4-build3742\build\xunit.core.props'))" />
     <Error Condition="!Exists('..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta4-build3742\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta4-build3742\build\xunit.core.targets'))" />
+    <Error Condition="!Exists('..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta4-build3742\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta4-build3742\build\net20\xunit.runner.visualstudio.props'))" />
   </Target>
   <Import Project="..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta4-build3742\build\xunit.core.targets" Condition="Exists('..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta4-build3742\build\xunit.core.targets')" />
 </Project>

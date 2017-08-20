@@ -6,7 +6,7 @@ using HttpResultMonad.State;
 
 namespace Tests.Shared
 {
-    internal static class Test
+    public static class Test
     {
         public static IHttpState CreateHttpStateA()
         {

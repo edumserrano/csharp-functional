@@ -4,11 +4,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using HttpResultMonad.State;
 
-namespace HttpResultMonad.HttpResultClient
+namespace HttpResultMonad.HttpResultOnHttpClient
 {
-    public class ResultHttpClient : IDisposable
+    public class HttpResultClient : IDisposable
     {
-        public ResultHttpClient(HttpClient httpClient)
+        public HttpResultClient(HttpClient httpClient)
         {
             HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
@@ -19,14 +19,14 @@ namespace HttpResultMonad.HttpResultClient
             HttpRequestMessage request,
             CancellationToken cancellationToken = default(CancellationToken))
         {
-
-            using (var response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false))
-            {
-                IHttpState httpState = new HttpClientHttpState(response);
-                return response.IsSuccessStatusCode
-                    ? HttpResult.Ok(httpState)
-                    : HttpResult.Fail(httpState);
-            }
+            var response = await HttpClient
+                .SendAsync(request, cancellationToken)
+                .ConfigureAwait(false);
+            
+            IHttpState httpState = new HttpClientState(request, response);
+            return response.IsSuccessStatusCode
+                ? HttpResult.Ok(httpState)
+                : HttpResult.Fail(httpState);
         }
 
         public void Dispose()

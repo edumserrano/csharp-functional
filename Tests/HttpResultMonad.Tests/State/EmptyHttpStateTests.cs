@@ -24,19 +24,51 @@ namespace HttpResultMonad.Tests.State
         }
 
         [Fact]
-        public async Task GetRequestBodyAsync_returns_null_stream()
+        public async Task ReadRequestBodyAsStreamAsync_returns_null_stream()
         {
             var emptyHttpState = HttpState.Empty;
-            var requestBody = await emptyHttpState.GetRequestBodyAsync();
+            var requestBody = await emptyHttpState.ReadRequestBodyAsStreamAsync();
             requestBody.ShouldBe(Stream.Null);
         }
 
         [Fact]
-        public async Task GetResponseBodyAsync_returns_null_stream()
+        public async Task ReadResponseBodyAsStreamAsync_returns_null_stream()
         {
             var emptyHttpState = HttpState.Empty;
-            var requestBody = await emptyHttpState.GetResponseBodyAsync();
-            requestBody.ShouldBe(Stream.Null);
+            var responseBody = await emptyHttpState.ReadResponseBodyAsStreamAsync();
+            responseBody.ShouldBe(Stream.Null);
+        }
+
+        [Fact]
+        public async Task ReadRequestBodyAsStringAsync_returns_empty_string()
+        {
+            var emptyHttpState = HttpState.Empty;
+            var requestBody = await emptyHttpState.ReadRequestBodyAsStringAsync();
+            requestBody.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public async Task ReadResponseBodyAsStringAsync_returns_empty_string()
+        {
+            var emptyHttpState = HttpState.Empty;
+            var responseBody = await emptyHttpState.ReadResponseBodyAsStringAsync();
+            responseBody.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public async Task ReadRequestBodyAsByteArrayAsync_returns_null_stream()
+        {
+            var emptyHttpState = HttpState.Empty;
+            var requestBody = await emptyHttpState.ReadRequestBodyAsByteArrayAsync();
+            requestBody.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public async Task ReadResponseBodyAsByteArrayAsync_returns_null_stream()
+        {
+            var emptyHttpState = HttpState.Empty;
+            var responseBody = await emptyHttpState.ReadResponseBodyAsByteArrayAsync();
+            responseBody.ShouldBeEmpty();
         }
 
 

@@ -9,13 +9,6 @@
             <!--Match assembly file paths:-->
             <ModulePaths>
               <Include>
-                <ModulePath>.*MaybeMonad.dll</ModulePath>
-                <ModulePath>.*MaybeMonad.Extensions.ResultMonad.dll</ModulePath>
-                <ModulePath>.*ResultMonad.dll</ModulePath>
-                <ModulePath>.*ResultMonad.Extensions.dll</ModulePath>
-                <ModulePath>.*ResultMonad.Extensions.HttpResultMonad.dll</ModulePath>
-                <ModulePath>.*HttpResultMonad.dll</ModulePath>
-                <ModulePath>.*HttpResultMonad.Extensions.dll</ModulePath>
                 <ModulePath>.*HttpResultMonad.HttpResultOnHttpClient.dll</ModulePath>
               </Include>
             </ModulePaths>

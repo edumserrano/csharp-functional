@@ -2,15 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using HttpResultMonad.State;
 
 namespace Tests.Shared
 {
-    internal class HttpStateTest : IEquatable<HttpStateTest>, IHttpState
+    public class HttpStateTest : IEquatable<HttpStateTest>, IHttpState
     {
-        private readonly Stream _requestBody;
-        private readonly Stream _responseBody;
+        private readonly string _requestBodyStr;
+        private readonly string _responseBodyStr;
 
         public HttpStateTest(
             Uri url, string httpMethod,
@@ -19,8 +20,8 @@ namespace Tests.Shared
             long? responseContentLength,
             List<KeyValuePair<string, IEnumerable<string>>> requestHeaders,
             List<KeyValuePair<string, IEnumerable<string>>> responseHeaders,
-            Stream requestBody,
-            Stream responseBody)
+            string requestBody,
+            string responseBody)
         {
             Url = url;
             HttpMethod = httpMethod;
@@ -29,10 +30,8 @@ namespace Tests.Shared
             ResponseContentLength = responseContentLength;
             RequestHeaders = requestHeaders;
             ResponseHeaders = responseHeaders;
-            _requestBody = requestBody;
-            RequestBodyStr = requestBody.ReadAsString();
-            _responseBody = responseBody;
-            ResponseBodyStr = responseBody.ReadAsString();
+            _requestBodyStr = requestBody;
+            _responseBodyStr = responseBody;
         }
 
         public Uri Url { get; }
@@ -49,24 +48,37 @@ namespace Tests.Shared
 
         public List<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders { get; }
 
-        public string RequestBodyStr { get; }
 
-        public string ResponseBodyStr { get; }
-
-        public async Task<Stream> GetRequestBodyAsync()
+        public Task<Stream> ReadRequestBodyAsStreamAsync()
         {
-            var copyStream = new MemoryStream();
-            await _requestBody.CopyToAsync(copyStream);
-            _requestBody.Position = 0;
-            copyStream.Position = 0;
-            return copyStream;
+            return Task.FromResult(_requestBodyStr.ToStream());
         }
 
-        public Task<Stream> GetResponseBodyAsync()
+        public Task<Stream> ReadResponseBodyAsStreamAsync()
         {
-            return Task.FromResult(_responseBody);
+            return Task.FromResult(_responseBodyStr.ToStream());
         }
-        
+
+        public Task<string> ReadRequestBodyAsStringAsync()
+        {
+            return Task.FromResult(_requestBodyStr);
+        }
+
+        public Task<string> ReadResponseBodyAsStringAsync()
+        {
+            return Task.FromResult(_responseBodyStr);
+        }
+
+        public Task<byte[]> ReadRequestBodyAsByteArrayAsync()
+        {
+            return Task.FromResult(Encoding.UTF8.GetBytes(_requestBodyStr));
+        }
+
+        public Task<byte[]> ReadResponseBodyAsByteArrayAsync()
+        {
+            return Task.FromResult(Encoding.UTF8.GetBytes(_responseBodyStr));
+        }
+
         public bool Equals(HttpStateTest other)
         {
             return Equals(Url, other.Url)
@@ -74,8 +86,8 @@ namespace Tests.Shared
                    && HttpStatusCode == other.HttpStatusCode
                    && HeadersEquals(RequestHeaders, other.RequestHeaders)
                    && HeadersEquals(ResponseHeaders, other.ResponseHeaders)
-                   && string.Equals(RequestBodyStr, other.RequestBodyStr)
-                   && string.Equals(ResponseBodyStr, other.ResponseBodyStr);
+                   && string.Equals(_requestBodyStr, other._requestBodyStr)
+                   && string.Equals(_responseBodyStr, other._responseBodyStr);
         }
 
         private bool HeadersEquals(
@@ -133,11 +145,13 @@ namespace Tests.Shared
                 hashCode = (hashCode * 397) ^ (HttpMethod != null ? HttpMethod.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (int)HttpStatusCode;
                 hashCode = (hashCode * 397) ^ (RequestHeaders?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ (_requestBody?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (_requestBodyStr?.GetHashCode() ?? 0);
                 hashCode = (hashCode * 397) ^ (ResponseHeaders?.GetHashCode() ?? 0);
-                hashCode = (hashCode * 397) ^ (_responseBody?.GetHashCode() ?? 0);
+                hashCode = (hashCode * 397) ^ (_responseBodyStr?.GetHashCode() ?? 0);
                 return hashCode;
             }
         }
+
+        public void Dispose() { }
     }
 }

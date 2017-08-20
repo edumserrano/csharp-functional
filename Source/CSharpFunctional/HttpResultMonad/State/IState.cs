@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HttpResultMonad.State
 {
-    public interface IHttpState
+    public interface IHttpState : IDisposable
     {
         Uri Url { get; }
 
@@ -21,8 +21,16 @@ namespace HttpResultMonad.State
 
         List<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders { get; }
 
-        Task<Stream> GetRequestBodyAsync();
+        Task<Stream> ReadRequestBodyAsStreamAsync();
 
-        Task<Stream> GetResponseBodyAsync();
+        Task<Stream> ReadResponseBodyAsStreamAsync();
+        
+        Task<string> ReadRequestBodyAsStringAsync();
+
+        Task<string> ReadResponseBodyAsStringAsync();
+
+        Task<byte[]> ReadRequestBodyAsByteArrayAsync();
+
+        Task<byte[]> ReadResponseBodyAsByteArrayAsync();
     }
 }

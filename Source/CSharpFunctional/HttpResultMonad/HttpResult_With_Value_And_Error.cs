@@ -5,7 +5,7 @@ using MaybeMonad;
 
 namespace HttpResultMonad
 {
-    public struct HttpResult<TValue, TError> : IEquatable<HttpResult<TValue, TError>>
+    public struct HttpResult<TValue, TError> : IEquatable<HttpResult<TValue, TError>>, IDisposable
     {
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly Maybe<TError> _error;
@@ -159,5 +159,10 @@ namespace HttpResultMonad
         }
 
         #endregion
+
+        public void Dispose()
+        {
+            _httpState?.Dispose();
+        }
     }
 }
