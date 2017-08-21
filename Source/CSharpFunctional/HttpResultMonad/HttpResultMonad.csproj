@@ -18,7 +18,7 @@
     <Description>Http Result monad for C#. In its core this monad enhances a type by adding a success/failure status and an http state. This type is meant to be used by operations that do Http calls.</Description>
     <PackageTags>http result httpresult functional monad csharp c#</PackageTags>
 
-    <!--<RepositoryUrl>https://github.com/edumserrano/roslyn-analyzers</RepositoryUrl>-->
+    <!--<RepositoryUrl>https://github.com/edumserrano/csharp-functionals</RepositoryUrl>-->
     <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
     <!--<PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>-->
     <!--<Copyright>Copyright</Copyright>-->

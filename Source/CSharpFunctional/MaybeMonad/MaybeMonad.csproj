@@ -18,7 +18,7 @@
     <Description>Maybe/Optional monad implementation for C#</Description>
     <PackageTags>maybe optional functional monad csharp c#</PackageTags>
 
-    <!--<RepositoryUrl>https://github.com/edumserrano/roslyn-analyzers</RepositoryUrl>-->
+    <!--<RepositoryUrl>https://github.com/edumserrano/csharp-functional</RepositoryUrl>-->
     <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
     <!--<PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>-->
     <!--<Copyright>Copyright</Copyright>-->

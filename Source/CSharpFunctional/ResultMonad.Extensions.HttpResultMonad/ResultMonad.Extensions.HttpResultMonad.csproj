@@ -18,7 +18,7 @@
     <Description>Extensions to ResultMonad package to integrate with the HttpResult package</Description>
     <PackageTags>result extensions httpresult functional monad csharp c#</PackageTags>
 
-    <!--<RepositoryUrl>https://github.com/edumserrano/roslyn-analyzers</RepositoryUrl>-->
+    <!--<RepositoryUrl>https://github.com/edumserrano/csharp-functional</RepositoryUrl>-->
     <!--<PackageIconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</PackageIconUrl>-->
     <!--<PackageReleaseNotes>Summary of changes made in this release of the package.</PackageReleaseNotes>-->
     <!--<Copyright>Copyright</Copyright>-->
