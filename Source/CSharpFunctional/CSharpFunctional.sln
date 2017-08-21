@@ -35,21 +35,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Shared", "..\..\Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpResultMonad.HttpResultOnHttpClient", "HttpResultMonad.HttpResultOnHttpClient\HttpResultMonad.HttpResultOnHttpClient.csproj", "{D866FEE7-FAC8-40F3-AF01-1CCAC6055286}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResultMonad.Extensions.Tests", "..\..\Tests\HttpResultMonad.Extensions.Tests\HttpResultMonad.Extensions.Tests.csproj", "{FC5C9659-CAC5-488D-8D67-43AEE591C004}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpResultMonad.Extensions.Tests", "..\..\Tests\HttpResultMonad.Extensions.Tests\HttpResultMonad.Extensions.Tests.csproj", "{FC5C9659-CAC5-488D-8D67-43AEE591C004}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResultMonad.HttpResultOnHttpClient.Tests", "..\..\Tests\HttpResultMonad.HttpResultOnHttpClient.Tests\HttpResultMonad.HttpResultOnHttpClient.Tests.csproj", "{E02FF651-DFC4-4536-B9EB-B1782728AD3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpResultMonad.HttpResultOnHttpClient.Tests", "..\..\Tests\HttpResultMonad.HttpResultOnHttpClient.Tests\HttpResultMonad.HttpResultOnHttpClient.Tests.csproj", "{E02FF651-DFC4-4536-B9EB-B1782728AD3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResultMonad.Tests", "..\..\Tests\HttpResultMonad.Tests\HttpResultMonad.Tests.csproj", "{FC5048F1-C661-4DA0-9063-12C3D68BD77C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpResultMonad.Tests", "..\..\Tests\HttpResultMonad.Tests\HttpResultMonad.Tests.csproj", "{FC5048F1-C661-4DA0-9063-12C3D68BD77C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaybeMonad.Extensions.ResultMonad.Tests", "..\..\Tests\MaybeMonad.Extensions.ResultMonad.Tests\MaybeMonad.Extensions.ResultMonad.Tests.csproj", "{DEE3750E-3242-474D-8447-9439C1883CDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaybeMonad.Extensions.ResultMonad.Tests", "..\..\Tests\MaybeMonad.Extensions.ResultMonad.Tests\MaybeMonad.Extensions.ResultMonad.Tests.csproj", "{DEE3750E-3242-474D-8447-9439C1883CDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaybeMonad.Tests", "..\..\Tests\MaybeMonad.Tests\MaybeMonad.Tests.csproj", "{57A83E5F-09D3-4FDB-99D6-FBD03CE5AF61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResultMonad.Extensions.HttpResultMonad.Tests", "..\..\Tests\ResultMonad.Extensions.HttpResultMonad.Tests\ResultMonad.Extensions.HttpResultMonad.Tests.csproj", "{6A4ED894-72C5-4C0A-9999-0B50BA161561}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultMonad.Extensions.HttpResultMonad.Tests", "..\..\Tests\ResultMonad.Extensions.HttpResultMonad.Tests\ResultMonad.Extensions.HttpResultMonad.Tests.csproj", "{6A4ED894-72C5-4C0A-9999-0B50BA161561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResultMonad.Extensions.Tests", "..\..\Tests\ResultMonad.Extensions.Tests\ResultMonad.Extensions.Tests.csproj", "{FAA7EF32-4E21-41CD-9687-9ADEE34B64F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultMonad.Extensions.Tests", "..\..\Tests\ResultMonad.Extensions.Tests\ResultMonad.Extensions.Tests.csproj", "{FAA7EF32-4E21-41CD-9687-9ADEE34B64F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResultMonad.Tests", "..\..\Tests\ResultMonad.Tests\ResultMonad.Tests.csproj", "{E954026A-E4D5-4FDE-A128-7F380D20FCAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResultMonad.Tests", "..\..\Tests\ResultMonad.Tests\ResultMonad.Tests.csproj", "{E954026A-E4D5-4FDE-A128-7F380D20FCAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaybeMonad.Tests", "..\..\Tests\MaybeMonad.Tests\MaybeMonad.Tests.csproj", "{78803053-F4B5-4C04-A115-5BEE092F2123}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,10 +109,6 @@ Global
 		{DEE3750E-3242-474D-8447-9439C1883CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEE3750E-3242-474D-8447-9439C1883CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEE3750E-3242-474D-8447-9439C1883CDC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57A83E5F-09D3-4FDB-99D6-FBD03CE5AF61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57A83E5F-09D3-4FDB-99D6-FBD03CE5AF61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57A83E5F-09D3-4FDB-99D6-FBD03CE5AF61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57A83E5F-09D3-4FDB-99D6-FBD03CE5AF61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A4ED894-72C5-4C0A-9999-0B50BA161561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A4ED894-72C5-4C0A-9999-0B50BA161561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A4ED894-72C5-4C0A-9999-0B50BA161561}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -125,6 +121,10 @@ Global
 		{E954026A-E4D5-4FDE-A128-7F380D20FCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E954026A-E4D5-4FDE-A128-7F380D20FCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E954026A-E4D5-4FDE-A128-7F380D20FCAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78803053-F4B5-4C04-A115-5BEE092F2123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78803053-F4B5-4C04-A115-5BEE092F2123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78803053-F4B5-4C04-A115-5BEE092F2123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78803053-F4B5-4C04-A115-5BEE092F2123}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -144,10 +144,10 @@ Global
 		{E02FF651-DFC4-4536-B9EB-B1782728AD3A} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{FC5048F1-C661-4DA0-9063-12C3D68BD77C} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{DEE3750E-3242-474D-8447-9439C1883CDC} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
-		{57A83E5F-09D3-4FDB-99D6-FBD03CE5AF61} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{6A4ED894-72C5-4C0A-9999-0B50BA161561} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{FAA7EF32-4E21-41CD-9687-9ADEE34B64F8} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{E954026A-E4D5-4FDE-A128-7F380D20FCAC} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
+		{78803053-F4B5-4C04-A115-5BEE092F2123} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {965D0EC4-55A4-4AF7-9E67-1AFC2AC470F6}
