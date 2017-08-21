@@ -27,7 +27,7 @@ namespace HttpResultMonad.HttpResultOnHttpClient
             return response.IsSuccessStatusCode
                 ? HttpResult.Ok(httpState)
                 : HttpResult.Fail(httpState);
-        }
+        } 
         
         public void Dispose()
         {
