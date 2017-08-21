@@ -3,7 +3,7 @@
 HttpResult monad
 ================
 
-Please read :ref:`about the result monad <result-monad>` first because the HttpResult monad is essentially the same with an added state property of type HttpState.
+Please read :ref:`about the result monad <result-monad>` first because the HttpResult monad is essentially the same with an added state property of type :ref:`IHttpState <http-state>`.
 As the result monad, there are four variations of the HttpResult monad:
 
 	* HttpResult
@@ -13,28 +13,7 @@ As the result monad, there are four variations of the HttpResult monad:
 
 All variations of the HttpResult monad contain an IsSuccess and it's inverse IsFailure property that indicate if the operation was successful or not; as well as an HttpState property that represents the http operation that was performed.
 
-To use this you should create a wrapper on the methods that do your http communication. For instance, if you are using the HttpClient class you could do the following::
-
-	private HttpClient _httpClient;
-
- 	private async Task<HttpResult> GetHttpResult(string url)
-    {
-        using (var response = await _httpClient.GetAsync(url))
-        {
-            Maybe<HttpState> httpState = await HttpStateBuilder.BuildAsync(response);
-            if (!response.IsSuccessStatusCode)
-            {
-                return HttpResult.Fail(httpState); 
-            }
-
-            return HttpResult.Ok(httpState);
-        }
-    }
-
-The above example shows the idea for using the HttpResult class. You are responsible for capturing the HttpState and then deciding wheter you should return an ok or a fail HttpResult. To create an HttpState you should use the :ref:`HttpStateBuilder <http-state-builder>` class.
-
-For an example class using HttpClient see the |HttpResultClientClass|_. If you want to use HttpResultClient install the |HttpResultOnHttpClientNuget|_.
-
+From a developers perspective there is one big difference between the HttpResult monad and the Result monad: whilst the Result monad can start to be used without any extra coding effort, the HttpResult monad requires a bit more coding effort. Please keep reading to understand how to take advantage of the HttpResult monad.
 
 Installing
 ----------
@@ -49,58 +28,88 @@ HttpResult monads: How To
 -------------------------
 
 Please read the :ref:`how-to for each variation of the Result monad <how-to-result-monad>` to understand how to use the HttpResult monads.
-The only difference is that the HttpResult also requires an HttpState in its Ok() and Fail() methods. See :ref:`the HttpState <http-state>` and :ref:`HttpStateBuilder <http-state-builder>` sections to understand how to create an HttpState instance.
+The only difference is that the HttpResult also requires an HttpState in its Ok and Fail methods. See :ref:`the HttpState <http-state>` to understand how to create an IHttpState instance.
+
+To use this you should create a wrapper on the methods that do your http communication. For instance, if you are using the |HttpClient| class you could do the following::
+
+    private HttpClient _httpClient = new HttpClient();
+
+    public async Task<HttpResult> SendAsync(
+            HttpRequestMessage request,
+            CancellationToken cancellationToken = default(CancellationToken))
+    {
+        var response = await _httpClient
+                        .SendAsync(request, cancellationToken)
+                        .ConfigureAwait(false);
+        
+        IHttpState httpState = new HttpClientState(response);
+        return response.IsSuccessStatusCode
+            ? HttpResult.Ok(httpState)
+            : HttpResult.Fail(httpState);
+    }
+
+The above example shows the idea for using the HttpResult class based on |HttpClient|_. This code can be found at |HttpResultClientClass|_ and you can use it by installing |HttpResultOnHttpClientNuget|_. 
+
+Obviously you can use other implementations but what is important is that you are responsible for capturing the IHttpState as well as deciding whether you should return an ok or a fail HttpResult. This was just a very simple and generic example. Let's say that you knew that you only deal with json responses and you want to have type safety. Then you could implement something like::
+
+    public async Task<HttpResult<T>> SendAsync<T>(
+            HttpRequestMessage request,
+            CancellationToken cancellationToken = default(CancellationToken)) where T : class
+    {
+        var response = await _httpClient
+                        .SendAsync(request, cancellationToken)
+                        .ConfigureAwait(false);
+        
+        var jsonBody = await response.Content.ReadAsStringAsync();
+        var deserializedObj = /*deserilize the string jsonBody into an instance of type T*/
+
+        IHttpState httpState = new HttpClientState(response);
+        return response.IsSuccessStatusCode
+            ? HttpResult.Ok<T>(deserializedObj,httpState)
+            : HttpResult.Fail<T>(httpState);
+    }
+
+It is up to you to chose the best integration of the HttpResult monad with the class of your chosing that does the http communication in order to meat your requirements.
 
 .. _http-state:
 
-HttpState: How To 
+IHttpState: How To 
 ------------------
 
-The HttpState represents an the result of an http operation. It contains the following properties::
+The IHttpState represents an http operation. See `here <https://github.com/edumserrano/csharp-functional/blob/master/Source/CSharpFunctional/HttpResultMonad/State/IHttpState.cs>`_ for the specification of this interface.
 
-	public Uri Url { get; }
+As explained in the previous section, to use HttpResult you will have to wrap the methods that you use do the http communication with it. When doing that you will also decide wheter or not to capture the http state. If you do not pass any http state into the OK and Fail methods of the HttpResult then the http state will always be an `empty http state <https://github.com/edumserrano/csharp-functional/blob/master/Source/CSharpFunctional/HttpResultMonad/State/EmptyHttpState.cs>`_. 
 
-	public HttpMethod HttpMethod { get; }
+See the |HttpClientState|_ class for an implementation of the IHttpState that is used with an HttpResult that uses the |HttpClient|. This HttpClientState implements the IHttpState interface based on System.Net.Http.HttpResponseMessage. Note that the Dispose method is responsible for disposing the System.Net.Http.HttpResponseMessage and System.Net.Http.HttpRequestMessage. Ususally you do this by applying a using statement such as::
 
-	public HttpStatusCode HttpStatusCode { get; }
+    
+    private HttpClient _httpClient = new HttpClient();
 
-	public List<KeyValuePair<string, IEnumerable<string>>> RequestHeaders { get; }
+    using(var httpResponse = await _httpClient.GetAsync("https://github.com"))
+    {
+        //do something with the httpResponse
+    }
 
-	public string RequestRawBody { get; }
+However in the |HttpResultClientClass|_ the HttpResponse is not disposed because the implementation of the IHttpState interface by the |HttpClientState|_ class does not immediately retrieve everything it needs to from it, namely the body. This was an implementation choice. I could have decided that I was happy with loading upfront the whole request and response bodies into the |HttpResultClientClass|. If I did that than I could dipose of the HttpResponseMessage on the |HttpResultClientClass| and the implementation of the Dispose method in the |HttpClientState| could be empty.
 
-	public List<KeyValuePair<string, IEnumerable<string>>> ResponseHeaders { get; }
-
-	public string ResponseRawBody { get; }
+It is up to you to chose the best implementation for IHttpState that meats your requirements.
 
 If you need to create an empty state do::
 
-	var emptyState = HttpState.Empty;
+    using HttpResultMonad.State;
+
+    var emptyState = HttpState.Empty;
 
 To check if an HttpState is emtpy do::
 
 	var emptyState = HttpState.Empty;
 	var isEmptyState = emptyState.Equals(HttpState.Empty); //evaluates to true
 
-.. _http-state-builder:
+HttpResult monad is disposable 
+------------------------------
 
-HttpStateBuilder: How To 
--------------------------------
+The Dispose method of the HttpResult just calls the Dispose method on its HttpState property which is of type IHttpState. This means two thigs:
 
-The HttpStateBuilder allows you to contruct an HttpState. You can use the With methods and chose which properties you want to add to the HttpState and in the end call Build() as such::
-
-	var state = new HttpStateBuilder()
-                .WithHttpMethod(HttpMethod.Get)
-                .WithUrl(new Uri("https://github.com"))
-                .WithHttpStatusCode(HttpStatusCode.OK)
-                .WithRequestRawBody("raw request body A")
-                .WithResponseRawBody("raw response body A")
-                .WithRequestHeaders(requestHeaders)
-                .WithResponseHeaders(responseHeaders)
-                .Build();
-
-Or you can use the BuildAsync to create one from an HttpResponseMessage instance::
-
-    HttpResponseMessage httpResponse = /*using HttpClient will return an instance of HttpResponseMessage*/
-	var state = await HttpStateBuilder.BuildAsync(httpResponse);
-
+* You should always dispose the HttpResult instances once you don't need them anymore.
+* When implementing the IHttpState you should take care of releasing any disposable resources.
 

@@ -1,37 +1,22 @@
 .. include:: links.rst
 
-Welcome to roslyn-analyzers documentation
-=================================================
+Welcome to csharp-functional documentation
+==========================================
 
-The |repo|_ started as a learning experience about functional programming concepts.
+The |repo|_ started as a learning experience about functional programming concepts. The main trigger was a Pluralsight video from `Vladimir Khorikov <http://enterprisecraftsmanship.com/>`_ named `Applying Functional Principles in C# <https://app.pluralsight.com/library/courses/csharp-applying-functional-principles/table-of-contents>`_. 
 
-This documentation contains generic information regarding the Roslyn Platform that will help understand how the repository was created as well as convey the the information that is required to understand the code in the repository. In addition it contains a description of all the analyzers and code fixes present in the repository.
+After watching the video I immediatly tried to apply the concepts in one of my pet projects and I found that I wanted a bit more than the functionality described in the Pluralsight course. In the course the Result type that is described is capable of holding or not a value, so you have: Result or Result<T>. In both cases you have an error property which is of type string that you can chose to set to describe what went wrong. I felt that using a string to describe an error was not what I wanted in most cases. So all of this started because I wanted to create a Result monad which could have an error of any type. It turned out to be much more complex than I could have imagined... 
 
+I higly advise you to watch that Pluralsight course as well as to read `Eric Lippert's series of blog posts on monads <https://ericlippert.com/category/monads/>`_. 
 
-apesar de falar de monads eu n percebo nd disto se quiserem saber mais investiguem . monads esta fora do scope desta documentacao.
-uma das melhores definicoes de monad vem do guia de rx "insert quote". isto em conjunto com a serie de blog posts de eric lippert (inserir como link para os tips and resources) ajudou me a entender um pouco o conceito de monads.
+This documentation aims to provide enough instructions to successfully use the :ref:`NuGet packages <sln-structure>` as well as understanding the code in the repository. While reading it keep in mind that:
 
-all code examples are meant to illustrate the usage of the functional types included in <nugets list> and are not meant to reflect real world code practices
-
-the code examples shown might not be applicable to all domains. This might work perfectly in one project and poorly in another.
-
-
-colocar uma nota algures a dizer k result tem issuccess e isfailure que sao inversos e que quando digo ok result significa result com isssuccess=true e fail result significa isfailure=true
-
-
-explicar algures (talvez no extensios.rst) que as as extensoes precisam de uma func para poder transformar um tipo e que se fosse para transformar N tipos precisaria de N funcoes.
-e dar um exemplo
-
-
-extensions.rest notes
-
-
-There can be many overloads for OnSuccess which can only be distinguished by the returning type and in C# we can not have two methods with equal signature (the return type is not part of a method's signature). This means that the only way is to change the method name to cater different return types. Therefore you find different OnSuccess methods with appended ToX where X relates to the return type.
-
-eplicar que a motivacao veio do video da pluralsight mas com a ideia dos erros poderem ser qualquer tipo e nao so strings
-
-
-ver o video da pluralsight e ler os blog posts do eric lippert pk sao key para perceber esta documentacao/.
+* Although it mentions monads, it's outside of the scope to try to explain what a monad is. 
+* The :ref:`more resources <more-resources>` section contains links that will be helpful to understand what a monad is.
+* Since my understanding of monads is limited it might very well be possible that I sometimes use the word incorrectly.
+* All code examples are meant to illustrate the usage of the :ref:`NuGet packages <sln-structure>` and are not meant to reflect real world code practices.
+* Whenever I say an ok result/httpresult I mean a result/httpresult that has the IsSuccess property equal to true.
+* Whenever I say a fail result/httpresult I mean a result/httpresult that has the IsFailure property equal to true.
 
 .. toctree::
    :maxdepth: 2
@@ -42,5 +27,5 @@ ver o video da pluralsight e ler os blog posts do eric lippert pk sao key para p
    http-result-monad
    combine
    extensions
-   tips-and-resources
    repository
+   tips-and-resources

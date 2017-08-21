@@ -1,42 +1,21 @@
-.. _tips-and-more-resources:
+.. _more-resources:
 
-Tips and more resources
-=======================
+More resources
+==============
 
-* `Diagnostic Analyzers in Visual Studio 2015: First Look <https://www.pluralsight.com/courses/vs-2015-diagnostic-analyzers-first-look>`_ by Kathleen Dollard.
+* Pluralsight course by Vladimir Khorikov: Applying Functional Principles in C# <https://app.pluralsight.com/library/courses/csharp-applying-functional-principles/table-of-contents>`_ .
 
-* `Introduction to the .NET Compiler Platform <https://www.pluralsight.com/courses/dotnet-compiler-platform-introduction>`_ by Bart De Smet.
+* Vladimir Khorikov's repository related with the Pluralsight course mentioned above: https://github.com/vkhorikov/CSharpFunctionalExtensions.
 
-* If you have a question about how to do something with Roslyn try out the `Gitter channel <https://gitter.im/dotnet/roslyn>`_ for Roslyn.
+* Eric Lippert's series of articles on monads: https://ericlippert.com/category/monads. It's composed of thirteen articles and each one helped a lot to understand monads a bit better.
 
-* Explore the `Roslyn Repo <https://github.com/dotnet/roslyn>`_. Especially look into:
+* Wes Dyer article on monads: https://blogs.msdn.microsoft.com/wesdyer/2008/01/10/the-marvels-of-monads. This article is mentioned on `Monads, part two <https://ericlippert.com/2013/02/25/monads-part-two/>`, the second article in the series and it contains one of the most succint and easier to grasp definitions about a monad:
+  
+  * "Another way to look at these generic types (monads) is that they are “amplifiers”. An “amplifier” is something that increases the representational power of their “underlying” type."
 
-  * `How To Write a C# Analyzer and Code Fix <https://github.com/dotnet/roslyn/wiki/How-To-Write-a-C%23-Analyzer-and-Code-Fix>`_.
-  * `The Syntax Visualizer <https://github.com/dotnet/roslyn/wiki/Syntax%20Visualizer>`_. This is an invaluable tool to help understand the syntax tree.
-  * `Analyzers and Localization <https://github.com/dotnet/roslyn/blob/master/docs/analyzers/Localizing%20Analyzers.md>`_. I also recommend looking at how localization is done on the project created by the :ref:`default Visual Studio template for analyzers <easy-way>` to get an idea of how it works.
-  * `.NET Compiler Platform ("Roslyn") Overview <https://github.com/dotnet/roslyn/wiki/Roslyn%20Overview>`_.
+* Another good and not mathematical definition of monad can be found at: http://www.introtorx.com/content/v1.0.10621.0/10_LeavingTheMonad.html. It says:
 
-* Since the .NET Compiler Platform is vast I recommend searching `github for roslyn analyzers <https://github.com/search?q=roslyn+analyzer&type=Repositories>`_ to get ideas and learn how to use it.
+  * "For us, a monad is effectively a programming structure that represents computations. Generally a monadic structure allows you to chain together operators to produce a pipeline, just as we do with our extension methods. Monads are a kind of abstract data type constructor that encapsulate program logic instead of data in the domain model."
 
-* Enable **concurrent execution** of your analyzers and prevent them from **running in auto generated code** by using the following in your diagnostic analyzer class:: 
+* Scott Wlaschin's article on Railway Oriented Programming: https://fsharpforfunandprofit.com/rop. As well as the links at the bottom of the article about monads in general.
 
- 	public override void Initialize(AnalysisContext context)
-	{
-		context.EnableConcurrentExecution();
-		context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
-		...
-	}
-
-* There are more advanced Roslyn classes that can aid you in doing very cool things. Look for more Roslyn related info on:
-
-  * **Data flow Analysis**
-  * **Control flow Analysis**
-  * **CSharp Syntax Rewriter**
-  * **Workspace Services**
-  * **Classifier Service**
-  * **Formatter Service**
-  * **Renamer Service**
-  * **Simplifier Service**
-
-
-  links no fim de https://fsharpforfunandprofit.com/rop/

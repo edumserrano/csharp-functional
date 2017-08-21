@@ -52,6 +52,8 @@ In the NuGet packages there are extensions that mutate from Maybe monad to Resul
 		  * There is no problem in breaking this advice. You can even mutate more than one generic type at a time and go from Monad<A,B,C> to Monad<X,Y,Z> but at the expense of having 3 mutating functions: A->X, B->Y and C->Z. 
 		  * The more functions that need to be passed in to the extension method the worst the readibility of the code becomes. This is subject to personal opinion but I think that due to the C# syntax it becomes harder to read the code if you start to have many functions passed in as arguments on chained method calls. 
 
+.. note:: Consider for a moment the OnSuccess extension methods. There can be many overloads for OnSuccess which can only be distinguished by the returning type and in C# we can not have two methods with equal signature (the return type is not part of a method's signature). To overcome this, what I've chosen to do is to distinguish them by changing the method name to cater for different return types. Therefore you find different OnSuccess methods with appended ToX where X relates to the return type, such as OnSuccessToResultWithValue. This applies to all extension methods.
+
 
 NuGet packages
 --------------
@@ -194,7 +196,7 @@ Another example is going from a Maybe type to a Result type. You can call ToResu
 
 These transformations are essential to allow the railway oriented programming style described in the next section.
 
-Putting it all together: Railway-oriented programming
+Putting it all together: Railway Oriented Programming
 -----------------------------------------------------
 
 Scott Wlaschin gave a great `talk on NDC  <https://vimeo.com/97344498>`_ about this concept. 

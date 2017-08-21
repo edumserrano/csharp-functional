@@ -28,7 +28,7 @@ namespace HttpResultMonad.HttpResultOnHttpClient
                 ? HttpResult.Ok(httpState)
                 : HttpResult.Fail(httpState);
         }
-
+        
         public void Dispose()
         {
             HttpClient.Dispose();
