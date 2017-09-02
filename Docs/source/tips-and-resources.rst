@@ -9,7 +9,7 @@ More resources
 
 * Eric Lippert's series of articles on monads: https://ericlippert.com/category/monads. It's composed of thirteen articles and each one helped a lot to understand monads a bit better.
 
-* Wes Dyer article on monads: https://blogs.msdn.microsoft.com/wesdyer/2008/01/10/the-marvels-of-monads. This article is mentioned on `Monads, part two <https://ericlippert.com/2013/02/25/monads-part-two/>`, the second article in the series and it contains one of the most succint and easier to grasp definitions about a monad:
+* Wes Dyer article on monads: https://blogs.msdn.microsoft.com/wesdyer/2008/01/10/the-marvels-of-monads. This article is mentioned on `Monads, part two <https://ericlippert.com/2013/02/25/monads-part-two/>`, the second article in the series and it contains one of the most succinct and easier to grasp definitions about a monad:
   
   * "Another way to look at these generic types (monads) is that they are “amplifiers”. An “amplifier” is something that increases the representational power of their “underlying” type."
 

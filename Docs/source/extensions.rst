@@ -36,7 +36,7 @@ For monad transformations you might not need any extra function if it's implicit
 
 	public static Result<T> ToResultWithValue<T>(this Maybe<T> maybe)
 	{
-		/*the transformation from Maybe<T> to Result<T> is implict, no function is required*/
+		/*the transformation from Maybe<T> to Result<T> is implicit, no function is required*/
 		return maybe.HasNoValue
 	    	? Result.Fail<T>()
 	    	: Result.Ok(maybe.Value);
@@ -46,11 +46,11 @@ Since I know how to create a Result<T> from a Maybe<T> then no function is requi
 
 In the NuGet packages there are extensions that mutate from Maybe monad to Result, Result<T>, Result<TValue,TError>; as well as many others that mutate from a variation of Result monad to a variation of HttpResult monad like from Result<TValue,TError> to HttpResult<KValue,Terror>.
 
-.. note:: The underlying statement that derives from this introduction is that as a rule of thumb you should perform transformations that require only one function because of code readibility:
+.. note:: The underlying statement that derives from this introduction is that as a rule of thumb you should perform transformations that require only one function because of code readability:
 		  
 		  * If you're doing a generic type transformation and at the same time a monad transformation then the monad transformation should be implicit so that you will only require the function to mutate the generic type. 
 		  * There is no problem in breaking this advice. You can even mutate more than one generic type at a time and go from Monad<A,B,C> to Monad<X,Y,Z> but at the expense of having 3 mutating functions: A->X, B->Y and C->Z. 
-		  * The more functions that need to be passed in to the extension method the worst the readibility of the code becomes. This is subject to personal opinion but I think that due to the C# syntax it becomes harder to read the code if you start to have many functions passed in as arguments on chained method calls. 
+		  * The more functions that need to be passed in to the extension method the worst the readability of the code becomes. This is subject to personal opinion but I think that due to the C# syntax it becomes harder to read the code if you start to have many functions passed in as arguments on chained method calls. 
 
 .. note:: Consider for a moment the OnSuccess extension methods. There can be many overloads for OnSuccess which can only be distinguished by the returning type and in C# we can not have two methods with equal signature (the return type is not part of a method's signature). To overcome this, what I've chosen to do is to distinguish them by changing the method name to cater for different return types. Therefore you find different OnSuccess methods with appended ToX where X relates to the return type, such as OnSuccessToResultWithValue. This applies to all extension methods.
 
@@ -110,7 +110,7 @@ Result and HttpResult extensions: examples
 
 .. note:: keep in mind that:
 
-		  * The examples are focused on the Result monad but the same applies for the HtttpResult monad. 
+		  * The examples are focused on the Result monad but the same applies for the HttpResult monad. 
 		  * Although the examples shown are for the type Result<TValue,TError> the same concepts apply to the other variations of the Result monad.
 
 The available extensions are of the type:
@@ -119,7 +119,7 @@ The available extensions are of the type:
 * OnError: executes if the IsFailure property of the result is true;
 * Ensure: evaluates a condition and executes if the condition is true;
 
-One that is not yet implemented but is definitily useful would be the OnBoth. OnBoth would execute regardless of the IsSuccess/IsFailure of the result.
+One that is not yet implemented but is definitely useful would be the OnBoth. OnBoth would execute regardless of the IsSuccess/IsFailure of the result.
 
 OnSuccess example
 ~~~~~~~~~~~~~~~~~
@@ -132,7 +132,7 @@ An example of using an OnSuccess extension is::
 			.OnSuccessToResultWithValueAndError(id => new PlaylistId(id));
 	}
 
-In this example we start by creating a result with the From method. The From method will chech if the variable playlistId is positive and if it is then creates an ok Result<int,PlaylistIdError> with its property Value evaluating to the value of playlistId; if playlistId is negative it creates a fail Result<int,PlaylistIdError> with the Error property evaluating to PlaylistIdError.CanNotBeNegative.
+In this example we start by creating a result with the From method. The From method will check if the variable playlistId is positive and if it is then creates an ok Result<int,PlaylistIdError> with its property Value evaluating to the value of playlistId; if playlistId is negative it creates a fail Result<int,PlaylistIdError> with the Error property evaluating to PlaylistIdError.CanNotBeNegative.
 
 After the call to OnSuccessToResultWithValueAndError will only execute if the result is a an ok result. If it is an ok result the onSuccess function is executed wand creates an ok Result<PlaylistId,PlaylistIdError> with an instance of PlaylistId in its Value property; if it is a fail result the  onSuccess function is not executed and a fail Result<PlaylistId,PlaylistIdError> is created and the error from the previous result is propagated, which means the property Error evaluates to PlaylistIdError.CanNotBeNegative.
 
@@ -148,9 +148,9 @@ An example of using an Ensure extension is::
 	        	.OnSuccessToResultWithValueAndError(query => new SearchQuery(query));
 	}
 
-In this example we start by creating a result with the From method. The From method will chech if the variable searchQuery has a value and if it has then creates an ok Result<string,SearchQueryError> with its property Value evaluating to the value of searchQuery; if searchQuery is null or empty it creates a fail Result<string,SearchQueryError> with the Error property evaluating to SearchQueryError.CanNotBeNullOrEmpty.
+In this example we start by creating a result with the From method. The From method will check if the variable searchQuery has a value and if it has then creates an ok Result<string,SearchQueryError> with its property Value evaluating to the value of searchQuery; if searchQuery is null or empty it creates a fail Result<string,SearchQueryError> with the Error property evaluating to SearchQueryError.CanNotBeNullOrEmpty.
 
-After the call to EnsureToResultWithValueAndError will only execute if the result is a an ok result. If it is an ok result the predicate function is executed and if it evaluates to true then an ok Result<string,SearchQueryError> propgating the value from the previous result with an instance; if it is an ok result but the predicate function evaluates to false then it creates a fail Result<string,SearchQueryError> and the Error property set to SearchQueryError.CanNotBeMoreThan100CharactersLong; if the previous result is a fail result then predicate function is not executed and a fail Result<string,SearchQueryError> is created and the Error property set to SearchQueryError.CanNotBeMoreThan100CharactersLong.
+After the call to EnsureToResultWithValueAndError will only execute if the result is a an ok result. If it is an ok result the predicate function is executed and if it evaluates to true then an ok Result<string,SearchQueryError> probating the value from the previous result with an instance; if it is an ok result but the predicate function evaluates to false then it creates a fail Result<string,SearchQueryError> and the Error property set to SearchQueryError.CanNotBeMoreThan100CharactersLong; if the previous result is a fail result then predicate function is not executed and a fail Result<string,SearchQueryError> is created and the Error property set to SearchQueryError.CanNotBeMoreThan100CharactersLong.
 
 In the end the OnSuccessToResultWithValueAndError is executed which follows the rules explained in the previous example.
 
@@ -181,14 +181,14 @@ After the call to OnErrorToResultWithValueAndError will only execute if the resu
 In the end the OnSuccessToResultWithValueAndError is executed which follows the rules explained in the previous example.
 
 .. note:: Notice that the TValue and TError types do not have constrains, they can be whatever you want. 
-          In these examples the TValue were primitve types (int, string) as well as custom classes (PlaylistId, SearchQuery, PlaylistSearchRequest).
+          In these examples the TValue were primitive types (int, string) as well as custom classes (PlaylistId, SearchQuery, PlaylistSearchRequest).
           In these examples the TError were only custom classes (PlaylistIdError, SearchQueryError, PlaylistSearchRequestError) but they could be whatever you would like to use like Enums for instance.
 
 
 Mapping from one monad type to another
 --------------------------------------
 
-In your application you can use different types of monads at the same type. You can use all the ones mentioned in this documentation and even other's you have defined. To make them work together you will need a way to map from one type to another.
+In your application you can use different types of monads at the same type. You can use all the ones mentioned in this documentation and even others you have defined. To make them work together you will need a way to map from one type to another.
 
 The extensions available will tell you the type that will be returned. Some extensions will not perform any mapping and some will. For instance you can have one extension that takes a Result<TValue> and returns a ResultWithError<TError>. These transformations are indicated by the ToX appended to the extension method names.
 
@@ -284,7 +284,7 @@ Here are the methods used in the examples A1 and A2::
 	 
 I'll explain the code in both examples but focusing on the example with extension methods.
 	
-The first thing is to validate the input arguments and we do that by creating an inputResult that combines the results from the TrackId.Create and Limit.Create methods. If both results are ok then the inputResult is an ok ResultWithError<GetTrackRespostersError>; if at least one is a fail result then the inputResult is a fail ResultWithError<GetTrackRespostersError> and its Error property is set to the first failure result of the array passed into the Result.Combine method.
+The first thing is to validate the input arguments and we do that by creating an inputResult that combines the results from the TrackId.Create and Limit.Create methods. If both results are ok then the inputResult is an ok ResultWithError<GetTrackRepostersError>; if at least one is a fail result then the inputResult is a fail ResultWithError<GetTrackRepostersError> and its Error property is set to the first failure result of the array passed into the Result.Combine method.
 
 Now we can call OnSuccessToHttpResultWithValueAndError which is only executed if the inputResult is an ok result. If it is a fail result then the onSuccess function is not executed and it returns a fail Task<HttpResult<UsersSet, GetTrackRepostersError>> with the Error property set to the error that was on the inputResult.
 If the inputResult is an ok result then the onSuccess function is executed and what it is doing is creating an url to do the http call, calling HttpClient.GetAsync which will return a Task<HttpResult<UsersSet>>.
@@ -359,7 +359,7 @@ After we call OnSuccessToHttpResultWithValueAndError. If the previous result was
 If the previous result was an ok result then the onSuccessFunction is executed and it tries to get an email signup token. The call to GetEmailSignUpTokenAsync returns an Task<HttpResult<EmailSignUpToken>> which after the call to OnErrorToHttpResultWithValueAndError will either be an ok or a fail Task<HttpResult<EmailSignUpToken, SignUpError>>. If it's an ok result then the Value will contain the value from the result that was returned from the call to GetEmailSignUpTokenAsync; if it's a fail result then the Error property will contain the error from the onErrorFunction which is SignUpError.HttpFail;
 
 Finally, another call to OnSuccessToHttpResultWithValueAndError. Again, if the previous result was a fail result then the onSuccessFunction is not executed and it returns a fail Task<HttpResult<SignUp, SignUpError>> with the Error property propagated from what was in the previous result.
-If the previous result was an ok result then the onSuccessFunction is executed and it tries to perform the singup. The call to SignUpAsync returns an Task<HttpResult<SignUp>> which after the call to OnErrorToHttpResultWithValueAndError will either be an ok or a fail Task<HttpResult<SignUp, SignUpError>>. If it's an ok result then the Value will contain the value from the result that was returned from the call to SignUpAsync; if it's a fail result then the Error property will contain the error from the onErrorFunction which is SignUpError.HttpFail;
+If the previous result was an ok result then the onSuccessFunction is executed and it tries to perform the signup. The call to SignUpAsync returns an Task<HttpResult<SignUp>> which after the call to OnErrorToHttpResultWithValueAndError will either be an ok or a fail Task<HttpResult<SignUp, SignUpError>>. If it's an ok result then the Value will contain the value from the result that was returned from the call to SignUpAsync; if it's a fail result then the Error property will contain the error from the onErrorFunction which is SignUpError.HttpFail;
 
 
 

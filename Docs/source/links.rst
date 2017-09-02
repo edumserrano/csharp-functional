@@ -2,7 +2,7 @@
 .. |repo| replace:: csharp-functional repository
 .. _repo: https://github.com/edumserrano/csharp-functional
 
-.. _MaybeNuget: https://github.com/edumserrano/csharp-functional
+.. _MaybeNuGet: https://github.com/edumserrano/csharp-functional
 .. _ResultNuget: https://github.com/edumserrano/csharp-functional
 .. _HttpResultNuget: https://github.com/edumserrano/csharp-functional
 .. _ResultMonadExtensionsNuget: https://github.com/edumserrano/csharp-functional

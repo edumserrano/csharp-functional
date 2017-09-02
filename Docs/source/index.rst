@@ -5,9 +5,9 @@ Welcome to csharp-functional documentation
 
 The |repo|_ started as a learning experience about functional programming concepts. The main trigger was a Pluralsight video from `Vladimir Khorikov <http://enterprisecraftsmanship.com/>`_ named `Applying Functional Principles in C# <https://app.pluralsight.com/library/courses/csharp-applying-functional-principles/table-of-contents>`_. 
 
-After watching the video I immediatly tried to apply the concepts in one of my pet projects and I found that I wanted a bit more than the functionality described in the Pluralsight course. In the course the Result type that is described is capable of holding or not a value, so you have: Result or Result<T>. In both cases you have an error property which is of type string that you can chose to set to describe what went wrong. I felt that using a string to describe an error was not what I wanted in most cases. So all of this started because I wanted to create a Result monad which could have an error of any type. It turned out to be much more complex than I could have imagined... 
+After watching the video I immediately tried to apply the concepts in one of my pet projects and I found that I wanted a bit more than the functionality described in the Pluralsight course. In the course the Result type that is described is capable of holding or not a value, so you have: Result or Result<T>. In both cases you have an error property which is of type string that you can chose to set to describe what went wrong. I felt that using a string to describe an error was not what I wanted in most cases. So all of this started because I wanted to create a Result monad which could have an error of any type. It turned out to be much more complex than I could have imagined... 
 
-I higly advise you to watch that Pluralsight course as well as to read `Eric Lippert's series of blog posts on monads <https://ericlippert.com/category/monads/>`_. 
+I highly advise you to watch that Pluralsight course as well as to read `Eric Lippert's series of blog posts on monads <https://ericlippert.com/category/monads/>`_. 
 
 This documentation aims to provide enough instructions to successfully use the :ref:`NuGet packages <sln-structure>` as well as understanding the code in the repository. While reading it keep in mind that:
 
@@ -22,10 +22,10 @@ This documentation aims to provide enough instructions to successfully use the :
    :maxdepth: 2
    :caption: Contents:
 
+   repository
    maybe-monad
    result-monad
    http-result-monad
    combine
    extensions
-   repository
    tips-and-resources
