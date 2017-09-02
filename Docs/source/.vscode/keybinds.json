@@ -1,0 +1,21 @@
+// Copy this bindings to your keybinds.json if you want to use them
+[
+    {
+        "key": "f6",
+        "command": "workbench.action.tasks.build"
+    },
+    {
+        "key": "f5",
+        "command": "workbench.action.tasks.runTask",
+        "args": "build-open-docs"
+    },
+    {
+        "key": "f10",
+        "command": "workbench.action.tasks.runTask",
+        "args": "open-docs"
+    },
+    {
+        "key": "shift+f5",
+        "command": "workbench.action.tasks.runTask"
+    }
+]

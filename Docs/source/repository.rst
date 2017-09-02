@@ -20,14 +20,14 @@ Structure of the solution
 =================================================================================================================  ============ =================================================== ============================================================================================================================================================================================================================ 
 Description                                                                                                        Type         NuGet                                               Location                                                         
 =================================================================================================================  ============ =================================================== ============================================================================================================================================================================================================================ 
-The Maybe monad                                                                                                    Source       |MaybeNuget|_                                       `MaybeMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad>`_                     
-The Result monad                                                                                                   Source       |ResultNuget|_                                      `ResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad>`_
-The HttpResult monad                                                                                               Source       |HttpResultNuget|_                                  `HttpResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad>`_
-The Result monad extensions                                                                                        Source       |ResultMonadExtensionsNuget|_                       `ResultMonad.Extensions <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions>`_                  
-The HttpResult monad extensions                                                                                    Source       |HttpResultMonadExtensionsNuget|_                   `HttpResultMonad.Extensions <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.Extensions>`_                                                           
-The Result monad extensions that :ref:`transforms them <monad-transformations>` into HttpResult monad              Source       |ResultMonadExtensionsHttpResultMonadNuget|_        `ResultMonad.Extensions.HttpResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions.HttpResultMonad>`_                                                 
-The Maybe monad extensions that :ref:`transforms them <monad-transformations>` into Result monad                   Source       |MaybeMonadExtensionsResultMonadNuget|_             `MaybeMonad.Extensions.ResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad.Extensions.ResultMonad>`_                                                
-Simple application of HttpResult monad on a class by using it with |HttpClient|_                                   Source       |HttpResultOnHttpClientNuget|_                      `HttpResultMonad.HttpResultOnHttpClient <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.HttpResultOnHttpClient>`_   
+The Maybe monad                                                                                                    Source       |MaybeNuGet|_                                       `MaybeMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad>`_                     
+The Result monad                                                                                                   Source       |ResultNuGet|_                                      `ResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad>`_
+The HttpResult monad                                                                                               Source       |HttpResultNuGet|_                                  `HttpResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad>`_
+The Result monad extensions                                                                                        Source       |ResultMonadExtensionsNuGet|_                       `ResultMonad.Extensions <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions>`_                  
+The HttpResult monad extensions                                                                                    Source       |HttpResultMonadExtensionsNuGet|_                   `HttpResultMonad.Extensions <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.Extensions>`_                                                           
+The Result monad extensions that :ref:`transforms them <monad-transformations>` into HttpResult monad              Source       |ResultMonadExtensionsHttpResultMonadNuGet|_        `ResultMonad.Extensions.HttpResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/ResultMonad.Extensions.HttpResultMonad>`_                                                 
+The Maybe monad extensions that :ref:`transforms them <monad-transformations>` into Result monad                   Source       |MaybeMonadExtensionsResultMonadNuGet|_             `MaybeMonad.Extensions.ResultMonad <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/MaybeMonad.Extensions.ResultMonad>`_                                                
+Simple application of HttpResult monad on a class by using it with |HttpClient|_                                   Source       |HttpResultOnHttpClientNuGet|_                      `HttpResultMonad.HttpResultOnHttpClient <https://github.com/edumserrano/csharp-functional/tree/master/Source/CSharpFunctional/HttpResultMonad.HttpResultOnHttpClient>`_   
 Tests for the Maybe monad                                                                                          Test         N/A                                                 `MaybeMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/MaybeMonad.Tests>`_                     
 Tests for the Result monad                                                                                         Test         N/A                                                 `ResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/ResultMonad.Tests>`_                  
 Tests for the HttpResult monad                                                                                     Test         N/A                                                 `HttpResultMonad.Tests <https://github.com/edumserrano/csharp-functional/tree/master/Tests/HttpResultMonad.Tests>`_                            
@@ -42,7 +42,7 @@ Shared code between test projects                                               
 Building the solution and running tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This repository adheres to the `F5 manifesto <http://www.khalidabuhakmeh.com/the-f5-manifesto-for-net-developers>`_ so you should be able to clone, open the soluton in Visual Studio and build/run tests.
+This repository adheres to the `F5 manifesto <http://www.khalidabuhakmeh.com/the-f5-manifesto-for-net-developers>`_ so you should be able to clone, open the solution in Visual Studio and build/run tests.
 
 Documentation
 -------------
@@ -78,10 +78,10 @@ Once you have setup your environment you can build the docs by running the `make
 
 .. note:: These build instructions are focused for Windows users. If you are using a different OS then the instructions can't be taken word by word but the same requirements apply. Furthermore there is a `makefile <https://github.com/edumserrano/csharp-functional/blob/master/Docs/Makefile>`_ available for non Windows users.
 
-Editing the docs
-~~~~~~~~~~~~~~~~
+Editing the docs with Visual Studio Code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Although you can show your editor of preference to work with `reStructuredText <http://www.sphinx-doc.org/en/stable/rest.html>`_, I have found `Visual Studio Code <https://code.visualstudio.com/>`_ to be very good for this task.
+Although you can use your editor of preference to work with `reStructuredText files <http://www.sphinx-doc.org/en/stable/rest.html>`_, I have found `Visual Studio Code <https://code.visualstudio.com/>`_ to be very good for this task.
 
 After installing Visual Studio Code I recommend installing the following extensions:
 
@@ -95,10 +95,21 @@ These will greatly increase your productivity while editing the documentation. F
 * The reStructuredText extension will 
 * Visual Studio Code contains numerous features that will improve your productivity. Something as simple as providing auto-complete suggestions from the words already available on your documentation speeds up your typing a lot.
 
-In the `.vscode folder <https://github.com/edumserrano/csharp-functional/tree/master/Docs/.vscode>`_ you have 3 configuration files:
+In the `.vscode folder <https://github.com/edumserrano/csharp-functional/tree/master/Docs/source/.vscode>`_ you have 4 configuration files:
 
-* cSpell.json: contains configuration for the Code Spell Checker extension. You can add words to this file by using the Ctrl+. shortcut on words that the spell checker does not recognize and chose "Add to project dictionary".
-* settings.json: contains the configuration for the reStructuredText extensions.
-* tasks.json: contains the default build task definition used by Visual Studio Code when ask it to build. If you're using Visual Studio Code from a non Windows OS then you should change the command to execute the makefile instead of the make.bat.
+* **cSpell.json**: contains configuration for the Code Spell Checker extension. You can add words to this file by using the Ctrl+. shortcut on words that the spell checker does not recognize and chose "Add to project dictionary".
+* **settings.json**: contains the configuration for the reStructuredText extensions.
+* **tasks.json**: contains 3 tasks for Visual Studio Code:
+
+    * **build-docs**: The default build task. In Visual Studio Code go to "Tasks->Run Task" and select the build-docs task or "Tasks->Run Build Task". If you're using Visual Studio Code from a non Windows OS then you should change the command to execute the makefile instead of the make.bat.
+    * **open-docs**: A task to open the docs. In Visual Studio Code go to "Tasks->Run Task" and select the open-docs task. That should open the index.html using your default browser. The documents must have been built first.
+    * **build-open-docs**: A task to build and then open the docs. In Visual Studio Code go to "Tasks->Run Task" and select the build-open-docs task. That should build the docs and then open the index.html using your default browser.
+
+* **keybindings.json**: contains some bindings that help you build and open the docs. If you want to use them you have to go to "File->Preferences->Keyboard Shortcuts" then on the top left you will see a message saying "For advanced customizations open and edit the keybindings.json". Select the link under keybindings.json and edit the file to add the contents from the this file. This will add 4 keybindings:
+
+    * **shift+f5** : opens the run task menu;
+    * **f6** : runs the build task;
+    * **f5** : runs the build-open-docs task;
+    * **f10** : runs the open-docs task.
 
 Once you have installed Visual Studio code and the recommended extensions you can edit and build the docs by going to "File->Open Folder" and choosing the "/Docs/source" directory. If you do not open the source folder the build task will fail to run.

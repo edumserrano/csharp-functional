@@ -60,18 +60,18 @@ NuGet packages
 
 The extension methods are divided into the following NuGet packages:
 
-* |ResultMonadExtensionsNuget|_ : extensions to the result monads that always return another instance of a result monad.
-* |HttpResultMonadExtensionsNuget|_ : extensions to the http result monads that always return another instance of an http result monad.
-* |ResultMonadExtensionsHttpResultMonadNuget|_ : extensions to the result monad that return an instance of an http result monad.
-* |MaybeMonadExtensionsResultMonadNuget|_ : extensions to the maybe monad that return an instance of a result monad.
+* |ResultMonadExtensionsNuGet|_ : extensions to the result monads that always return another instance of a result monad.
+* |HttpResultMonadExtensionsNuGet|_ : extensions to the http result monads that always return another instance of an http result monad.
+* |ResultMonadExtensionsHttpResultMonadNuGet|_ : extensions to the result monad that return an instance of an http result monad.
+* |MaybeMonadExtensionsResultMonadNuGet|_ : extensions to the maybe monad that return an instance of a result monad.
 
-The |ResultMonadExtensionsHttpResultMonadNuget| is separated from the |ResultMonadExtensionsNuget|, just as the |ResultMonadExtensionsHttpResultMonadNuget| is separated from the |HttpResultMonadExtensionsNuget|, because it allows you to only work with either the Result monad or the HttpResult monad. 
+The |ResultMonadExtensionsHttpResultMonadNuGet| is separated from the |ResultMonadExtensionsNuGet|, just as the |ResultMonadExtensionsHttpResultMonadNuGet| is separated from the |HttpResultMonadExtensionsNuGet|, because it allows you to only work with either the Result monad or the HttpResult monad. 
 If they were together then installing extensions for the result monad would mean that you would have to install the http result monad NuGet as well even though you didn't want to use it.
 
 Installing
 ----------
 
-Installing is performed via NuGet. For example to install the |ResultMonadExtensionsNuget| do::
+Installing is performed via NuGet. For example to install the |ResultMonadExtensionsNuGet| do::
 
 	PM> Install-Package ResultMonad.Extensions
 

@@ -40,7 +40,7 @@ This fixes both of the previous issues because now:
 Installing
 ----------
 
-The Maybe monad NuGet package can be found at |MaybeNuget|_.
+The Maybe monad NuGet package can be found at |MaybeNuGet|_.
 Installing is performed via NuGet::
 
 	PM> Install-Package MaybeMonad

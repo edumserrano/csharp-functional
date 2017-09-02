@@ -10,7 +10,21 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": []
+        },
+        {
+            "taskName": "build-open-docs",
+            "dependsOn":"build-docs",            
+            "type": "shell",
+            "command": "../build/html/index.html",
+            "problemMatcher": []
+        },
+        {
+            "taskName": "open-docs",
+            "type": "shell",
+            "command": "../build/html/index.html",
+            "problemMatcher": []
         }
     ]
 }

@@ -18,7 +18,7 @@ All variations of the Result monad contain an IsSuccess and it's inverse IsFailu
 Installing
 ----------
 
-The Result monad NuGet package can be found at |ResultNuget|_.
+The Result monad NuGet package can be found at |ResultNuGet|_.
 Installing is performed via NuGet::
 
 	PM> Install-Package ResultMonad

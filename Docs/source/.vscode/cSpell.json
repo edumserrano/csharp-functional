@@ -16,6 +16,7 @@
         "autobuild",
         "choco",
         "chocolatey",
+        "customizations",
         "deserialize",
         "deserialized",
         "httpresult",
