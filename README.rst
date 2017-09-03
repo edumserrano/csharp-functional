@@ -1,7 +1,9 @@
 C# Functional
 =============
 
-|docs| |licence|
+|docs|
+
+|licence|
 
 ==================================================================== ======================================= ================================================
 Description                                                          NuGet                                   Build Status
@@ -111,7 +113,7 @@ This project is licensed under the `MIT license <https://github.com/edumserrano/
     :scale: 100%
     :target: https://eduardomserrano.visualstudio.com/_apis/public/build/definitions/19e4afb6-184b-4d8b-a0e5-a108602592b9/41/badge
 
-.. |http-result-extensions-build-status| image:: hhttps://eduardomserrano.visualstudio.com/_apis/public/build/definitions/19e4afb6-184b-4d8b-a0e5-a108602592b9/44/badge
+.. |http-result-extensions-build-status| image:: https://eduardomserrano.visualstudio.com/_apis/public/build/definitions/19e4afb6-184b-4d8b-a0e5-a108602592b9/44/badge
     :alt: build status
     :scale: 100%
     :target: https://eduardomserrano.visualstudio.com/_apis/public/build/definitions/19e4afb6-184b-4d8b-a0e5-a108602592b9/44/badge
