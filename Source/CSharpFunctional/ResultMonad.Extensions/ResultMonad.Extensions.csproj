@@ -15,7 +15,7 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://github.com/edumserrano/csharp-functional/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/edumserrano/csharp-functional</PackageProjectUrl>
-    <Description>Extensions to the ResultMonad package.</Description>
+    <Description>Extensions to the ResultMonad package. For more information see http://csharp-functional.readthedocs.io/en/latest/extensions.html. </Description>
     <PackageTags>result extensions functional monad csharp c#</PackageTags>
 
     <!--<RepositoryUrl>https://github.com/edumserrano/csharp-functional</RepositoryUrl>-->
@@ -25,7 +25,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\ResultMonad\ResultMonad.csproj" />
+    <ProjectReference Include="..\ResultMonad\ResultMonad.csproj" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
