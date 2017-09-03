@@ -59,6 +59,7 @@ To build the docs you need:
 * Python;
 * Sphinx;
 * Sphinx read the docs theme.
+* Pylint (not required but recommended)
 
 You can install Python from `here <https://www.python.org/downloads/windows/>`_ or if you have `chocolatey <https://chocolatey.org/>`_ you can do the following from PowerShell::
 
@@ -73,6 +74,10 @@ The read the docs theme is configured in the `conf.py <https://github.com/edumse
     pip install sphinx_rtd_theme
 
 For more information about the read the docs theme see `its repo <https://github.com/rtfd/sphinx_rtd_theme>`_.
+
+To install Pylint execute the following from PowerShell::
+
+    pip install pylint
 
 Once you have setup your environment you can build the docs by running the `make.bat <https://github.com/edumserrano/csharp-functional/blob/master/Docs/make.bat>`_ file. You can also build the docs from Visual Studio Code as explained in the next section.
 

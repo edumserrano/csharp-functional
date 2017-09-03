@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# roslyn-analyzers-docs documentation build configuration file, created by
+# csharp-functional-docs documentation build configuration file, created by
 # sphinx-quickstart on Sat Jul 22 14:49:50 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -46,7 +46,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'roslyn-analyzers-docs'
+project = 'csharp-functional-docs'
 copyright = '2017, Eduardo Serrano'
 author = 'Eduardo Serrano'
 
@@ -106,7 +106,7 @@ html_static_path = ['nstatic']
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'roslyn-analyzers-docsdoc'
+htmlhelp_basename = 'csharp-functional-docsdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -133,7 +133,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'roslyn-analyzers-docs.tex', 'roslyn-analyzers-docs Documentation',
+    (master_doc, 'csharp-functional-docs.tex', 'csharp-functional-docs Documentation',
      'Eduardo Serrano', 'manual'),
 ]
 
@@ -143,7 +143,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'roslyn-analyzers-docs', 'roslyn-analyzers-docs Documentation',
+    (master_doc, 'csharp-functional-docs', 'csharp-functional-docs Documentation',
      [author], 1)
 ]
 
@@ -154,8 +154,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'roslyn-analyzers-docs', 'roslyn-analyzers-docs Documentation',
-     author, 'roslyn-analyzers-docs', 'One line description of project.',
+    (master_doc, 'csharp-functional-docs', 'csharp-functional-docs Documentation',
+     author, 'csharp-functional-docs', 'One line description of project.',
      'Miscellaneous'),
 ]
 
