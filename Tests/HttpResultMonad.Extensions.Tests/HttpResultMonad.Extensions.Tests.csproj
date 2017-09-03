@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta5-build3769\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta5-build3769\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta5-build3769\build\xunit.core.props" Condition="Exists('..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta5-build3769\build\xunit.core.props')" />
+  <Import Project="..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta5-build3769\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta5-build3769\build\net20\xunit.runner.visualstudio.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{78803053-F4B5-4C04-A115-5BEE092F2123}</ProjectGuid>
+    <ProjectGuid>{1E697CA9-5FAE-49F7-8293-67F5DCF8BFC7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MaybeMonad.Tests</RootNamespace>
-    <AssemblyName>MaybeMonad.Tests</AssemblyName>
+    <RootNamespace>HttpResultMonad.Extensions.Tests</RootNamespace>
+    <AssemblyName>HttpResultMonad.Extensions.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\..\Source\CSharpFunctional\packages\xunit.abstractions.2.0.1\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="xunit.assert, Version=2.3.0.3769, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\..\Source\CSharpFunctional\packages\xunit.assert.2.3.0-beta5-build3769\lib\netstandard1.1\xunit.assert.dll</HintPath>
@@ -58,24 +59,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Equality\MaybeEqualityOperatorTests.cs" />
-    <Compile Include="Equality\MaybeEqualsMaybeTests.cs" />
-    <Compile Include="Equality\MaybeEqualsObjectTests.cs" />
-    <Compile Include="Equality\MaybeGetHashCodeTests.cs" />
-    <Compile Include="Equality\MaybeInequalityOperatorTests.cs" />
-    <Compile Include="MaybeTests.cs" />
+    <Compile Include="HttpResultSimpleMonad\OnError\WithAsyncLeftOperand\OnErrorToHttpResultWithErrorTests1.cs" />
+    <Compile Include="HttpResultWithErrorMonad\OnError\WithAsyncLeftOperand\OnErrorToHttpResultErrorTests.cs" />
+    <Compile Include="HttpResultWithErrorMonad\OnSuccess\OnSuccessToHttpResultWithValueAndErrorTests.cs" />
+    <Compile Include="HttpResultWithValueAndErrorMonad\OnError\WithAsyncLeftOperand\OnErrorToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="HttpResultWithValueAndErrorMonad\OnSuccess\WithAsyncBothOperands\OnSuccessToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="HttpResultWithValueAndErrorMonad\OnSuccess\WithAsyncRightOperand\OnSuccessToHttpResultWithValueAndErrorTests1.cs" />
+    <Compile Include="HttpResultWithValueMonad\OnError\WithAsyncLeftOperand\OnErrorToHttpResultWithValueAndErrorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\CSharpFunctional\HttpResultMonad.Extensions\HttpResultMonad.Extensions.csproj">
+      <Project>{55ed30f0-d1ee-4a17-9fde-a7a0d69baaef}</Project>
+      <Name>HttpResultMonad.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Source\CSharpFunctional\HttpResultMonad\HttpResultMonad.csproj">
+      <Project>{7154c272-2d4a-4ee0-bc12-ce0c4cdf1ec0}</Project>
+      <Name>HttpResultMonad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests.Shared\Tests.Shared.csproj">
+      <Project>{edecab91-b187-47be-ac03-788deddf8aa0}</Project>
+      <Name>Tests.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="CodeCoverage.runsettings" />
     <None Include="packages.config" />
-    <None Include="xunit.runner.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Source\CSharpFunctional\MaybeMonad\MaybeMonad.csproj">
-      <Project>{34230919-64b2-4fa3-92c9-a5259fd8a063}</Project>
-      <Name>MaybeMonad</Name>
-    </ProjectReference>
+    <None Include="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\Source\CSharpFunctional\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
@@ -86,9 +98,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
+    <Error Condition="!Exists('..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta5-build3769\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta5-build3769\build\net20\xunit.runner.visualstudio.props'))" />
     <Error Condition="!Exists('..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta5-build3769\build\xunit.core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta5-build3769\build\xunit.core.props'))" />
     <Error Condition="!Exists('..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta5-build3769\build\xunit.core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta5-build3769\build\xunit.core.targets'))" />
-    <Error Condition="!Exists('..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta5-build3769\build\net20\xunit.runner.visualstudio.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\Source\CSharpFunctional\packages\xunit.runner.visualstudio.2.3.0-beta5-build3769\build\net20\xunit.runner.visualstudio.props'))" />
   </Target>
   <Import Project="..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta5-build3769\build\xunit.core.targets" Condition="Exists('..\..\Source\CSharpFunctional\packages\xunit.core.2.3.0-beta5-build3769\build\xunit.core.targets')" />
 </Project>
