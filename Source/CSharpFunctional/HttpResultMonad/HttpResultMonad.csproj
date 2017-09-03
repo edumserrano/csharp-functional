@@ -8,14 +8,14 @@
 
   <PropertyGroup>
     <PackageId>HttpResultMonad</PackageId>
-    <PackageVersion>1.0.1-alpha</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Title>Http Result Monad</Title>
     <Authors>Eduardo Serrano</Authors>
     <Owners>Eduardo Serrano</Owners>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://github.com/edumserrano/csharp-functional/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/edumserrano/csharp-functional</PackageProjectUrl>
-    <Description>Http Result monad for C#. In its core this monad enhances a type by adding a success/failure status and an http state. This type is meant to be used by operations that do Http calls.</Description>
+    <Description>Http Result monad for C#. In its core this monad enhances a type by adding a success/failure status and an http state. This type is meant to be used by operations that do Http calls.  For more information see http://csharp-functional.readthedocs.io/en/latest/http-result-monad.html. </Description>
     <PackageTags>http result httpresult functional monad csharp c#</PackageTags>
 
     <!--<RepositoryUrl>https://github.com/edumserrano/csharp-functionals</RepositoryUrl>-->
@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeCoverage" Version="1.0.3" PrivateAssets="all"  />
+    <PackageReference Include="Microsoft.CodeCoverage" Version="1.0.3" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>

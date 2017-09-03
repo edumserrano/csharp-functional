@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaybeMonad.Tests", "..\..\T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResultMonad.Extensions.Tests", "..\..\Tests\HttpResultMonad.Extensions.Tests\HttpResultMonad.Extensions.Tests.csproj", "{1E697CA9-5FAE-49F7-8293-67F5DCF8BFC7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpResultMonad.Tests", "..\..\Tests\HttpResultMonad.Tests\HttpResultMonad.Tests.csproj", "{AE82DAC4-0FAA-4AE5-AEA6-99BDF3757B67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,10 @@ Global
 		{1E697CA9-5FAE-49F7-8293-67F5DCF8BFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E697CA9-5FAE-49F7-8293-67F5DCF8BFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E697CA9-5FAE-49F7-8293-67F5DCF8BFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE82DAC4-0FAA-4AE5-AEA6-99BDF3757B67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE82DAC4-0FAA-4AE5-AEA6-99BDF3757B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE82DAC4-0FAA-4AE5-AEA6-99BDF3757B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE82DAC4-0FAA-4AE5-AEA6-99BDF3757B67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +112,7 @@ Global
 		{D866FEE7-FAC8-40F3-AF01-1CCAC6055286} = {E9E343C6-9EE9-4EA4-81EC-6BFC09AE9402}
 		{78803053-F4B5-4C04-A115-5BEE092F2123} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 		{1E697CA9-5FAE-49F7-8293-67F5DCF8BFC7} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
+		{AE82DAC4-0FAA-4AE5-AEA6-99BDF3757B67} = {A0AA2E1D-2B42-475F-BCA4-80DD5CCB64CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {965D0EC4-55A4-4AF7-9E67-1AFC2AC470F6}
