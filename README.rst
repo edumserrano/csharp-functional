@@ -1,9 +1,7 @@
 C# Functional
 =============
 
-|docs|
-
-|licence|
+|docs| |licence|
 
 ==================================================================== ======================================= ================================================
 Description                                                          NuGet                                   Build Status
@@ -18,14 +16,17 @@ Maybe monad extensions that them into Result monad                   |maybe-exte
 Simple application of HttpResult monad                               |http-result-on-http-client-nuget|      |http-result-on-http-client-build-status|
 ==================================================================== ======================================= ================================================
 
+Intro
+=====
+
 This repository started as a learning experience about functional programming concepts. The main trigger was a Pluralsight video from Vladimir Khorikov named `Applying Functional Principles in C# <https://www.pluralsight.com/courses/csharp-applying-functional-principles>`_.
 
 Installing
 =================================================
 
-Installation is performed via NuGet::
+Installation is performed via NuGet. Example for the Maybe monad NuGet package::
     
-    PM> Install-Package Roslyn.Analyzers
+    PM> Install-Package MaybeMonad
 
 Building
 =================================================
@@ -43,10 +44,10 @@ Licence
 
 This project is licensed under the `MIT license <https://github.com/edumserrano/roslyn-analyzers/blob/master/Licence>`_.
 
-.. |docs| image:: http://csharp-functional.readthedocs.io/en/latest/?badge=latest
+.. |docs| image:: https://readthedocs.org/projects/csharp-functional/badge/?version=latest
     :alt: Documentation Status
     :scale: 100%
-    :target: http://csharp-functional.readthedocs.io/en/latest    
+    :target: http://csharp-functional.readthedocs.io/en/latest/?badge=latest
 
 .. |licence| image:: https://img.shields.io/github/license/mashape/apistatus.svg
     :alt: licence
