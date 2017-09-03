@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>HttpResultMonad.Extensions</PackageId>
-    <PackageVersion>1.0.1-alpha2</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Title>HttpResultMonad.Extensions</Title>
     <Authors>Eduardo Serrano</Authors>
     <Owners>Eduardo Serrano</Owners>
