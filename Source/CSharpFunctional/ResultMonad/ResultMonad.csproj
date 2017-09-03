@@ -8,14 +8,14 @@
 
   <PropertyGroup>
     <PackageId>ResultMonad</PackageId>
-    <PackageVersion>1.0.1-alpha</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Title>Result Monad</Title>
     <Authors>Eduardo Serrano</Authors>
     <Owners>Eduardo Serrano</Owners>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://github.com/edumserrano/csharp-functional/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/edumserrano/csharp-functional</PackageProjectUrl>
-    <Description>Result monad for C#. In its core this monad enhances a type by adding a success/failure status.</Description>
+    <Description>Result monad for C#. In its core this monad enhances a type by adding a success/failure status. For more information see http://csharp-functional.readthedocs.io/en/latest/result-monad.html. </Description>
     <PackageTags>result functional monad csharp c#</PackageTags>
 
     <!--<RepositoryUrl>https://github.com/edumserrano/csharp-functional</RepositoryUrl>-->
@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeCoverage" Version="1.0.3" />
+    <PackageReference Include="Microsoft.CodeCoverage" Version="1.0.3" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
