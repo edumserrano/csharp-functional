@@ -39,6 +39,9 @@ Documentation
 For documentation go `here <http://csharp-functional.readthedocs.io/en/latest>`_.
 To understand better the structure of this repository see the section `About the repository <http://csharp-functional.readthedocs.io/en/latest/repository.html>`_.
 
+Further material:
+- [The Absolute Best Intro to Monads For Software Engineers](https://www.youtube.com/watch?v=C2w45qRc3aU)
+
 Licence
 =================================================
 
